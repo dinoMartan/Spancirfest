@@ -13,6 +13,7 @@
 		313AD8CF267774F400F0A562 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313AD8CD267774F400F0A562 /* Main.storyboard */; };
 		313AD8D1267774F700F0A562 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 313AD8D0267774F700F0A562 /* Assets.xcassets */; };
 		313AD8D4267774F700F0A562 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313AD8D2267774F700F0A562 /* LaunchScreen.storyboard */; };
+		8CF7FC5D2FF54A15DBDEE3BF /* Pods_Spancirfest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		313AD8D0267774F700F0A562 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		313AD8D3267774F700F0A562 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		313AD8D5267774F700F0A562 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FD2A2E970A0DE4CBEC0CD67 /* Pods-Spancirfest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.debug.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.debug.xcconfig"; sourceTree = "<group>"; };
+		498D71B44DF74C19A79EA051 /* Pods-Spancirfest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.release.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.release.xcconfig"; sourceTree = "<group>"; };
+		C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spancirfest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CF7FC5D2FF54A15DBDEE3BF /* Pods_Spancirfest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				313AD8C6267774F400F0A562 /* Spancirfest */,
 				313AD8C5267774F400F0A562 /* Products */,
+				6DD0449A76DE2562C1C229F3 /* Pods */,
+				3D08664BD9BFFAE9B8C0E317 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,24 @@
 			path = Spancirfest;
 			sourceTree = "<group>";
 		};
+		3D08664BD9BFFAE9B8C0E317 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6DD0449A76DE2562C1C229F3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3FD2A2E970A0DE4CBEC0CD67 /* Pods-Spancirfest.debug.xcconfig */,
+				498D71B44DF74C19A79EA051 /* Pods-Spancirfest.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 313AD8D8267774F700F0A562 /* Build configuration list for PBXNativeTarget "Spancirfest" */;
 			buildPhases = (
+				3441ABBF3A60D5AC2A1453D5 /* [CP] Check Pods Manifest.lock */,
 				313AD8C0267774F400F0A562 /* Sources */,
 				313AD8C1267774F400F0A562 /* Frameworks */,
 				313AD8C2267774F400F0A562 /* Resources */,
+				683E1A29CF7B83403C13312E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3441ABBF3A60D5AC2A1453D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Spancirfest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		683E1A29CF7B83403C13312E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spancirfest/Pods-Spancirfest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spancirfest/Pods-Spancirfest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spancirfest/Pods-Spancirfest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		313AD8C0267774F400F0A562 /* Sources */ = {
@@ -283,6 +352,7 @@
 		};
 		313AD8D9267774F700F0A562 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FD2A2E970A0DE4CBEC0CD67 /* Pods-Spancirfest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +372,7 @@
 		};
 		313AD8DA267774F700F0A562 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 498D71B44DF74C19A79EA051 /* Pods-Spancirfest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
