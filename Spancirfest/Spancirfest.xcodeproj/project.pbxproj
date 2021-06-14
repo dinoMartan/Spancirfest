@@ -3,16 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		313AD8C8267774F400F0A562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AD8C7267774F400F0A562 /* AppDelegate.swift */; };
 		313AD8CA267774F400F0A562 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AD8C9267774F400F0A562 /* SceneDelegate.swift */; };
-		313AD8CC267774F400F0A562 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AD8CB267774F400F0A562 /* ViewController.swift */; };
-		313AD8CF267774F400F0A562 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313AD8CD267774F400F0A562 /* Main.storyboard */; };
 		313AD8D1267774F700F0A562 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 313AD8D0267774F700F0A562 /* Assets.xcassets */; };
 		313AD8D4267774F700F0A562 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313AD8D2267774F700F0A562 /* LaunchScreen.storyboard */; };
+		313AD8FB2677888000F0A562 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 313AD8FA2677888000F0A562 /* GoogleService-Info.plist */; };
 		8CF7FC5D2FF54A15DBDEE3BF /* Pods_Spancirfest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,11 +19,10 @@
 		313AD8C4267774F400F0A562 /* Spancirfest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spancirfest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		313AD8C7267774F400F0A562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		313AD8C9267774F400F0A562 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		313AD8CB267774F400F0A562 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		313AD8CE267774F400F0A562 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		313AD8D0267774F700F0A562 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		313AD8D3267774F700F0A562 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		313AD8D5267774F700F0A562 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		313AD8FA2677888000F0A562 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FD2A2E970A0DE4CBEC0CD67 /* Pods-Spancirfest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.debug.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.debug.xcconfig"; sourceTree = "<group>"; };
 		498D71B44DF74C19A79EA051 /* Pods-Spancirfest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.release.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.release.xcconfig"; sourceTree = "<group>"; };
 		C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spancirfest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,15 +61,62 @@
 		313AD8C6267774F400F0A562 /* Spancirfest */ = {
 			isa = PBXGroup;
 			children = (
-				313AD8C7267774F400F0A562 /* AppDelegate.swift */,
-				313AD8C9267774F400F0A562 /* SceneDelegate.swift */,
-				313AD8CB267774F400F0A562 /* ViewController.swift */,
-				313AD8CD267774F400F0A562 /* Main.storyboard */,
-				313AD8D0267774F700F0A562 /* Assets.xcassets */,
-				313AD8D2267774F700F0A562 /* LaunchScreen.storyboard */,
-				313AD8D5267774F700F0A562 /* Info.plist */,
+				313AD8F32677860600F0A562 /* Common */,
+				313AD8F2267785FE00F0A562 /* Services */,
+				313AD8F1267785F800F0A562 /* Models */,
+				313AD8EB267784C600F0A562 /* Resources */,
+				313AD8F0267785EF00F0A562 /* Modules */,
+				313AD8EA267784BD00F0A562 /* Application */,
 			);
 			path = Spancirfest;
+			sourceTree = "<group>";
+		};
+		313AD8EA267784BD00F0A562 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				313AD8FA2677888000F0A562 /* GoogleService-Info.plist */,
+				313AD8D2267774F700F0A562 /* LaunchScreen.storyboard */,
+				313AD8D5267774F700F0A562 /* Info.plist */,
+				313AD8C7267774F400F0A562 /* AppDelegate.swift */,
+				313AD8C9267774F400F0A562 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		313AD8EB267784C600F0A562 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				313AD8D0267774F700F0A562 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		313AD8F0267785EF00F0A562 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		313AD8F1267785F800F0A562 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		313AD8F2267785FE00F0A562 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		313AD8F32677860600F0A562 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		3D08664BD9BFFAE9B8C0E317 /* Frameworks */ = {
@@ -88,7 +133,6 @@
 				3FD2A2E970A0DE4CBEC0CD67 /* Pods-Spancirfest.debug.xcconfig */,
 				498D71B44DF74C19A79EA051 /* Pods-Spancirfest.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -153,7 +197,7 @@
 			files = (
 				313AD8D4267774F700F0A562 /* LaunchScreen.storyboard in Resources */,
 				313AD8D1267774F700F0A562 /* Assets.xcassets in Resources */,
-				313AD8CF267774F400F0A562 /* Main.storyboard in Resources */,
+				313AD8FB2677888000F0A562 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +250,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				313AD8CC267774F400F0A562 /* ViewController.swift in Sources */,
 				313AD8C8267774F400F0A562 /* AppDelegate.swift in Sources */,
 				313AD8CA267774F400F0A562 /* SceneDelegate.swift in Sources */,
 			);
@@ -215,14 +258,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		313AD8CD267774F400F0A562 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				313AD8CE267774F400F0A562 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		313AD8D2267774F700F0A562 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -358,7 +393,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P675Y7Z4V8;
-				INFOPLIST_FILE = Spancirfest/Info.plist;
+				INFOPLIST_FILE = Spancirfest/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -378,7 +413,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P675Y7Z4V8;
-				INFOPLIST_FILE = Spancirfest/Info.plist;
+				INFOPLIST_FILE = Spancirfest/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
