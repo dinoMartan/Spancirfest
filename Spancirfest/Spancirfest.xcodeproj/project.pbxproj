@@ -27,6 +27,8 @@
 		313AD98E2678E77C00F0A562 /* ExhibitorDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313AD98D2678E77C00F0A562 /* ExhibitorDashboard.storyboard */; };
 		313AD9912678E78600F0A562 /* AdminDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313AD9902678E78600F0A562 /* AdminDashboard.storyboard */; };
 		313AD9942678E79000F0A562 /* AdminDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AD9932678E79000F0A562 /* AdminDashboardViewController.swift */; };
+		313AD9982678E87800F0A562 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313AD9972678E87800F0A562 /* Navigation.storyboard */; };
+		313AD99B2678E98800F0A562 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AD99A2678E98800F0A562 /* TabBarViewController.swift */; };
 		8CF7FC5D2FF54A15DBDEE3BF /* Pods_Spancirfest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		313AD98D2678E77C00F0A562 /* ExhibitorDashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExhibitorDashboard.storyboard; sourceTree = "<group>"; };
 		313AD9902678E78600F0A562 /* AdminDashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdminDashboard.storyboard; sourceTree = "<group>"; };
 		313AD9932678E79000F0A562 /* AdminDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardViewController.swift; sourceTree = "<group>"; };
+		313AD9972678E87800F0A562 /* Navigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = "<group>"; };
+		313AD99A2678E98800F0A562 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3FD2A2E970A0DE4CBEC0CD67 /* Pods-Spancirfest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.debug.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.debug.xcconfig"; sourceTree = "<group>"; };
 		498D71B44DF74C19A79EA051 /* Pods-Spancirfest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.release.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.release.xcconfig"; sourceTree = "<group>"; };
 		C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spancirfest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +129,7 @@
 		313AD8F0267785EF00F0A562 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				313AD9962678E86800F0A562 /* Navigation */,
 				313AD9712678E5D300F0A562 /* Admin */,
 				313AD9702678E5C900F0A562 /* Exhibitor */,
 				313AD96F2678E5C300F0A562 /* Visitor */,
@@ -252,6 +257,15 @@
 			path = AdminDashboard;
 			sourceTree = "<group>";
 		};
+		313AD9962678E86800F0A562 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				313AD9972678E87800F0A562 /* Navigation.storyboard */,
+				313AD99A2678E98800F0A562 /* TabBarViewController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		3D08664BD9BFFAE9B8C0E317 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +345,7 @@
 			files = (
 				313AD9282678B18900F0A562 /* Authentication.storyboard in Resources */,
 				313AD9912678E78600F0A562 /* AdminDashboard.storyboard in Resources */,
+				313AD9982678E87800F0A562 /* Navigation.storyboard in Resources */,
 				313AD9782678E6C900F0A562 /* Home.storyboard in Resources */,
 				313AD98E2678E77C00F0A562 /* ExhibitorDashboard.storyboard in Resources */,
 				313AD8D4267774F700F0A562 /* LaunchScreen.storyboard in Resources */,
@@ -411,6 +426,7 @@
 				313AD8C8267774F400F0A562 /* AppDelegate.swift in Sources */,
 				313AD9322678B80300F0A562 /* StoryboardExtension.swift in Sources */,
 				313AD9352678C99E00F0A562 /* SignInViewController.swift in Sources */,
+				313AD99B2678E98800F0A562 /* TabBarViewController.swift in Sources */,
 				313AD98B2678E77100F0A562 /* ExhibitorDashboardViewController.swift in Sources */,
 				313AD9392678DC8B00F0A562 /* CurrentUser.swift in Sources */,
 				313AD97C2678E6E200F0A562 /* HomeViewController.swift in Sources */,

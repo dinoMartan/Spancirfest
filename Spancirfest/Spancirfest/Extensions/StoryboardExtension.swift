@@ -15,6 +15,7 @@ enum StoryboardId: String {
     case Profile
     case ExhibitorDashboard
     case AdminDashboard
+    case Navigation
     
 }
 

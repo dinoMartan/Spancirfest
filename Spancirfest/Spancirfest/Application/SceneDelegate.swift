@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: scene)
         
         if CurrentUser.shared.userSignedIn() {
-            debugPrint("User is signed in")
+            window.rootViewController = UIStoryboard.getViewController(viewControllerType: TabBarViewController.self, from: .Navigation)
         }
         
         else {
