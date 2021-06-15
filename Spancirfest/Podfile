@@ -8,5 +8,6 @@ target 'Spancirfest' do
   # Pods for Spancirfest
   pod 'Firebase/Core'
   pod 'SDWebImage'
+  pod 'FirebaseUI'
 
 end

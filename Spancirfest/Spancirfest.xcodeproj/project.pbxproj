@@ -12,6 +12,11 @@
 		313AD8D1267774F700F0A562 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 313AD8D0267774F700F0A562 /* Assets.xcassets */; };
 		313AD8D4267774F700F0A562 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313AD8D2267774F700F0A562 /* LaunchScreen.storyboard */; };
 		313AD8FB2677888000F0A562 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 313AD8FA2677888000F0A562 /* GoogleService-Info.plist */; };
+		313AD9282678B18900F0A562 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313AD9272678B18900F0A562 /* Authentication.storyboard */; };
+		313AD92C2678B1C500F0A562 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AD92B2678B1C500F0A562 /* AuthenticationViewController.swift */; };
+		313AD9322678B80300F0A562 /* StoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AD9312678B80300F0A562 /* StoryboardExtension.swift */; };
+		313AD9352678C99E00F0A562 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AD9342678C99E00F0A562 /* SignInViewController.swift */; };
+		313AD9392678DC8B00F0A562 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AD9382678DC8B00F0A562 /* CurrentUser.swift */; };
 		8CF7FC5D2FF54A15DBDEE3BF /* Pods_Spancirfest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +28,11 @@
 		313AD8D3267774F700F0A562 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		313AD8D5267774F700F0A562 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		313AD8FA2677888000F0A562 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		313AD9272678B18900F0A562 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
+		313AD92B2678B1C500F0A562 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		313AD9312678B80300F0A562 /* StoryboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardExtension.swift; sourceTree = "<group>"; };
+		313AD9342678C99E00F0A562 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		313AD9382678DC8B00F0A562 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		3FD2A2E970A0DE4CBEC0CD67 /* Pods-Spancirfest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.debug.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.debug.xcconfig"; sourceTree = "<group>"; };
 		498D71B44DF74C19A79EA051 /* Pods-Spancirfest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.release.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.release.xcconfig"; sourceTree = "<group>"; };
 		C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spancirfest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +71,7 @@
 		313AD8C6267774F400F0A562 /* Spancirfest */ = {
 			isa = PBXGroup;
 			children = (
+				313AD92F2678B54900F0A562 /* Extensions */,
 				313AD8F32677860600F0A562 /* Common */,
 				313AD8F2267785FE00F0A562 /* Services */,
 				313AD8F1267785F800F0A562 /* Models */,
@@ -94,6 +105,7 @@
 		313AD8F0267785EF00F0A562 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				313AD8FD2678AB4000F0A562 /* Authentication */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -115,8 +127,35 @@
 		313AD8F32677860600F0A562 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				313AD9372678DC7C00F0A562 /* UserData */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		313AD8FD2678AB4000F0A562 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				313AD9272678B18900F0A562 /* Authentication.storyboard */,
+				313AD92B2678B1C500F0A562 /* AuthenticationViewController.swift */,
+				313AD9342678C99E00F0A562 /* SignInViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		313AD92F2678B54900F0A562 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				313AD9312678B80300F0A562 /* StoryboardExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		313AD9372678DC7C00F0A562 /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				313AD9382678DC8B00F0A562 /* CurrentUser.swift */,
+			);
+			path = UserData;
 			sourceTree = "<group>";
 		};
 		3D08664BD9BFFAE9B8C0E317 /* Frameworks */ = {
@@ -148,6 +187,7 @@
 				313AD8C1267774F400F0A562 /* Frameworks */,
 				313AD8C2267774F400F0A562 /* Resources */,
 				683E1A29CF7B83403C13312E /* [CP] Embed Pods Frameworks */,
+				D9476D84CC6C8700584F65CF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				313AD9282678B18900F0A562 /* Authentication.storyboard in Resources */,
 				313AD8D4267774F700F0A562 /* LaunchScreen.storyboard in Resources */,
 				313AD8D1267774F700F0A562 /* Assets.xcassets in Resources */,
 				313AD8FB2677888000F0A562 /* GoogleService-Info.plist in Resources */,
@@ -243,6 +284,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spancirfest/Pods-Spancirfest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D9476D84CC6C8700584F65CF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spancirfest/Pods-Spancirfest-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spancirfest/Pods-Spancirfest-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spancirfest/Pods-Spancirfest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -250,7 +308,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				313AD92C2678B1C500F0A562 /* AuthenticationViewController.swift in Sources */,
 				313AD8C8267774F400F0A562 /* AppDelegate.swift in Sources */,
+				313AD9322678B80300F0A562 /* StoryboardExtension.swift in Sources */,
+				313AD9352678C99E00F0A562 /* SignInViewController.swift in Sources */,
+				313AD9392678DC8B00F0A562 /* CurrentUser.swift in Sources */,
 				313AD8CA267774F400F0A562 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

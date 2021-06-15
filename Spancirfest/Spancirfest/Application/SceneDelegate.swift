@@ -12,13 +12,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        FirebaseApp.configure()
+        FirebaseConfiguration.shared.setLoggerLevel(.min)
+        
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
         
-        FirebaseApp.configure()
-   
+        if CurrentUser.shared.userSignedIn() {
+            debugPrint("User is signed in")
+        }
+        
+        else {
+            window.rootViewController = UIStoryboard.getViewController(viewControllerType: AuthenticationViewController.self, from: .Authentication)
+        }
+
         window.makeKeyAndVisible()
         self.window = window
     }
