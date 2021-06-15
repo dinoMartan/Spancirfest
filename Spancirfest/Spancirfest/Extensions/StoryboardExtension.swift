@@ -10,6 +10,11 @@ import UIKit
 enum StoryboardId: String {
     
     case Authentication
+    case Home
+    case Map
+    case Profile
+    case ExhibitorDashboard
+    case AdminDashboard
     
 }
 
