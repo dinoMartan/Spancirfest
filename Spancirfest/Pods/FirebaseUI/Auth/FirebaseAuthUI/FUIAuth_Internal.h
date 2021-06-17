@@ -95,11 +95,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic, weak, nullable) id<FUIEmailAuthProvider> emailAuthProvider;
 
-/** @property emulatorEnabled
-    @brief Whether or not the auth emulator is being used.
- */
-@property(nonatomic, assign, getter=isEmulatorEnabled) BOOL emulatorEnabled;
-
 @end
 
 NS_ASSUME_NONNULL_END

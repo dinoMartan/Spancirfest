@@ -14,13 +14,13 @@
 //  limitations under the License.
 //
 
-#import "FUIOAuth.h"
+#import <FirebaseUI/FirebaseAuthUI.h>
 
 #import <AuthenticationServices/AuthenticationServices.h>
-#import <FirebaseUI/FirebaseAuthUI.h>
+
+#import "FUIOAuth.h"
 #import <FirebaseUI/FUIAuthBaseViewController.h>
 #import <FirebaseUI/FUIAuthBaseViewController_Internal.h>
-#import "FUIAuth_Internal.h"
 #import "FUIAuthErrorUtils.h"
 
 /** @var kTableName
@@ -128,7 +128,7 @@ NS_ASSUME_NONNULL_BEGIN
     _scopes = scopes;
     _customParameters = customParameters;
     _loginHintKey = loginHintKey;
-    if ((_authUI.isEmulatorEnabled || ![_providerID isEqualToString:@"apple.com"]) && ![_providerID isEqualToString:@"facebook.com"]) {
+    if (![_providerID isEqualToString:@"facebook.com"] && ![_providerID isEqualToString:@"apple.com"]) {
       _provider = [FIROAuthProvider providerWithProviderID:self.providerID];
     }
   }
@@ -191,25 +191,14 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 + (FUIOAuth *)appleAuthProvider {
-  UIUserInterfaceStyle style = UITraitCollection.currentTraitCollection.userInterfaceStyle;
-  return [self appleAuthProviderWithUserInterfaceStyle:style];
-}
-
-+ (FUIOAuth *)appleAuthProviderWithUserInterfaceStyle:(UIUserInterfaceStyle)userInterfaceStyle {
   UIImage *iconImage = [FUIAuthUtils imageNamed:@"ic_apple"
                             fromBundleNameOrNil:@"FirebaseOAuthUI"];
   UIColor *buttonColor = [UIColor blackColor];
   UIColor *buttonTextColor = [UIColor whiteColor];
-  if (userInterfaceStyle == UIUserInterfaceStyleDark) {
+  if (UITraitCollection.currentTraitCollection.userInterfaceStyle == UIUserInterfaceStyleLight) {
     iconImage = [iconImage imageWithTintColor:[UIColor blackColor]];
     buttonColor = [UIColor whiteColor];
     buttonTextColor = [UIColor blackColor];
-  } else if (userInterfaceStyle == UIUserInterfaceStyleLight) {
-    iconImage = [iconImage imageWithTintColor:[UIColor whiteColor]];
-    buttonColor = [UIColor blackColor];
-    buttonTextColor = [UIColor whiteColor];
-  } else {
-    iconImage = [iconImage imageWithTintColor:[UIColor whiteColor]];
   }
   FUIOAuth *provider = [[FUIOAuth alloc] initWithAuthUI:[FUIAuth defaultAuthUI]
                                              providerID:@"apple.com"
@@ -220,7 +209,7 @@ NS_ASSUME_NONNULL_BEGIN
                                                  scopes:@[@"name", @"email"]
                                        customParameters:nil
                                            loginHintKey:nil];
-  provider.buttonAlignment = FUIButtonAlignmentLeading;
+  provider.buttonAlignment = FUIButtonAlignmentCenter;
   provider.buttonTextColor = buttonTextColor;
   return provider;
 }
@@ -259,7 +248,7 @@ NS_ASSUME_NONNULL_BEGIN
   FIROAuthProvider *provider = self.provider;
   _providerSignInCompletion = completion;
 
-  if ([self.providerID isEqualToString:@"apple.com"] && !self.authUI.isEmulatorEnabled) {
+  if ([self.providerID isEqualToString:@"apple.com"]) {
     if (@available(iOS 13.0, *)) {
       ASAuthorizationAppleIDRequest *request = [[[ASAuthorizationAppleIDProvider alloc] init] createRequest];
       request.requestedScopes = @[ASAuthorizationScopeFullName, ASAuthorizationScopeEmail];
@@ -317,45 +306,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - ASAuthorizationControllerDelegate
 
-+ (NSPersonNameComponentsFormatter *)nameFormatter {
-  static NSPersonNameComponentsFormatter *nameFormatter;
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    nameFormatter = [[NSPersonNameComponentsFormatter alloc] init];
-  });
-  return nameFormatter;
-}
-
 - (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithAuthorization:(ASAuthorization *)authorization API_AVAILABLE(ios(13.0)) {
-  ASAuthorizationAppleIDCredential *appleIDCredential = authorization.credential;
-  NSData *rawIdentityToken = appleIDCredential.identityToken;
-  if (rawIdentityToken == nil) {
-    // It's pretty awful to not have an error when login is unsuccessful, but Apple's docs
-    // don't provide any useful information here.
-    // https://developer.apple.com/documentation/authenticationservices/asauthorizationappleidcredential
-    NSLog(@"Sign in with Apple completed with authorization, but no jwt: %@", authorization);
-    _providerSignInCompletion(nil, nil, nil, nil);
-  }
+  ASAuthorizationAppleIDCredential* appleIDCredential = authorization.credential;
   NSString *idToken = [[NSString alloc] initWithData:appleIDCredential.identityToken encoding:NSUTF8StringEncoding];
   FIROAuthCredential *credential = [FIROAuthProvider credentialWithProviderID:@"apple.com"
                                                                       IDToken:idToken
                                                                   accessToken:nil];
-  FIRAuthResultCallback result;
-  NSPersonNameComponents *nameComponents = appleIDCredential.fullName;
-  if (nameComponents != nil) {
-    NSPersonNameComponentsFormatter *formatter = [[self class] nameFormatter];
-    NSString *displayName = [formatter stringFromPersonNameComponents:nameComponents];
-
-    result = ^(FIRUser *_Nullable user,
-               NSError *_Nullable error) {
-      if (user != nil) {
-        FIRUserProfileChangeRequest *displayNameUpdate = [user profileChangeRequest];
-        displayNameUpdate.displayName = displayName;
-        [displayNameUpdate commitChangesWithCompletion:^(NSError * _Nullable error) {}];
-      }
-    };
-  }
-  _providerSignInCompletion(credential, nil, result, nil);
+  _providerSignInCompletion(credential, nil, nil, nil);
 }
 
 - (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error API_AVAILABLE(ios(13.0)) {
