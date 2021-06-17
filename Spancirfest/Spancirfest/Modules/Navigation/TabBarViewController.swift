@@ -25,22 +25,30 @@ class TabBarViewController: UITabBarController {
     
     private func disableScreensBasedOnUserType() {
         guard var viewControllers = viewControllers else { return }
-        for controller in viewControllers {
-            
-            guard let navigationController = controller as? UINavigationController else { continue }
-            let viewController = navigationController.viewControllers[0]
-            
-            if (viewController.isKind(of: AdminDashboardViewController.self)) {
-                let index = viewControllers.firstIndex(of: controller)!
-                // viewControllers.remove(at: index)
+    
+        CurrentUser.shared.getCurrentUserDetails { userDetails in
+            for controller in viewControllers {
+                guard let navigationController = controller as? UINavigationController else { continue }
+                let viewController = navigationController.viewControllers[0]
+                
+                // hide admin screen for everyone who is not admin
+                if !(userDetails?.isAdmin ?? false) {
+                    if (viewController.isKind(of: AdminDashboardViewController.self)) {
+                        let index = viewControllers.firstIndex(of: controller)!
+                        viewControllers.remove(at: index)
+                    }
+                }
+                
+                // hide exhibitor screen for everyone who is not neither admin nor exhibitor
+                if !(userDetails?.isAdmin ?? false) && !(userDetails?.isExhibitor ?? false) {
+                    if (viewController.isKind(of: ExhibitorDashboardViewController.self)) {
+                        let index = viewControllers.firstIndex(of: controller)!
+                        viewControllers.remove(at: index)
+                    }
+                }
             }
-            
-            if (viewController.isKind(of: ExhibitorDashboardViewController.self)) {
-                let index = viewControllers.firstIndex(of: controller)!
-                // viewControllers.remove(at: index)
-            }
+            self.viewControllers = viewControllers
         }
-        self.viewControllers = viewControllers
     }
 
 }
