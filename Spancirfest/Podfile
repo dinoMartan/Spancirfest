@@ -9,5 +9,8 @@ target 'Spancirfest' do
   pod 'Firebase/Core'
   pod 'SDWebImage'
   pod 'FirebaseUI'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+  pod 'FirebaseFirestoreSwift'
 
 end
