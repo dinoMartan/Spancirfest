@@ -33,6 +33,11 @@
 		313AD9A4267A8C7C00F0A562 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313AD9A3267A8C7C00F0A562 /* Event.storyboard */; };
 		313AD9A7267A8E7400F0A562 /* QueryDocumentSnapshotExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AD9A6267A8E7400F0A562 /* QueryDocumentSnapshotExtension.swift */; };
 		313AD9D1267B4A8D00F0A562 /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AD9D0267B4A8D00F0A562 /* EncodableExtension.swift */; };
+		313ADAE3267B581400F0A562 /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ADAE2267B581400F0A562 /* UserDetails.swift */; };
+		313ADAE6267B656F00F0A562 /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ADAE5267B656F00F0A562 /* DatabaseHandler.swift */; };
+		313ADAE9267B65A200F0A562 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ADAE8267B65A200F0A562 /* StringExtension.swift */; };
+		313ADAED267B69D400F0A562 /* CollectionsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ADAEC267B69D400F0A562 /* CollectionsConstants.swift */; };
+		313ADAF1267B6F7400F0A562 /* DataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ADAF0267B6F7400F0A562 /* DataConverter.swift */; };
 		8CF7FC5D2FF54A15DBDEE3BF /* Pods_Spancirfest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +70,11 @@
 		313AD9A3267A8C7C00F0A562 /* Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
 		313AD9A6267A8E7400F0A562 /* QueryDocumentSnapshotExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryDocumentSnapshotExtension.swift; sourceTree = "<group>"; };
 		313AD9D0267B4A8D00F0A562 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
+		313ADAE2267B581400F0A562 /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
+		313ADAE5267B656F00F0A562 /* DatabaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHandler.swift; sourceTree = "<group>"; };
+		313ADAE8267B65A200F0A562 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		313ADAEC267B69D400F0A562 /* CollectionsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionsConstants.swift; path = Spancirfest/Extensions/CollectionsConstants.swift; sourceTree = SOURCE_ROOT; };
+		313ADAF0267B6F7400F0A562 /* DataConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConverter.swift; sourceTree = "<group>"; };
 		3FD2A2E970A0DE4CBEC0CD67 /* Pods-Spancirfest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.debug.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.debug.xcconfig"; sourceTree = "<group>"; };
 		498D71B44DF74C19A79EA051 /* Pods-Spancirfest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.release.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.release.xcconfig"; sourceTree = "<group>"; };
 		C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spancirfest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +160,7 @@
 		313AD8F1267785F800F0A562 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				313ADAE2267B581400F0A562 /* UserDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -157,6 +168,8 @@
 		313AD8F2267785FE00F0A562 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				313ADAE5267B656F00F0A562 /* DatabaseHandler.swift */,
+				313ADAF0267B6F7400F0A562 /* DataConverter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -164,6 +177,7 @@
 		313AD8F32677860600F0A562 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				313ADAEB267B69AF00F0A562 /* Constants */,
 				313AD9372678DC7C00F0A562 /* UserData */,
 			);
 			path = Common;
@@ -185,6 +199,7 @@
 				313AD9312678B80300F0A562 /* StoryboardExtension.swift */,
 				313AD9A6267A8E7400F0A562 /* QueryDocumentSnapshotExtension.swift */,
 				313AD9D0267B4A8D00F0A562 /* EncodableExtension.swift */,
+				313ADAE8267B65A200F0A562 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -294,6 +309,14 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		313ADAEB267B69AF00F0A562 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				313ADAEC267B69D400F0A562 /* CollectionsConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		3D08664BD9BFFAE9B8C0E317 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,8 +345,8 @@
 				313AD8C0267774F400F0A562 /* Sources */,
 				313AD8C1267774F400F0A562 /* Frameworks */,
 				313AD8C2267774F400F0A562 /* Resources */,
-				683E1A29CF7B83403C13312E /* [CP] Embed Pods Frameworks */,
-				D9476D84CC6C8700584F65CF /* [CP] Copy Pods Resources */,
+				6FA1931B135BF4BA80F6AC24 /* [CP] Embed Pods Frameworks */,
+				8E72B50BDD4779238E038428 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -410,7 +433,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		683E1A29CF7B83403C13312E /* [CP] Embed Pods Frameworks */ = {
+		6FA1931B135BF4BA80F6AC24 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -427,7 +450,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spancirfest/Pods-Spancirfest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D9476D84CC6C8700584F65CF /* [CP] Copy Pods Resources */ = {
+		8E72B50BDD4779238E038428 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -452,17 +475,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				313AD92C2678B1C500F0A562 /* AuthenticationViewController.swift in Sources */,
+				313ADAE3267B581400F0A562 /* UserDetails.swift in Sources */,
 				313AD8C8267774F400F0A562 /* AppDelegate.swift in Sources */,
 				313AD9A0267A8C6A00F0A562 /* EventViewController.swift in Sources */,
+				313ADAED267B69D400F0A562 /* CollectionsConstants.swift in Sources */,
 				313AD9322678B80300F0A562 /* StoryboardExtension.swift in Sources */,
 				313AD9352678C99E00F0A562 /* SignInViewController.swift in Sources */,
 				313AD99B2678E98800F0A562 /* TabBarViewController.swift in Sources */,
 				313AD98B2678E77100F0A562 /* ExhibitorDashboardViewController.swift in Sources */,
 				313AD9392678DC8B00F0A562 /* CurrentUser.swift in Sources */,
+				313ADAE6267B656F00F0A562 /* DatabaseHandler.swift in Sources */,
 				313AD97C2678E6E200F0A562 /* HomeViewController.swift in Sources */,
 				313AD9882678E76600F0A562 /* ProfileViewController.swift in Sources */,
 				313AD9942678E79000F0A562 /* AdminDashboardViewController.swift in Sources */,
 				313AD9A7267A8E7400F0A562 /* QueryDocumentSnapshotExtension.swift in Sources */,
+				313ADAE9267B65A200F0A562 /* StringExtension.swift in Sources */,
+				313ADAF1267B6F7400F0A562 /* DataConverter.swift in Sources */,
 				313AD8CA267774F400F0A562 /* SceneDelegate.swift in Sources */,
 				313AD9D1267B4A8D00F0A562 /* EncodableExtension.swift in Sources */,
 				313AD97F2678E73300F0A562 /* MapViewController.swift in Sources */,

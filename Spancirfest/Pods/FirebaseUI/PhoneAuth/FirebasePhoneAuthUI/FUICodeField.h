@@ -25,13 +25,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface FUICodeField : UITextField <UITextFieldDelegate>
+@interface FUICodeField : UIView <UIKeyInput, UITextInputTraits>
+
+@property (nonatomic, strong) UIColor *textColor UI_APPEARANCE_SELECTOR;
+
+@property (nonatomic, assign) UIKeyboardAppearance keyboardAppearance UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, retain, readonly) NSMutableString *codeEntry;
 
-@property (nonatomic, readwrite) IBOutlet id<FUICodeFieldDelegate> codeDelegate;
+@property (nonatomic,getter=isSecureTextEntry) IBInspectable BOOL secureTextEntry;
+
+@property (nonatomic, readwrite) IBOutlet id<FUICodeFieldDelegate> delegate;
 
 @property (nonatomic, readonly) IBInspectable NSInteger codeLength;
+
+@property (null_unspecified, nonatomic, copy) UITextContentType textContentType;
 
 - (void)clearCodeInput;
 

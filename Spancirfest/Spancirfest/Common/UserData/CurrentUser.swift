@@ -33,5 +33,23 @@ final class CurrentUser {
         catch { return false }
     }
     
+    func getCurrentUserId() -> String? {
+        let id = auth.currentUser?.uid
+        return id
+    }
+    
+    func getCurrentUserDetails(result: @escaping (UserDetails?) -> Void) {
+        guard let currentUserId = getCurrentUserId() else {
+            result(nil)
+            return
+        }
+        DatabaseHandler.shared.getUserDetails(userId: currentUserId) { userDetails in
+            result(userDetails)
+        } failure: { _ in
+            result(nil)
+        }
+
+    }
+    
     //MARK: - Private methods
 }
