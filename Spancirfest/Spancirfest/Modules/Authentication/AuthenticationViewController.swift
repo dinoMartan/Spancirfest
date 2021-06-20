@@ -79,7 +79,11 @@ private extension AuthenticationViewController {
 extension AuthenticationViewController: FUIAuthDelegate {
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-        if error == nil { debugPrint("Signed in. Send to the app") }
+        if error == nil {
+            guard let navigationViewController = UIStoryboard.getViewController(viewControllerType: TabBarViewController.self, from: .Navigation) else { return }
+            navigationViewController.modalPresentationStyle = .fullScreen
+            present(navigationViewController, animated: true, completion: nil)
+        }
         else { debugPrint(error?.localizedDescription) }
     }
     
