@@ -43,12 +43,11 @@ final class CurrentUser {
             result(nil)
             return
         }
-        DatabaseHandler.shared.getUserDetails(userId: currentUserId) { userDetails in
+        DatabaseHandler.shared.getDocumentById(type: UserDetails.self, collection: .userDetails, documentId: currentUserId) { userDetails in
             result(userDetails)
         } failure: { _ in
             result(nil)
         }
-
     }
     
     //MARK: - Private methods

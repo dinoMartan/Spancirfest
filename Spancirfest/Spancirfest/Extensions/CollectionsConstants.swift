@@ -10,5 +10,8 @@ import Foundation
 enum CollectionsConstants: String {
     
     case userDetails = "userDetails"
+    case eventCategory = "eventCategories"
+    case events = "events"
+    case locations = "locations"
     
 }

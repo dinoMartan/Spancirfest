@@ -21,19 +21,33 @@ final class DatabaseHandler {
     
     //MARK: - Public methods
     
-    func getUserDetails(userId: String, success: @escaping ((UserDetails) -> Void), failure: @escaping ((Error?) -> Void)) {
-        db.collection(CollectionsConstants.userDetails.rawValue).document(userId).getDocument { (data, error) in
+    func getDataWhere<T: Codable>(type: T.Type, whereField: DatabaseFieldNameConstants, isEqualTo: Any, success: @escaping (([T]) -> Void), failure: @escaping ((Error) -> Void)) {
+        
+        db.collection(CollectionsConstants.events.rawValue).whereField(whereField.rawValue, isEqualTo: isEqualTo).getDocuments() { (querySnapshot, error) in
+            if let error = error { failure(error) }
+            else {
+                var results: [T] = []
+                for document in querySnapshot!.documents {
+                    guard let data = document.getObject(type: T.self) else { continue }
+                    results.append(data)
+                }
+                success(results)
+            }
+        }
+    }
+    
+    func getDocumentById<T: Codable>(type: T.Type, collection: CollectionsConstants, documentId: String, success: @escaping ((T) -> Void), failure: @escaping ((Error?) -> Void)) {
+        db.collection(collection.rawValue).document(documentId).getDocument { (data, error) in
             if error == nil {
                 let data = data?.data()
-                guard let userDetails = getObject(type: UserDetails.self, data: data) else {
+                guard let document = getObject(type: T.self, data: data) else {
                     failure(nil)
                     return
                 }
-                success(userDetails)
+                success(document)
             }
             else { failure(error) }
         }
-
     }
     
     func getData<T: Codable>(type: T.Type, collection: CollectionsConstants, success: @escaping (([T]) -> Void), failure: @escaping ((Error) -> Void)) {
