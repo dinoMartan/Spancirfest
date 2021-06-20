@@ -279,6 +279,7 @@
                     </view>
                     <connections>
                         <outlet property="categoryLabel" destination="oAr-Pr-otX" id="sMV-wi-krx"/>
+                        <outlet property="createEventButton" destination="Asw-Yy-oJI" id="zx9-6K-XjK"/>
                         <outlet property="endDateLabel" destination="Imp-qX-seK" id="AMO-Q7-bi8"/>
                         <outlet property="eventImage" destination="G2m-CT-xkD" id="JJw-VL-BOR"/>
                         <outlet property="eventNameTextField" destination="Gmz-hx-0MA" id="Mlp-Dq-Zu5"/>
@@ -287,6 +288,7 @@
                         <outlet property="locationLabel" destination="q1L-G8-LgB" id="XOJ-xP-vNX"/>
                         <outlet property="numberOfPeopleTextField" destination="FRf-ME-WRK" id="mZU-e9-mBE"/>
                         <outlet property="priceTextField" destination="47J-xi-ZqM" id="IzN-Fx-rHV"/>
+                        <outlet property="setImageButton" destination="EFu-VF-Thh" id="osb-7H-4ij"/>
                         <outlet property="startDateLabel" destination="CeX-GQ-Lye" id="GR2-W8-6F7"/>
                     </connections>
                 </viewController>

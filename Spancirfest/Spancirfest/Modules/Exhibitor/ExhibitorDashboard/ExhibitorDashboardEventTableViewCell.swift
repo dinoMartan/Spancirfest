@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ExhibitorDashboardEventTableViewCell: UITableViewCell {
     
@@ -25,13 +26,16 @@ class ExhibitorDashboardEventTableViewCell: UITableViewCell {
     
     func configureCell(event: Event) {
         nameLabel.text = event.name
-        locationLabel.text = event.locationId
+        locationLabel.text = event.location.name
         
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         
         startDateLabel.text = formatter.string(from: event.startDate)
         endDateLabel.text = formatter.string(from: event.endDate)
+        
+        guard let image = event.image else { return }
+        eventImage.sd_setImage(with: URL(string: image), completed: nil)
     }
     
 }

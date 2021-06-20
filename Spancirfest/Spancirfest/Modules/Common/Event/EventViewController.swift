@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 enum EventDateType {
     
@@ -35,6 +36,8 @@ class EventViewController: UIViewController {
     @IBOutlet private weak var categoryLabel: UILabel!
     @IBOutlet private weak var loadingAnimationView: UIView!
     @IBOutlet private weak var loadingActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var createEventButton: UIButton!
+    @IBOutlet private weak var setImageButton: UIButton!
     
     //MARK: - Public properties
     
@@ -65,18 +68,25 @@ private extension EventViewController {
     
     private func setupView() {
         stopLoadingAnimation()
-        if currentEvent == nil {
-        }
-        else {
-            loadEventData()
-        }
+        if currentEvent != nil { loadEventData() }
     }
     
     private func loadEventData() {
+        createEventButton.setTitle("Update Event", for: .normal)
+        setImageButton.isEnabled = false
         guard let event = currentEvent else { return }
+        if event.image != nil { eventImage.sd_setImage(with: URL(string: event.image ?? ""), completed: nil) }
         eventNameTextField.text = event.name
+        selectedStartDate = event.startDate
+        selectedEndDate = event.endDate
+        startDateLabel.text = event.startDate.toString(style: .style1)
+        endDateLabel.text = event.endDate.toString(style: .style1)
         priceTextField.text = String(event.price ?? 0)
         numberOfPeopleTextField.text = String(event.numberOfPeople ?? 0)
+        selectedLocation = event.location
+        locationLabel.text = event.location.name
+        selectedCategory = event.eventCategory
+        categoryLabel.text = event.eventCategory.description
     }
     
     //MARK: - Loading animation
@@ -148,22 +158,46 @@ extension EventViewController {
         }
         
         startLoadingAnimation()
+        
 
-        DatabaseHandler.shared.uploadImage(image: image) { imageUrl in
-            let newEvent = Event(ownerId: currentUserId, eventCategory: category, name: name, startDate: startingDate, endDate: endingDate, price: price, locationId: location.locationId, numberOfPeople: numberOfPeople, image: imageUrl)
-            
-            DatabaseHandler.shared.addData(data: [newEvent], collection: .events) {
-                self.stopLoadingAnimation()
-                self.navigationController?.popToRootViewController(animated: true)
+        if currentEvent == nil {
+            let eventId = String.randomString(length: 30)
+            DatabaseHandler.shared.uploadImage(image: image) { imageUrl in
+                let newEvent = Event(ownerId: currentUserId, eventCategory: category, name: name, startDate: startingDate, endDate: endingDate, price: price, location: location, numberOfPeople: numberOfPeople, image: imageUrl, eventId: eventId)
+                
+                DatabaseHandler.shared.addData(data: [newEvent], collection: .events) {
+                    self.stopLoadingAnimation()
+                    self.navigationController?.popToRootViewController(animated: true)
+                } failure: { error in
+                    self.stopLoadingAnimation()
+                    // to do - handle error
+                }
+
             } failure: { error in
                 self.stopLoadingAnimation()
                 // to do - handle error
             }
-
-        } failure: { error in
-            self.stopLoadingAnimation()
-            // to do - handle error
         }
+        
+        
+        else {
+            let eventId = currentEvent!.eventId // already cheched if currentEvent is nil
+            let newEvent = Event(ownerId: currentUserId, eventCategory: category, name: name, startDate: startingDate, endDate: endingDate, price: price, location: location, numberOfPeople: numberOfPeople, image: currentEvent?.image, eventId: eventId)
+            DatabaseHandler.shared.updateEvent(event: newEvent) { completion in
+                if completion {
+                    self.stopLoadingAnimation()
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+                else {
+                    self.stopLoadingAnimation()
+                    // to do - handle error
+                }
+            }
+        }
+        
+        
+
+        
     }
     
 }

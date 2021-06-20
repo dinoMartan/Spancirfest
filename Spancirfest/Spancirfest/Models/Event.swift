@@ -15,8 +15,9 @@ struct Event: Codable {
     let startDate: Date
     let endDate: Date
     let price: Float?
-    let locationId: String
+    let location: Location
     let numberOfPeople: Int?
     let image: String?
+    let eventId: String
     
 }

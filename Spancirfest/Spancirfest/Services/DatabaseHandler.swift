@@ -10,16 +10,32 @@ import Firebase
 
 final class DatabaseHandler {
     
-    //MARK: - Private properties
-
-    private let db = Firestore.firestore()
-    private let storageRef = Storage.storage().reference()
-
     //MARK: - Public properties
 
     static let shared = DatabaseHandler()
     
-    //MARK: - Public methods
+    //MARK: - Private properties
+
+    private let db = Firestore.firestore()
+    private let storageRef = Storage.storage().reference()
+    
+    //MARK: - Public non generic methods
+    
+    func updateEvent(event: Event, completion: @escaping ((Bool) -> Void)) {
+        db.collection(CollectionsConstants.events.rawValue).whereField("eventId", isEqualTo: event.eventId).getDocuments { (queryShapshot, error) in
+            if error != nil { completion(false) }
+            let document = queryShapshot?.documents[0]
+            let documentId = document?.documentID
+            if documentId == nil { completion(false) }
+            
+            self.db.collection(CollectionsConstants.events.rawValue).document(documentId!).updateData(event.toDictionnary!) { error in
+                completion(false)
+            }
+            completion(true)
+        }
+    }
+    
+    //MARK: - Public generic methods
     
     func getDataWhere<T: Codable>(type: T.Type, whereField: DatabaseFieldNameConstants, isEqualTo: Any, success: @escaping (([T]) -> Void), failure: @escaping ((Error) -> Void)) {
         

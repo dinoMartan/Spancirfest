@@ -23,10 +23,14 @@ class ExhibitorDashboardViewController: UIViewController {
         super.viewDidLoad()
         setupView()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fetchData()
+    }
 
     private func setupView() {
         configureTableView()
-        fetchData()
     }
     
     private func configureTableView() {
