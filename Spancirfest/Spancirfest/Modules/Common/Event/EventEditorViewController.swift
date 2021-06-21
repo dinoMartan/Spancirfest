@@ -22,7 +22,7 @@ struct EventDate {
     
 }
 
-class EventViewController: UIViewController {
+class EventEditorViewController: UIViewController {
     
     //MARK: - IBOutlets
     
@@ -62,7 +62,7 @@ class EventViewController: UIViewController {
 
 //MARK: - Private extensions -
 
-private extension EventViewController {
+private extension EventEditorViewController {
     
     //MARK: - Setup and configuration
     
@@ -105,7 +105,7 @@ private extension EventViewController {
 
 //MARK: - IBActions -
 
-extension EventViewController {
+extension EventEditorViewController {
     
     @IBAction func didTapSetImageButton(_ sender: Any) {
         imagePickerController.delegate = self
@@ -206,7 +206,7 @@ extension EventViewController {
 
 //MARK: - Image Picker
 
-extension EventViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension EventEditorViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
  
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -221,7 +221,7 @@ extension EventViewController: UIImagePickerControllerDelegate, UINavigationCont
 
 //MARK: - Date Picker
 
-extension EventViewController: DatePickerViewControllerDelegate {
+extension EventEditorViewController: DatePickerViewControllerDelegate {
     
     func didSetDate(eventDate: EventDate) {
         switch eventDate.type {
@@ -239,7 +239,7 @@ extension EventViewController: DatePickerViewControllerDelegate {
 
 //MARK: - Location Picker
 
-extension EventViewController: LocationPickerViewControllerDelegate {
+extension EventEditorViewController: LocationPickerViewControllerDelegate {
     
     func didSetLocation(location: Location) {
         selectedLocation = location
@@ -250,7 +250,7 @@ extension EventViewController: LocationPickerViewControllerDelegate {
 
 //MARK: - Category Picker
 
-extension EventViewController: CategoryPickerViewControllerDelegate {
+extension EventEditorViewController: CategoryPickerViewControllerDelegate {
     
     func didSetCategory(eventCategory: EventCategory) {
         selectedCategory = eventCategory
