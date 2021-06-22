@@ -10,5 +10,6 @@ import Foundation
 enum DatabaseFieldNameConstants: String {
     
     case ownerId = "ownerId"
+    case eventCategory = "categoryId"
     
 }

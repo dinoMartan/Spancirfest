@@ -44,6 +44,10 @@
 		313ADBE3267B89B200F0A562 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ADBE2267B89B200F0A562 /* Event.swift */; };
 		313ADBE6267B8A5700F0A562 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ADBE5267B8A5700F0A562 /* Location.swift */; };
 		313ADBE9267B979900F0A562 /* StoryboardNameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ADBE8267B979900F0A562 /* StoryboardNameConstants.swift */; };
+		31587B742681E55C00BB6E82 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31587B722681E55C00BB6E82 /* HomeTableViewCell.swift */; };
+		31587B752681E55C00BB6E82 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31587B732681E55C00BB6E82 /* HomeTableViewCell.xib */; };
+		31587B7E2681E65600BB6E82 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31587B7C2681E65600BB6E82 /* HomeCollectionViewCell.swift */; };
+		31587B7F2681E65600BB6E82 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31587B7D2681E65600BB6E82 /* HomeCollectionViewCell.xib */; };
 		3199D8E2267CD16300613D7C /* DatabaseFieldNameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */; };
 		3199D8E9267F40E200613D7C /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8E8267F40E200613D7C /* DatePickerViewController.swift */; };
 		3199D8F2267F411600613D7C /* Pickers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3199D8F1267F411600613D7C /* Pickers.storyboard */; };
@@ -95,6 +99,10 @@
 		313ADBE2267B89B200F0A562 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		313ADBE5267B8A5700F0A562 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		313ADBE8267B979900F0A562 /* StoryboardNameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardNameConstants.swift; sourceTree = "<group>"; };
+		31587B722681E55C00BB6E82 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		31587B732681E55C00BB6E82 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		31587B7C2681E65600BB6E82 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		31587B7D2681E65600BB6E82 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFieldNameConstants.swift; sourceTree = "<group>"; };
 		3199D8E8267F40E200613D7C /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		3199D8F1267F411600613D7C /* Pickers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pickers.storyboard; sourceTree = "<group>"; };
@@ -274,6 +282,8 @@
 		313AD9722678E5E800F0A562 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				31587B7B2681E64100BB6E82 /* CollectionViewCell */,
+				31587B712681E53400BB6E82 /* TableViewCell */,
 				313AD9772678E6C900F0A562 /* Home.storyboard */,
 				313AD97B2678E6E200F0A562 /* HomeViewController.swift */,
 			);
@@ -354,6 +364,24 @@
 				3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		31587B712681E53400BB6E82 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				31587B722681E55C00BB6E82 /* HomeTableViewCell.swift */,
+				31587B732681E55C00BB6E82 /* HomeTableViewCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		31587B7B2681E64100BB6E82 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				31587B7C2681E65600BB6E82 /* HomeCollectionViewCell.swift */,
+				31587B7D2681E65600BB6E82 /* HomeCollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		3199D8E4267F40A700613D7C /* Pickers */ = {
@@ -452,7 +480,9 @@
 				313AD98E2678E77C00F0A562 /* ExhibitorDashboard.storyboard in Resources */,
 				313AD8D4267774F700F0A562 /* LaunchScreen.storyboard in Resources */,
 				313AD8D1267774F700F0A562 /* Assets.xcassets in Resources */,
+				31587B752681E55C00BB6E82 /* HomeTableViewCell.xib in Resources */,
 				313ADBDD267B7FBE00F0A562 /* ExhibitorDashboardEventTableViewCell.xib in Resources */,
+				31587B7F2681E65600BB6E82 /* HomeCollectionViewCell.xib in Resources */,
 				313AD8FB2677888000F0A562 /* GoogleService-Info.plist in Resources */,
 				313AD9852678E74900F0A562 /* Profile.storyboard in Resources */,
 				3199D8F2267F411600613D7C /* Pickers.storyboard in Resources */,
@@ -553,6 +583,8 @@
 				313AD9A7267A8E7400F0A562 /* QueryDocumentSnapshotExtension.swift in Sources */,
 				313ADAE9267B65A200F0A562 /* StringExtension.swift in Sources */,
 				313ADAF1267B6F7400F0A562 /* DataConverter.swift in Sources */,
+				31587B7E2681E65600BB6E82 /* HomeCollectionViewCell.swift in Sources */,
+				31587B742681E55C00BB6E82 /* HomeTableViewCell.swift in Sources */,
 				3199D8E2267CD16300613D7C /* DatabaseFieldNameConstants.swift in Sources */,
 				313AD8CA267774F400F0A562 /* SceneDelegate.swift in Sources */,
 				313AD9D1267B4A8D00F0A562 /* EncodableExtension.swift in Sources */,

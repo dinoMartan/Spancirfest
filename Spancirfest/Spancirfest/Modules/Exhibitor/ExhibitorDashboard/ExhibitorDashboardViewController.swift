@@ -73,13 +73,9 @@ extension ExhibitorDashboardViewController: UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-       // guard let eventViewController = UIStoryboard.getViewController(viewControllerType: EventEditorViewController.self, from: .Event) else { return }
-       // eventViewController.currentEvent = currentUsersEvents[indexPath.row]
-       // navigationController?.pushViewController(eventViewController, animated: true)
-        
-        guard let eventDisplayViewController = UIStoryboard.getViewController(viewControllerType: EventDisplayViewController.self, from: .Event) else { return }
-        eventDisplayViewController.event = currentUsersEvents[indexPath.row]
-        present(eventDisplayViewController, animated: true, completion: nil)
+        guard let eventViewController = UIStoryboard.getViewController(viewControllerType: EventEditorViewController.self, from: .Event) else { return }
+        eventViewController.currentEvent = currentUsersEvents[indexPath.row]
+        navigationController?.pushViewController(eventViewController, animated: true)
     }
     
 }
