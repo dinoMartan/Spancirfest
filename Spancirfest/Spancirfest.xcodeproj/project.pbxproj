@@ -56,6 +56,8 @@
 		3199D8FC267F49AD00613D7C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8FB267F49AD00613D7C /* DateExtension.swift */; };
 		3199D8FF267FA2EF00613D7C /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8FE267FA2EF00613D7C /* UIImageExtension.swift */; };
 		3199D9032681137800613D7C /* EventDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D9022681137800613D7C /* EventDisplayViewController.swift */; };
+		31B4B0F92684A0760045139D /* EventFollowing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B4B0F82684A0760045139D /* EventFollowing.swift */; };
+		31B4B0FD2684BB2C0045139D /* ButtonsContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B4B0FC2684BB2C0045139D /* ButtonsContants.swift */; };
 		8CF7FC5D2FF54A15DBDEE3BF /* Pods_Spancirfest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +113,8 @@
 		3199D8FB267F49AD00613D7C /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		3199D8FE267FA2EF00613D7C /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		3199D9022681137800613D7C /* EventDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDisplayViewController.swift; sourceTree = "<group>"; };
+		31B4B0F82684A0760045139D /* EventFollowing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFollowing.swift; sourceTree = "<group>"; };
+		31B4B0FC2684BB2C0045139D /* ButtonsContants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsContants.swift; sourceTree = "<group>"; };
 		3FD2A2E970A0DE4CBEC0CD67 /* Pods-Spancirfest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.debug.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.debug.xcconfig"; sourceTree = "<group>"; };
 		498D71B44DF74C19A79EA051 /* Pods-Spancirfest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.release.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.release.xcconfig"; sourceTree = "<group>"; };
 		C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spancirfest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +204,7 @@
 				313ADBDF267B860B00F0A562 /* EventCategory.swift */,
 				313ADBE2267B89B200F0A562 /* Event.swift */,
 				313ADBE5267B8A5700F0A562 /* Location.swift */,
+				31B4B0F82684A0760045139D /* EventFollowing.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -349,8 +354,8 @@
 		313AD99E267A8C4200F0A562 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				313AD99F267A8C6A00F0A562 /* EventEditorViewController.swift */,
 				313AD9A3267A8C7C00F0A562 /* Event.storyboard */,
+				313AD99F267A8C6A00F0A562 /* EventEditorViewController.swift */,
 				3199D9022681137800613D7C /* EventDisplayViewController.swift */,
 			);
 			path = Event;
@@ -362,6 +367,7 @@
 				313ADAEC267B69D400F0A562 /* CollectionsConstants.swift */,
 				313ADBE8267B979900F0A562 /* StoryboardNameConstants.swift */,
 				3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */,
+				31B4B0FC2684BB2C0045139D /* ButtonsContants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -556,10 +562,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31B4B0F92684A0760045139D /* EventFollowing.swift in Sources */,
 				313AD92C2678B1C500F0A562 /* AuthenticationViewController.swift in Sources */,
 				3199D8FC267F49AD00613D7C /* DateExtension.swift in Sources */,
 				313ADAE3267B581400F0A562 /* UserDetails.swift in Sources */,
 				3199D8E9267F40E200613D7C /* DatePickerViewController.swift in Sources */,
+				31B4B0FD2684BB2C0045139D /* ButtonsContants.swift in Sources */,
 				3199D9032681137800613D7C /* EventDisplayViewController.swift in Sources */,
 				313ADBE9267B979900F0A562 /* StoryboardNameConstants.swift in Sources */,
 				313ADBE0267B860B00F0A562 /* EventCategory.swift in Sources */,

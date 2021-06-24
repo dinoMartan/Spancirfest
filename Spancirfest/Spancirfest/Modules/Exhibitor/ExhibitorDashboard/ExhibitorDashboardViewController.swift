@@ -41,7 +41,7 @@ class ExhibitorDashboardViewController: UIViewController {
     
     private func fetchData() {
         guard let userId = CurrentUser.shared.getCurrentUserId() else { return }
-        DatabaseHandler.shared.getDataWhere(type: Event.self, whereField: .ownerId, isEqualTo: userId) { events in
+        DatabaseHandler.shared.getDataWhere(type: Event.self, collection: .events, whereField: .ownerId, isEqualTo: userId) { events in
             self.currentUsersEvents = events
             self.tableView.reloadData()
         } failure: { error in

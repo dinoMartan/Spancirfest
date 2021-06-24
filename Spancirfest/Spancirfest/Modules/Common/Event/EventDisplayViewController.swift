@@ -22,6 +22,7 @@ class EventDisplayViewController: UIViewController {
     @IBOutlet private weak var categoryLabel: UILabel!
     @IBOutlet private weak var imageBackgroundView: UIView!
     @IBOutlet private weak var backgroundView: UIView!
+    @IBOutlet private weak var followButton: UIButton!
     
     //MARK: - Public properties
     
@@ -31,6 +32,8 @@ class EventDisplayViewController: UIViewController {
     
     private var eventCategory: EventCategory?
     private var location: Location?
+    private var eventFollowing: EventFollowing?
+    private var userIsFollowingEvent: Bool?
     
     //MARK: - Lifecycle
     
@@ -45,12 +48,18 @@ class EventDisplayViewController: UIViewController {
 
 private extension EventDisplayViewController {
     
-    //MARK: - Setup and configuration
+    //MARK: - Setup
     
     private func setupView() {
         checkIfEventIsSet()
         configureUI()
         setEventCategoryAndLocation()
+        checkIfUsersIsFollowingEvent {
+            self.configureFollowButton()
+        } failure: { error in
+            // to do - handle error
+        }
+
     }
     
     private func checkIfEventIsSet() {
@@ -60,14 +69,13 @@ private extension EventDisplayViewController {
         }
     }
     
-    private func configureImageLayout() {
-        eventImage.layer.cornerRadius = 15
-        imageBackgroundView.layer.cornerRadius = 15
+    private func setEventCategoryAndLocation() {
+        guard let event = event else { return }
+        eventCategory = event.eventCategory
+        location = event.location
     }
     
-    private func configureBackgroundLayout() {
-        backgroundView.layer.cornerRadius = 15
-    }
+    //MARK: - UI Configuration
     
     private func configureUI() {
         guard let event = event else { return }
@@ -84,11 +92,46 @@ private extension EventDisplayViewController {
         locationLabel.text = event.location.name
         categoryLabel.text = event.eventCategory.description
     }
-
-    private func setEventCategoryAndLocation() {
-        guard let event = event else { return }
-        eventCategory = event.eventCategory
-        location = event.location
+    
+    private func configureImageLayout() {
+        eventImage.layer.cornerRadius = 15
+        imageBackgroundView.layer.cornerRadius = 15
+    }
+    
+    private func configureBackgroundLayout() {
+        backgroundView.layer.cornerRadius = 15
+    }
+    
+    private func configureFollowButton() {
+        guard let userIsFollowing = self.userIsFollowingEvent else { return }
+        if userIsFollowing {
+           // self.followButton.setTitle(FollowButtonConstants.unfollow.rawValue, for: .normal)
+            followButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }
+        else {
+           // self.followButton.setTitle(FollowButtonConstants.follow.rawValue, for: .normal)
+            followButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+    }
+    
+    //MARK: - Event following check
+    
+    private func checkIfUsersIsFollowingEvent(success: @escaping (() -> Void), failure: @escaping ((Error?) -> Void)) {
+        CurrentUser.shared.getCurrentUserDetails { userDetails in
+            guard let userId = CurrentUser.shared.getCurrentUserId(),
+                  let event = self.event
+            else {
+                failure(nil)
+                return
+            }
+            DatabaseHandler.shared.isUserFollowingEvent(userId: userId, eventId: event.eventId) { isFollowing in
+                self.userIsFollowingEvent = isFollowing
+                self.eventFollowing = EventFollowing(userId: userId, eventId: event.eventId)
+                success()
+            } failure: { error in
+                failure(error)
+            }
+        }
     }
     
 }
@@ -104,7 +147,43 @@ extension EventDisplayViewController {
     @IBAction func didTapShowCategoryDetailsButton(_ sender: Any) {
     }
     
-    @IBAction func didTapAddToFavouritesButton(_ sender: Any) {
+    @IBAction func didTapAddToFollowButton(_ sender: Any) {
+        checkIfUsersIsFollowingEvent {
+            guard let eventFollowing = self.eventFollowing,
+                  let userIsFollowingEvent = self.userIsFollowingEvent
+            else { return }
+            
+            if userIsFollowingEvent { self.unfollowEvent(eventFollowing: eventFollowing) }
+            else { self.followEvent(eventFollowing: eventFollowing) }
+        } failure: { error in
+            // to do - handle error
+        }
+    }
+    
+    private func followEvent(eventFollowing: EventFollowing) {
+        DatabaseHandler.shared.addData(data: [eventFollowing], collection: .eventFollowing) {
+            self.checkIfUsersIsFollowingEvent {
+                self.configureFollowButton()
+            } failure: { error in
+                // to do - handle error
+            }
+
+        } failure: { error in
+            // to do - handle error
+        }
+    }
+    
+    private func unfollowEvent(eventFollowing: EventFollowing) {
+        DatabaseHandler.shared.unfollowEvent(eventFollowing: eventFollowing) {
+            self.checkIfUsersIsFollowingEvent {
+                self.configureFollowButton()
+            } failure: { error in
+                // to do - handle error
+            }
+
+        } failure: { error in
+            // to do - handle error
+        }
     }
     
     @IBAction func didTapBuyTicketsButton(_ sender: Any) {
