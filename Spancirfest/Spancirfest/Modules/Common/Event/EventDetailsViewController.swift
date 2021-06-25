@@ -8,7 +8,13 @@
 import UIKit
 import SDWebImage
 
-class EventDisplayViewController: UIViewController {
+protocol EventDetailsViewControllerDelegate: AnyObject {
+    
+    func didDismiss()
+    
+}
+
+class EventDetailsViewController: UIViewController {
     
     //MARK: - IBOutlets
 
@@ -27,6 +33,7 @@ class EventDisplayViewController: UIViewController {
     //MARK: - Public properties
     
     var event: Event?
+    weak var delegate: EventDetailsViewControllerDelegate?
     
     //MARK: - Private properties
     
@@ -42,11 +49,16 @@ class EventDisplayViewController: UIViewController {
         setupView()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        delegate?.didDismiss()
+    }
+    
 }
 
 //MARK: - Private extensions -
 
-private extension EventDisplayViewController {
+private extension EventDetailsViewController {
     
     //MARK: - Setup
     
@@ -138,7 +150,7 @@ private extension EventDisplayViewController {
 
 //MARK: - IBActions -
 
-extension EventDisplayViewController {
+extension EventDetailsViewController {
     
     
     @IBAction func didTapShowLocationDetailsButton(_ sender: Any) {

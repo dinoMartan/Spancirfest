@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class HomeCollectionViewCell: UICollectionViewCell {
+class EventDisplayCollectionViewCell: UICollectionViewCell {
     
     //MARK: - IBOutlets
     
@@ -17,7 +17,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Public properties
     
-    static let identifier = "HomeCollectionViewCell"
+    static let identifier = "EventDisplayCollectionViewCell"
     
     //MARK: - Public methods
     

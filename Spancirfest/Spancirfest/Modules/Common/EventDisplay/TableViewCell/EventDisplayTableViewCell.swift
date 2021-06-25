@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol HomeTableViewCellDelegate: AnyObject {
+protocol EventDisplayTableViewCellDelegate: AnyObject {
     
     func presentEvent(event: Event)
     
 }
 
-class HomeTableViewCell: UITableViewCell {
+class EventDisplayTableViewCell: UITableViewCell {
     
     //MARK: - IBOutlets
 
@@ -22,8 +22,8 @@ class HomeTableViewCell: UITableViewCell {
     
     //MARK: - Public properties
     
-    static let identifier = "HomeTableViewCell"
-    weak var delegate: HomeTableViewCellDelegate?
+    static let identifier = "EventDisplayTableViewCell"
+    weak var delegate: EventDisplayTableViewCellDelegate?
     
     //MARK: - Private properties
     
@@ -31,7 +31,7 @@ class HomeTableViewCell: UITableViewCell {
     
     //MARK: - Public methods
     
-    func configureCell(data: HomeEventSortType) {
+    func configureCell(data: EventSortType) {
         switch data {
         case .category(let categoryEvents):
             collectionTitleLabel.text = categoryEvents.category.description
@@ -42,25 +42,29 @@ class HomeTableViewCell: UITableViewCell {
             collectionTitleLabel.text = locationEvents.location.name
             events = locationEvents.events
             collectionView.reloadData()
+        case .profile(let profileEvents):
+            collectionTitleLabel.text = profileEvents.title
+            events = profileEvents.events
+            collectionView.reloadData()
         }
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(UINib(nibName: HomeCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
+        collectionView.register(UINib(nibName: EventDisplayCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: EventDisplayCollectionViewCell.identifier)
     }
     
 }
 
 //MARK: - CollectionView Delegates/DataSource -
 
-extension HomeTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension EventDisplayTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return events.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EventDisplayCollectionViewCell.identifier, for: indexPath) as? EventDisplayCollectionViewCell else { return UICollectionViewCell() }
         
         let event = events[indexPath.row]
         cell.configureCell(event: event)

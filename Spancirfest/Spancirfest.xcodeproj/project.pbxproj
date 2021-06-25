@@ -44,10 +44,10 @@
 		313ADBE3267B89B200F0A562 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ADBE2267B89B200F0A562 /* Event.swift */; };
 		313ADBE6267B8A5700F0A562 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ADBE5267B8A5700F0A562 /* Location.swift */; };
 		313ADBE9267B979900F0A562 /* StoryboardNameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ADBE8267B979900F0A562 /* StoryboardNameConstants.swift */; };
-		31587B742681E55C00BB6E82 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31587B722681E55C00BB6E82 /* HomeTableViewCell.swift */; };
-		31587B752681E55C00BB6E82 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31587B732681E55C00BB6E82 /* HomeTableViewCell.xib */; };
-		31587B7E2681E65600BB6E82 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31587B7C2681E65600BB6E82 /* HomeCollectionViewCell.swift */; };
-		31587B7F2681E65600BB6E82 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31587B7D2681E65600BB6E82 /* HomeCollectionViewCell.xib */; };
+		31587B742681E55C00BB6E82 /* EventDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31587B722681E55C00BB6E82 /* EventDisplayTableViewCell.swift */; };
+		31587B752681E55C00BB6E82 /* EventDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31587B732681E55C00BB6E82 /* EventDisplayTableViewCell.xib */; };
+		31587B7E2681E65600BB6E82 /* EventDisplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31587B7C2681E65600BB6E82 /* EventDisplayCollectionViewCell.swift */; };
+		31587B7F2681E65600BB6E82 /* EventDisplayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31587B7D2681E65600BB6E82 /* EventDisplayCollectionViewCell.xib */; };
 		3199D8E2267CD16300613D7C /* DatabaseFieldNameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */; };
 		3199D8E9267F40E200613D7C /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8E8267F40E200613D7C /* DatePickerViewController.swift */; };
 		3199D8F2267F411600613D7C /* Pickers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3199D8F1267F411600613D7C /* Pickers.storyboard */; };
@@ -55,9 +55,10 @@
 		3199D8F8267F416800613D7C /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8F7267F416800613D7C /* CategoryPickerViewController.swift */; };
 		3199D8FC267F49AD00613D7C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8FB267F49AD00613D7C /* DateExtension.swift */; };
 		3199D8FF267FA2EF00613D7C /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8FE267FA2EF00613D7C /* UIImageExtension.swift */; };
-		3199D9032681137800613D7C /* EventDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D9022681137800613D7C /* EventDisplayViewController.swift */; };
+		3199D9032681137800613D7C /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D9022681137800613D7C /* EventDetailsViewController.swift */; };
 		31B4B0F92684A0760045139D /* EventFollowing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B4B0F82684A0760045139D /* EventFollowing.swift */; };
 		31B4B0FD2684BB2C0045139D /* ButtonsContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B4B0FC2684BB2C0045139D /* ButtonsContants.swift */; };
+		31B4B10626863E5C0045139D /* TitlesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B4B10526863E5C0045139D /* TitlesConstants.swift */; };
 		8CF7FC5D2FF54A15DBDEE3BF /* Pods_Spancirfest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,10 +102,10 @@
 		313ADBE2267B89B200F0A562 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		313ADBE5267B8A5700F0A562 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		313ADBE8267B979900F0A562 /* StoryboardNameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardNameConstants.swift; sourceTree = "<group>"; };
-		31587B722681E55C00BB6E82 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
-		31587B732681E55C00BB6E82 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
-		31587B7C2681E65600BB6E82 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
-		31587B7D2681E65600BB6E82 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		31587B722681E55C00BB6E82 /* EventDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDisplayTableViewCell.swift; sourceTree = "<group>"; };
+		31587B732681E55C00BB6E82 /* EventDisplayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDisplayTableViewCell.xib; sourceTree = "<group>"; };
+		31587B7C2681E65600BB6E82 /* EventDisplayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDisplayCollectionViewCell.swift; sourceTree = "<group>"; };
+		31587B7D2681E65600BB6E82 /* EventDisplayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDisplayCollectionViewCell.xib; sourceTree = "<group>"; };
 		3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFieldNameConstants.swift; sourceTree = "<group>"; };
 		3199D8E8267F40E200613D7C /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		3199D8F1267F411600613D7C /* Pickers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pickers.storyboard; sourceTree = "<group>"; };
@@ -112,9 +113,10 @@
 		3199D8F7267F416800613D7C /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		3199D8FB267F49AD00613D7C /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		3199D8FE267FA2EF00613D7C /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
-		3199D9022681137800613D7C /* EventDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDisplayViewController.swift; sourceTree = "<group>"; };
+		3199D9022681137800613D7C /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		31B4B0F82684A0760045139D /* EventFollowing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFollowing.swift; sourceTree = "<group>"; };
 		31B4B0FC2684BB2C0045139D /* ButtonsContants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsContants.swift; sourceTree = "<group>"; };
+		31B4B10526863E5C0045139D /* TitlesConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesConstants.swift; sourceTree = "<group>"; };
 		3FD2A2E970A0DE4CBEC0CD67 /* Pods-Spancirfest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.debug.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.debug.xcconfig"; sourceTree = "<group>"; };
 		498D71B44DF74C19A79EA051 /* Pods-Spancirfest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spancirfest.release.xcconfig"; path = "Target Support Files/Pods-Spancirfest/Pods-Spancirfest.release.xcconfig"; sourceTree = "<group>"; };
 		C97D26B1DC09D48AADA00FE0 /* Pods_Spancirfest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spancirfest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -287,8 +289,6 @@
 		313AD9722678E5E800F0A562 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				31587B7B2681E64100BB6E82 /* CollectionViewCell */,
-				31587B712681E53400BB6E82 /* TableViewCell */,
 				313AD9772678E6C900F0A562 /* Home.storyboard */,
 				313AD97B2678E6E200F0A562 /* HomeViewController.swift */,
 			);
@@ -345,6 +345,7 @@
 		313AD99D267A8C3C00F0A562 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				31B4B10026863B8B0045139D /* EventDisplay */,
 				3199D8E4267F40A700613D7C /* Pickers */,
 				313AD99E267A8C4200F0A562 /* Event */,
 			);
@@ -356,7 +357,7 @@
 			children = (
 				313AD9A3267A8C7C00F0A562 /* Event.storyboard */,
 				313AD99F267A8C6A00F0A562 /* EventEditorViewController.swift */,
-				3199D9022681137800613D7C /* EventDisplayViewController.swift */,
+				3199D9022681137800613D7C /* EventDetailsViewController.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -368,6 +369,7 @@
 				313ADBE8267B979900F0A562 /* StoryboardNameConstants.swift */,
 				3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */,
 				31B4B0FC2684BB2C0045139D /* ButtonsContants.swift */,
+				31B4B10526863E5C0045139D /* TitlesConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -375,8 +377,8 @@
 		31587B712681E53400BB6E82 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				31587B722681E55C00BB6E82 /* HomeTableViewCell.swift */,
-				31587B732681E55C00BB6E82 /* HomeTableViewCell.xib */,
+				31587B722681E55C00BB6E82 /* EventDisplayTableViewCell.swift */,
+				31587B732681E55C00BB6E82 /* EventDisplayTableViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -384,8 +386,8 @@
 		31587B7B2681E64100BB6E82 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				31587B7C2681E65600BB6E82 /* HomeCollectionViewCell.swift */,
-				31587B7D2681E65600BB6E82 /* HomeCollectionViewCell.xib */,
+				31587B7C2681E65600BB6E82 /* EventDisplayCollectionViewCell.swift */,
+				31587B7D2681E65600BB6E82 /* EventDisplayCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -399,6 +401,15 @@
 				3199D8F7267F416800613D7C /* CategoryPickerViewController.swift */,
 			);
 			path = Pickers;
+			sourceTree = "<group>";
+		};
+		31B4B10026863B8B0045139D /* EventDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				31587B7B2681E64100BB6E82 /* CollectionViewCell */,
+				31587B712681E53400BB6E82 /* TableViewCell */,
+			);
+			path = EventDisplay;
 			sourceTree = "<group>";
 		};
 		3D08664BD9BFFAE9B8C0E317 /* Frameworks */ = {
@@ -486,9 +497,9 @@
 				313AD98E2678E77C00F0A562 /* ExhibitorDashboard.storyboard in Resources */,
 				313AD8D4267774F700F0A562 /* LaunchScreen.storyboard in Resources */,
 				313AD8D1267774F700F0A562 /* Assets.xcassets in Resources */,
-				31587B752681E55C00BB6E82 /* HomeTableViewCell.xib in Resources */,
+				31587B752681E55C00BB6E82 /* EventDisplayTableViewCell.xib in Resources */,
 				313ADBDD267B7FBE00F0A562 /* ExhibitorDashboardEventTableViewCell.xib in Resources */,
-				31587B7F2681E65600BB6E82 /* HomeCollectionViewCell.xib in Resources */,
+				31587B7F2681E65600BB6E82 /* EventDisplayCollectionViewCell.xib in Resources */,
 				313AD8FB2677888000F0A562 /* GoogleService-Info.plist in Resources */,
 				313AD9852678E74900F0A562 /* Profile.storyboard in Resources */,
 				3199D8F2267F411600613D7C /* Pickers.storyboard in Resources */,
@@ -568,7 +579,7 @@
 				313ADAE3267B581400F0A562 /* UserDetails.swift in Sources */,
 				3199D8E9267F40E200613D7C /* DatePickerViewController.swift in Sources */,
 				31B4B0FD2684BB2C0045139D /* ButtonsContants.swift in Sources */,
-				3199D9032681137800613D7C /* EventDisplayViewController.swift in Sources */,
+				3199D9032681137800613D7C /* EventDetailsViewController.swift in Sources */,
 				313ADBE9267B979900F0A562 /* StoryboardNameConstants.swift in Sources */,
 				313ADBE0267B860B00F0A562 /* EventCategory.swift in Sources */,
 				313AD8C8267774F400F0A562 /* AppDelegate.swift in Sources */,
@@ -585,14 +596,15 @@
 				313AD9392678DC8B00F0A562 /* CurrentUser.swift in Sources */,
 				313ADAE6267B656F00F0A562 /* DatabaseHandler.swift in Sources */,
 				313AD97C2678E6E200F0A562 /* HomeViewController.swift in Sources */,
+				31B4B10626863E5C0045139D /* TitlesConstants.swift in Sources */,
 				313AD9882678E76600F0A562 /* ProfileViewController.swift in Sources */,
 				313AD9942678E79000F0A562 /* AdminDashboardViewController.swift in Sources */,
 				3199D8F8267F416800613D7C /* CategoryPickerViewController.swift in Sources */,
 				313AD9A7267A8E7400F0A562 /* QueryDocumentSnapshotExtension.swift in Sources */,
 				313ADAE9267B65A200F0A562 /* StringExtension.swift in Sources */,
 				313ADAF1267B6F7400F0A562 /* DataConverter.swift in Sources */,
-				31587B7E2681E65600BB6E82 /* HomeCollectionViewCell.swift in Sources */,
-				31587B742681E55C00BB6E82 /* HomeTableViewCell.swift in Sources */,
+				31587B7E2681E65600BB6E82 /* EventDisplayCollectionViewCell.swift in Sources */,
+				31587B742681E55C00BB6E82 /* EventDisplayTableViewCell.swift in Sources */,
 				3199D8E2267CD16300613D7C /* DatabaseFieldNameConstants.swift in Sources */,
 				313AD8CA267774F400F0A562 /* SceneDelegate.swift in Sources */,
 				313AD9D1267B4A8D00F0A562 /* EncodableExtension.swift in Sources */,

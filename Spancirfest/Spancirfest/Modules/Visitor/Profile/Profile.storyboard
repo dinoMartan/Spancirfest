@@ -16,8 +16,20 @@
                     <view key="view" contentMode="scaleToFill" id="fYE-BI-7xk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yow-rQ-WjS">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="rrR-QK-MMg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rrR-QK-MMg" firstAttribute="bottom" secondItem="yow-rQ-WjS" secondAttribute="bottom" id="0X0-2C-rzg"/>
+                            <constraint firstItem="rrR-QK-MMg" firstAttribute="trailing" secondItem="yow-rQ-WjS" secondAttribute="trailing" id="SyZ-iU-HIJ"/>
+                            <constraint firstItem="yow-rQ-WjS" firstAttribute="leading" secondItem="rrR-QK-MMg" secondAttribute="leading" id="ciM-L4-dkF"/>
+                            <constraint firstItem="yow-rQ-WjS" firstAttribute="top" secondItem="rrR-QK-MMg" secondAttribute="top" id="djl-8S-7Df"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="c4F-fv-JxO"/>
                     <navigationItem key="navigationItem" title="Profile" id="yD9-Of-gt9">
@@ -35,6 +47,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="yow-rQ-WjS" id="x1e-Hd-owf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLC-Yu-BBa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

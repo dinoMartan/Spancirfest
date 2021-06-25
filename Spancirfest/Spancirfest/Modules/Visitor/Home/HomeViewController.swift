@@ -7,21 +7,29 @@
 
 import UIKit
 
-enum HomeEventSortType {
+enum EventSortType {
     
-    case category(data: HomeViewControllerEventsByCategory)
-    case location(data: HomeViewControllerEventsByLocation)
+    case category(data: EventsByCategory)
+    case location(data: EventsByLocation)
+    case profile(data: ProfileViewControllerTableData)
+    
 }
 
+struct ProfileViewControllerTableData {
+    
+    let title: String
+    let events: [Event]
+    
+}
 
-struct HomeViewControllerEventsByCategory {
+struct EventsByCategory {
     
     let category: EventCategory
     var events: [Event]
     
 }
 
-struct HomeViewControllerEventsByLocation {
+struct EventsByLocation {
     
     let location: Location
     var events: [Event]
@@ -38,8 +46,8 @@ class HomeViewController: UIViewController {
     //MARK: - Private properties
     
     private var allEvents: [Event] = []
-    private var eventsByCategory: [HomeViewControllerEventsByCategory] = []
-    private var eventsByLocation: [HomeViewControllerEventsByLocation] = []
+    private var eventsByCategory: [EventsByCategory] = []
+    private var eventsByLocation: [EventsByLocation] = []
     
     //MARK: - Lifecycle
 
@@ -76,7 +84,7 @@ class HomeViewController: UIViewController {
         eventsByCategory.removeAll()
         DatabaseHandler.shared.getData(type: EventCategory.self, collection: .eventCategory) { eventCategories in
             for category in eventCategories {
-                var eventsByCategory = HomeViewControllerEventsByCategory(category: category, events: [])
+                var eventsByCategory = EventsByCategory(category: category, events: [])
                 for event in self.allEvents {
                     if event.eventCategory.categoryId == category.categoryId { eventsByCategory.events.append(event) }
                 }
@@ -93,7 +101,7 @@ class HomeViewController: UIViewController {
         eventsByLocation.removeAll()
         DatabaseHandler.shared.getData(type: Location.self, collection: .locations) { locations in
             for location in locations {
-                var eventsByLocation = HomeViewControllerEventsByLocation(location: location, events: [])
+                var eventsByLocation = EventsByLocation(location: location, events: [])
                 for event in self.allEvents {
                     if event.location.locationId == location.locationId { eventsByLocation.events.append(event) }
                 }
@@ -136,10 +144,12 @@ class HomeViewController: UIViewController {
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: HomeTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: HomeTableViewCell.identifier)
+        tableView.register(UINib(nibName: EventDisplayTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: EventDisplayTableViewCell.identifier)
     }
 
 }
+
+//MARK: - TableView DataSource and Delegate
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -162,7 +172,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as? HomeTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: EventDisplayTableViewCell.identifier) as? EventDisplayTableViewCell else { return UITableViewCell() }
         let index = segmentedControl.selectedSegmentIndex
         
         if index == 0 { }
@@ -179,10 +189,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension HomeViewController: HomeTableViewCellDelegate {
+//MARK: - EventDisplayTableViewCell Delegate
+
+extension HomeViewController: EventDisplayTableViewCellDelegate {
     
     func presentEvent(event: Event) {
-        guard let eventDisplayViewController = UIStoryboard.getViewController(viewControllerType: EventDisplayViewController.self, from: .Event) as? EventDisplayViewController else { return }
+        guard let eventDisplayViewController = UIStoryboard.getViewController(viewControllerType: EventDetailsViewController.self, from: .Event) else { return }
         eventDisplayViewController.event = event
         present(eventDisplayViewController, animated: true, completion: nil)
     }

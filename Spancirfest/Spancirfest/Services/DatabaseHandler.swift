@@ -51,6 +51,37 @@ final class DatabaseHandler {
         }
     }
     
+    func getFollowingEventsForUser(userId: String, success: @escaping (([Event]) -> Void), failure: @escaping ((Error?) -> Void)) {
+        db.collection(CollectionsConstants.eventFollowing.rawValue).whereField(DatabaseFieldNameConstants.userId.rawValue, isEqualTo: userId).getDocuments { (querySnapshot, error) in
+            guard let snapshot = querySnapshot else {
+                failure(nil)
+                return
+            }
+            if error != nil { failure(error) }
+            
+            var events: [Event] = []
+            let documents = snapshot.documents
+            let group = DispatchGroup()
+            
+            for document in documents {
+                group.enter()
+                guard let eventFollowing = document.getObject(type: EventFollowing.self) else { continue }
+                let eventId = eventFollowing.eventId
+                self.getDataWhere(type: Event.self, collection: .events, whereField: .eventId, isEqualTo: eventId) { eventsResponse in
+                    let event = eventsResponse[0]
+                    events.append(event)
+                    group.leave()
+                } failure: { error in
+                    group.leave()
+                }
+            }
+            
+            group.notify(queue: .main) {
+                success(events)
+            }
+        }
+    }
+    
     func updateEvent(event: Event, completion: @escaping ((Bool) -> Void)) {
         db.collection(CollectionsConstants.events.rawValue).whereField("eventId", isEqualTo: event.eventId).getDocuments { (queryShapshot, error) in
             if error != nil { completion(false) }
