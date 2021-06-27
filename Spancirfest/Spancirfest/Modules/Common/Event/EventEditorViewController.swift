@@ -107,6 +107,16 @@ private extension EventEditorViewController {
 
 extension EventEditorViewController {
     
+    @IBAction func didTapOutside(_ sender: Any) {
+        debugPrint("tapped outside")
+        //view.endEditing(true)
+        locationLabel.resignFirstResponder()
+        categoryLabel.resignFirstResponder()
+        priceTextField.resignFirstResponder()
+        eventNameTextField.resignFirstResponder()
+        numberOfPeopleTextField.resignFirstResponder()
+    }
+    
     @IBAction func didTapSetImageButton(_ sender: Any) {
         imagePickerController.delegate = self
         imagePickerController.allowsEditing = false
@@ -202,7 +212,7 @@ extension EventEditorViewController {
     
 }
 
-//MARK: - Delegate extension -
+//MARK: - Delegate extensions -
 
 //MARK: - Image Picker
 

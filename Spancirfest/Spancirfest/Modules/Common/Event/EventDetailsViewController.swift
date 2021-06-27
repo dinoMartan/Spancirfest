@@ -153,7 +153,6 @@ private extension EventDetailsViewController {
 
 extension EventDetailsViewController {
     
-    
     @IBAction func didTapShowLocationDetailsButton(_ sender: Any) {
     }
     

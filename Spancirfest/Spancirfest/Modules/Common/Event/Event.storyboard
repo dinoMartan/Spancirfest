@@ -266,6 +266,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qQ9-Gg-YEG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="zpc-0o-bSM" firstAttribute="trailing" secondItem="qQ9-Gg-YEG" secondAttribute="trailing" id="CQH-Fh-MJp"/>
                             <constraint firstItem="zpc-0o-bSM" firstAttribute="leading" secondItem="qQ9-Gg-YEG" secondAttribute="leading" id="MsW-NB-dCy"/>
@@ -276,6 +277,9 @@
                             <constraint firstItem="zpc-0o-bSM" firstAttribute="top" secondItem="qQ9-Gg-YEG" secondAttribute="top" id="rj7-gA-mfo"/>
                             <constraint firstItem="qQ9-Gg-YEG" firstAttribute="bottom" secondItem="tPo-gu-Wzb" secondAttribute="bottom" constant="300" id="v9h-r7-c8t"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="e0U-6K-4Mo" appends="YES" id="7QF-FM-R3I"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="categoryLabel" destination="oAr-Pr-otX" id="sMV-wi-krx"/>
@@ -293,6 +297,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bkw-4R-9u8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="e0U-6K-4Mo">
+                    <connections>
+                        <action selector="didTapOutside:" destination="utK-Tu-gze" id="nNt-MK-CYH"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="21.739130434782609" y="45.535714285714285"/>
         </scene>
@@ -480,6 +489,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="xml-OL-GNE" firstAttribute="leading" secondItem="sY2-fr-UbU" secondAttribute="leading" constant="30" id="0iA-HL-JMw"/>
                                     <constraint firstAttribute="trailing" secondItem="Q5m-rW-6oL" secondAttribute="trailing" constant="30" id="62V-fB-OH7"/>
