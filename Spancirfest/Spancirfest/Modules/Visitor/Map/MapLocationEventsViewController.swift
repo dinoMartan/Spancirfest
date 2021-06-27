@@ -12,8 +12,9 @@ class MapLocationEventsViewController: UIViewController {
     //MARK: - IBOutlets
     
     @IBOutlet private weak var collectionView: UICollectionView!
-    
     @IBOutlet private weak var backgroundView: UIView!
+    @IBOutlet private weak var locationTitleLabel: UILabel!
+    @IBOutlet private weak var locationDescriptionLabel: UILabel!
     
     //MARK: - Public properties
     
@@ -39,6 +40,7 @@ private extension MapLocationEventsViewController {
     //MARK: - Setup and configuration
     
     private func setupView() {
+        setLocationData()
         configureCollectionView()
         getEvents()
     }
@@ -50,6 +52,12 @@ private extension MapLocationEventsViewController {
         collectionView.layer.cornerRadius = 15
         backgroundView.layer.cornerRadius = 15
         
+    }
+    
+    private func setLocationData() {
+        guard let location = location else { return }
+        locationTitleLabel.text = location.name
+        locationDescriptionLabel.text = location.description
     }
     
     //MARK: - Fetching data

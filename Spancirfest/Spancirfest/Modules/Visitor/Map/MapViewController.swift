@@ -24,6 +24,14 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         setupView()
     }
+
+}
+
+//MARK: - Private extensions -
+
+private extension MapViewController {
+    
+    //MARK: - Setup
     
     private func setupView() {
         configureMap()
@@ -31,6 +39,8 @@ class MapViewController: UIViewController {
             self.setPins()
         }
     }
+    
+    //MARK: - Map configuration
     
     private func configureMap() {
         mapView.delegate = self
@@ -44,13 +54,14 @@ class MapViewController: UIViewController {
     
     private func setPins() {
         for location in locations {
-            let annotation = LocationMKPointAnnotation()
-            annotation.location = location
+            let annotation = LocationMKPointAnnotation(location: location)
             annotation.title = location.name
             annotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
             mapView.addAnnotation(annotation)
         }
     }
+    
+    //MARK: - Data
     
     private func fetchData(completion: @escaping (() -> Void)) {
         DatabaseHandler.shared.getData(type: Location.self, collection: .locations) { locations in
@@ -61,8 +72,10 @@ class MapViewController: UIViewController {
             completion()
         }
     }
-
+    
 }
+
+//MARK: - MKMapView Delegate -
 
 extension MapViewController: MKMapViewDelegate {
     
@@ -70,7 +83,7 @@ extension MapViewController: MKMapViewDelegate {
         guard let annotation = view.annotation as? LocationMKPointAnnotation,
               let mapLocationEventsViewController = UIStoryboard.getViewController(viewControllerType: MapLocationEventsViewController.self, from: .Map)
         else { return }
-        mapLocationEventsViewController.location = annotation.location
+        mapLocationEventsViewController.location = annotation.getLocation()
         present(mapLocationEventsViewController, animated: true, completion: nil)
     }
     

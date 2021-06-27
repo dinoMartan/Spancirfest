@@ -302,10 +302,10 @@
 		313AD9732678E5F300F0A562 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				313AD97E2678E73300F0A562 /* MapViewController.swift */,
 				313AD9812678E73D00F0A562 /* Map.storyboard */,
-				31B4B10826888ADB0045139D /* LocationMKPointAnnotation.swift */,
+				313AD97E2678E73300F0A562 /* MapViewController.swift */,
 				31B4B10C268890430045139D /* MapLocationEventsViewController.swift */,
+				31B4B10826888ADB0045139D /* LocationMKPointAnnotation.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
