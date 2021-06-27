@@ -10,7 +10,7 @@ import SDWebImage
 
 protocol EventDetailsViewControllerDelegate: AnyObject {
     
-    func didDismiss()
+    func didMakeChanges()
     
 }
 
@@ -41,6 +41,7 @@ class EventDetailsViewController: UIViewController {
     private var location: Location?
     private var eventFollowing: EventFollowing?
     private var userIsFollowingEvent: Bool?
+    private var didFollowUnfollowEvent = false
     
     //MARK: - Lifecycle
     
@@ -51,7 +52,7 @@ class EventDetailsViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        delegate?.didDismiss()
+        if didFollowUnfollowEvent { delegate?.didMakeChanges() }
     }
     
 }
@@ -176,6 +177,7 @@ extension EventDetailsViewController {
         DatabaseHandler.shared.addData(data: [eventFollowing], collection: .eventFollowing) {
             self.checkIfUsersIsFollowingEvent {
                 self.configureFollowButton()
+                self.didFollowUnfollowEvent = true
             } failure: { error in
                 // to do - handle error
             }
@@ -189,6 +191,7 @@ extension EventDetailsViewController {
         DatabaseHandler.shared.unfollowEvent(eventFollowing: eventFollowing) {
             self.checkIfUsersIsFollowingEvent {
                 self.configureFollowButton()
+                self.didFollowUnfollowEvent = true
             } failure: { error in
                 // to do - handle error
             }

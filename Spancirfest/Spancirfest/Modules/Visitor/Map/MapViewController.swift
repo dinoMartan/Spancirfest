@@ -33,6 +33,7 @@ class MapViewController: UIViewController {
     }
     
     private func configureMap() {
+        mapView.delegate = self
         var centerCoordinate = CLLocationCoordinate2D()
         centerCoordinate.latitude = 46.306572
         centerCoordinate.longitude = 16.335350
@@ -43,7 +44,8 @@ class MapViewController: UIViewController {
     
     private func setPins() {
         for location in locations {
-            let annotation = MKPointAnnotation()
+            let annotation = LocationMKPointAnnotation()
+            annotation.location = location
             annotation.title = location.name
             annotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
             mapView.addAnnotation(annotation)
@@ -65,7 +67,11 @@ class MapViewController: UIViewController {
 extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        debugPrint("YOOTOO")
+        guard let annotation = view.annotation as? LocationMKPointAnnotation,
+              let mapLocationEventsViewController = UIStoryboard.getViewController(viewControllerType: MapLocationEventsViewController.self, from: .Map)
+        else { return }
+        mapLocationEventsViewController.location = annotation.location
+        present(mapLocationEventsViewController, animated: true, completion: nil)
     }
     
 }

@@ -104,7 +104,7 @@ extension ProfileViewController: EventDisplayTableViewCellDelegate, EventDetails
         present(eventDisplayViewController, animated: true, completion: nil)
     }
     
-    func didDismiss() {
+    func didMakeChanges() {
         fetchData()
     }
     
