@@ -33,6 +33,11 @@ class EventDisplayTableViewCell: UITableViewCell {
     
     func configureCell(data: EventSortType) {
         switch data {
+        case .date(let categoryDates):
+            collectionTitleLabel.text = categoryDates.date.getDate(style: .medium)
+            events = categoryDates.events
+            collectionView.reloadData()
+            
         case .category(let categoryEvents):
             collectionTitleLabel.text = categoryEvents.category.description
             events = categoryEvents.events
@@ -42,6 +47,7 @@ class EventDisplayTableViewCell: UITableViewCell {
             collectionTitleLabel.text = locationEvents.location.name
             events = locationEvents.events
             collectionView.reloadData()
+            
         case .profile(let profileEvents):
             collectionTitleLabel.text = profileEvents.title
             events = profileEvents.events

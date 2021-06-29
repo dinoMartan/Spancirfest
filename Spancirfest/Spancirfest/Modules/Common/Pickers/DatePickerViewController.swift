@@ -25,6 +25,11 @@ class DatePickerViewController: UIViewController {
     var eventDateType: EventDateType?
     weak var delegate: DatePickerViewControllerDelegate?
     
+    //MARK: - Private properties
+    
+    private var minimumDate: Date?
+    private var maximumDate: Date?
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -32,12 +37,38 @@ class DatePickerViewController: UIViewController {
         setupView()
     }
     
+    func setMinimumDate(date: Date) {
+        minimumDate = date
+    }
+    
+    func setMaximumDate(date: Date) {
+        maximumDate = date
+    }
+    
+}
+
+//MARK: - Private extensions -
+
+private extension DatePickerViewController {
+    
+    //MARK: - Setup and configuration
+    
     private func setupView() {
         configureView()
+        setMinimumMaximumDates()
     }
     
     private func configureView() {
         miniView.layer.cornerRadius = 15
+    }
+    
+    private func setMinimumMaximumDates() {
+        guard let minimumDate = minimumDate,
+              let maximumDate = maximumDate
+        else { return }
+        datePicker.minimumDate = minimumDate
+        datePicker.maximumDate = maximumDate
+        debugPrint(datePicker.minimumDate)
     }
     
 }

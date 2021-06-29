@@ -48,6 +48,8 @@
 		31587B752681E55C00BB6E82 /* EventDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31587B732681E55C00BB6E82 /* EventDisplayTableViewCell.xib */; };
 		31587B7E2681E65600BB6E82 /* EventDisplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31587B7C2681E65600BB6E82 /* EventDisplayCollectionViewCell.swift */; };
 		31587B7F2681E65600BB6E82 /* EventDisplayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31587B7D2681E65600BB6E82 /* EventDisplayCollectionViewCell.xib */; };
+		31803428268B281E0058DC1E /* FestivalDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31803427268B281E0058DC1E /* FestivalDetails.swift */; };
+		3180342C268B3CF70058DC1E /* FestivalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180342B268B3CF70058DC1E /* FestivalData.swift */; };
 		3199D8E2267CD16300613D7C /* DatabaseFieldNameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */; };
 		3199D8E9267F40E200613D7C /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8E8267F40E200613D7C /* DatePickerViewController.swift */; };
 		3199D8F2267F411600613D7C /* Pickers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3199D8F1267F411600613D7C /* Pickers.storyboard */; };
@@ -108,6 +110,8 @@
 		31587B732681E55C00BB6E82 /* EventDisplayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDisplayTableViewCell.xib; sourceTree = "<group>"; };
 		31587B7C2681E65600BB6E82 /* EventDisplayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDisplayCollectionViewCell.swift; sourceTree = "<group>"; };
 		31587B7D2681E65600BB6E82 /* EventDisplayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDisplayCollectionViewCell.xib; sourceTree = "<group>"; };
+		31803427268B281E0058DC1E /* FestivalDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalDetails.swift; sourceTree = "<group>"; };
+		3180342B268B3CF70058DC1E /* FestivalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalData.swift; sourceTree = "<group>"; };
 		3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFieldNameConstants.swift; sourceTree = "<group>"; };
 		3199D8E8267F40E200613D7C /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		3199D8F1267F411600613D7C /* Pickers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pickers.storyboard; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 				313ADBE2267B89B200F0A562 /* Event.swift */,
 				313ADBE5267B8A5700F0A562 /* Location.swift */,
 				31B4B0F82684A0760045139D /* EventFollowing.swift */,
+				31803427268B281E0058DC1E /* FestivalDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 		313AD8F32677860600F0A562 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3180342A268B3CE50058DC1E /* FestivalData */,
 				313ADAEB267B69AF00F0A562 /* Constants */,
 				313AD9372678DC7C00F0A562 /* UserData */,
 			);
@@ -396,6 +402,14 @@
 				31587B7D2681E65600BB6E82 /* EventDisplayCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		3180342A268B3CE50058DC1E /* FestivalData */ = {
+			isa = PBXGroup;
+			children = (
+				3180342B268B3CF70058DC1E /* FestivalData.swift */,
+			);
+			path = FestivalData;
 			sourceTree = "<group>";
 		};
 		3199D8E4267F40A700613D7C /* Pickers */ = {
@@ -591,7 +605,9 @@
 				313AD8C8267774F400F0A562 /* AppDelegate.swift in Sources */,
 				313AD9A0267A8C6A00F0A562 /* EventEditorViewController.swift in Sources */,
 				313ADAED267B69D400F0A562 /* CollectionsConstants.swift in Sources */,
+				31803428268B281E0058DC1E /* FestivalDetails.swift in Sources */,
 				313AD9322678B80300F0A562 /* StoryboardExtension.swift in Sources */,
+				3180342C268B3CF70058DC1E /* FestivalData.swift in Sources */,
 				313AD9352678C99E00F0A562 /* SignInViewController.swift in Sources */,
 				313ADBE3267B89B200F0A562 /* Event.swift in Sources */,
 				313AD99B2678E98800F0A562 /* TabBarViewController.swift in Sources */,

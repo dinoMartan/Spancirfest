@@ -108,8 +108,6 @@ private extension EventEditorViewController {
 extension EventEditorViewController {
     
     @IBAction func didTapOutside(_ sender: Any) {
-        debugPrint("tapped outside")
-        //view.endEditing(true)
         locationLabel.resignFirstResponder()
         categoryLabel.resignFirstResponder()
         priceTextField.resignFirstResponder()
@@ -125,17 +123,30 @@ extension EventEditorViewController {
     }
     
     @IBAction func didTapSetStartDateButton(_ sender: Any) {
-        guard let datePickerViewController = UIStoryboard.getViewController(viewControllerType: DatePickerViewController.self, from: .Pickers) else { return }
-        datePickerViewController.delegate = self
-        datePickerViewController.eventDateType = .startDate
-        present(datePickerViewController, animated: true, completion: nil)
+        FestivalData.shared.getFestivalDetails { festivalDetails in
+            debugPrint(festivalDetails)
+            guard let datePickerViewController = UIStoryboard.getViewController(viewControllerType: DatePickerViewController.self, from: .Pickers) else { return }
+            datePickerViewController.delegate = self
+            datePickerViewController.eventDateType = .startDate
+            datePickerViewController.setMinimumDate(date: festivalDetails.startDate)
+            datePickerViewController.setMaximumDate(date: festivalDetails.endDate)
+            self.present(datePickerViewController, animated: true, completion: nil)
+        } failure: { error in
+            // to do - handle error
+        }
     }
     
     @IBAction func didTapSetEndDateButton(_ sender: Any) {
-        guard let datePickerViewController = UIStoryboard.getViewController(viewControllerType: DatePickerViewController.self, from: .Pickers) else { return }
-        datePickerViewController.delegate = self
-        datePickerViewController.eventDateType = .endDate
-        present(datePickerViewController, animated: true, completion: nil)
+        FestivalData.shared.getFestivalDetails { festivalDetails in
+            guard let datePickerViewController = UIStoryboard.getViewController(viewControllerType: DatePickerViewController.self, from: .Pickers) else { return }
+            datePickerViewController.delegate = self
+            datePickerViewController.eventDateType = .endDate
+            datePickerViewController.setMinimumDate(date: festivalDetails.startDate)
+            datePickerViewController.setMaximumDate(date: festivalDetails.endDate)
+            self.present(datePickerViewController, animated: true, completion: nil)
+        } failure: { error in
+            // to do - handle error
+        }
     }
     
     @IBAction func didTapSetLocationButton(_ sender: Any) {

@@ -15,6 +15,14 @@ enum DateStringStyle: String {
 
 extension Date {
     
+    func getDate(style: DateFormatter.Style) -> String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = style
+        let string = formatter.string(from: self)
+        return string
+    }
+    
     func timeToString(style: DateFormatter.Style) -> String {
         let formatter = DateFormatter()
         formatter.timeStyle = style
@@ -29,5 +37,16 @@ extension Date {
         return string
     }
     
+    static func dates(from fromDate: Date, to toDate: Date) -> [Date] {
+        var dates: [Date] = []
+        var date = fromDate
+        
+        while date <= toDate {
+            dates.append(date)
+            guard let newDate = Calendar.current.date(byAdding: .day, value: 1, to: date) else { break }
+            date = newDate
+        }
+        return dates
+    }
     
 }

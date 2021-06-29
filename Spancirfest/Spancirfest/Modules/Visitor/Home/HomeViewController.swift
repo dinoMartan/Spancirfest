@@ -9,9 +9,17 @@ import UIKit
 
 enum EventSortType {
     
+    case date(date: EventsByDate)
     case category(data: EventsByCategory)
     case location(data: EventsByLocation)
     case profile(data: ProfileViewControllerTableData)
+    
+}
+
+struct EventsByDate {
+    
+    let date: Date
+    var events: [Event]
     
 }
 
@@ -48,6 +56,7 @@ class HomeViewController: UIViewController {
     private var allEvents: [Event] = []
     private var eventsByCategory: [EventsByCategory] = []
     private var eventsByLocation: [EventsByLocation] = []
+    private var eventsByDate: [EventsByDate] = []
     
     //MARK: - Lifecycle
 
@@ -59,6 +68,9 @@ class HomeViewController: UIViewController {
     private func setupView() {
         setListenerOnSegmentedControl()
         configureTableView()
+        sortEventsByDate {
+            self.tableView.reloadData()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,6 +109,29 @@ class HomeViewController: UIViewController {
         }
     }
     
+    private func sortEventsByDate(completion: @escaping (() -> Void)) {
+        eventsByDate.removeAll()
+        FestivalData.shared.getFestivalDetails { festivalDetails in
+            let startDate = festivalDetails.startDate
+            let endDate = festivalDetails.endDate
+            let dates = Date.dates(from: startDate, to: endDate)
+            
+            for date in dates {
+                var eventsByDate = EventsByDate(date: date, events: [])
+                for event in self.allEvents {
+                    if event.startDate.getDate(style: .short) == date.getDate(style: .short) { eventsByDate.events.append(event) }
+                }
+                if !eventsByDate.events.isEmpty { self.eventsByDate.append(eventsByDate) }
+                else { continue }
+            }
+            completion()
+            
+        } failure: { error in
+            // to do - handle error
+            completion()
+        }
+    }
+    
     private func sortEventByLocation(completion: @escaping (() -> Void)) {
         eventsByLocation.removeAll()
         DatabaseHandler.shared.getData(type: Location.self, collection: .locations) { locations in
@@ -123,8 +158,9 @@ class HomeViewController: UIViewController {
             let index = self.segmentedControl.selectedSegmentIndex
             
             if index == 0 { // daily
-                // to do - add starting and ending date of the festival
-                // for every day of the festival, get events and display them
+                self.sortEventsByDate {
+                    self.tableView.reloadData()
+                }
             }
             
             else if index == 1 { // category
@@ -157,7 +193,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let index = segmentedControl.selectedSegmentIndex
         
         if index == 0 { // daily
-            return 0
+            return eventsByDate.count
         }
         
         else if index == 1 { // category
@@ -175,7 +211,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EventDisplayTableViewCell.identifier) as? EventDisplayTableViewCell else { return UITableViewCell() }
         let index = segmentedControl.selectedSegmentIndex
         
-        if index == 0 { }
+        if index == 0 { cell.configureCell(data: .date(date: eventsByDate[indexPath.row])) }
         else if index == 1 { cell.configureCell(data: .category(data: eventsByCategory[indexPath.row])) }
         else if index == 2 { cell.configureCell(data: .location(data: eventsByLocation[indexPath.row])) }
         cell.delegate = self
