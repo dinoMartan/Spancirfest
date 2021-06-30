@@ -115,22 +115,18 @@ extension AdminDashboardViewController: AdminDashboardTableViewCellDelegate {
     
     func didTapAddNewLocationButton() {
         // to do - add new location
-        debugPrint("add new location")
     }
     
     func didTapAddNewCategoryButton() {
         // to do - add new category
-        debugPrint("add new category")
     }
     
     func didTapShowLocationDetails(location: Location) {
         // to do - show location details
-        debugPrint(location.name)
     }
     
     func didTapShowCategoryDetails(category: EventCategory) {
         // to do - show event category details
-        debugPrint(category.description)
     }
     
 }
