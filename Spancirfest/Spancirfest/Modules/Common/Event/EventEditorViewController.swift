@@ -179,8 +179,7 @@ extension EventEditorViewController {
         }
         
         startLoadingAnimation()
-        
-
+    
         if currentEvent == nil {
             let eventId = String.randomString(length: 30)
             DatabaseHandler.shared.uploadImage(image: image) { imageUrl in
@@ -200,7 +199,6 @@ extension EventEditorViewController {
             }
         }
         
-        
         else {
             let eventId = currentEvent!.eventId // already cheched if currentEvent is nil
             let newEvent = Event(ownerId: currentUserId, eventCategory: category, name: name, startDate: startingDate, endDate: endingDate, price: price, location: location, numberOfPeople: numberOfPeople, image: currentEvent?.image, eventId: eventId)
@@ -215,10 +213,6 @@ extension EventEditorViewController {
                 }
             }
         }
-        
-        
-
-        
     }
     
 }
@@ -230,12 +224,8 @@ extension EventEditorViewController {
 extension EventEditorViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
  
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                    eventImage.image = pickedImage
-                }
-
-                dismiss(animated: true, completion: nil)
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage { eventImage.image = pickedImage }
+        dismiss(animated: true, completion: nil)
     }
     
 }

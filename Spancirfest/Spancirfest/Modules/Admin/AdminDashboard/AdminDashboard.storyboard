@@ -15,12 +15,27 @@
                     <view key="view" contentMode="scaleToFill" id="4iC-eZ-Kn9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8ae-zc-aXd">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="N5n-9E-RZY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8ae-zc-aXd" firstAttribute="top" secondItem="N5n-9E-RZY" secondAttribute="top" id="JMx-Lo-4Hl"/>
+                            <constraint firstItem="8ae-zc-aXd" firstAttribute="leading" secondItem="N5n-9E-RZY" secondAttribute="leading" id="Lff-cV-4Xt"/>
+                            <constraint firstItem="N5n-9E-RZY" firstAttribute="bottom" secondItem="8ae-zc-aXd" secondAttribute="bottom" id="WBy-UH-X8S"/>
+                            <constraint firstItem="N5n-9E-RZY" firstAttribute="trailing" secondItem="8ae-zc-aXd" secondAttribute="trailing" id="lge-q3-V8s"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Admin" image="infinity" catalog="system" id="Osa-mt-SOX"/>
                     <navigationItem key="navigationItem" title="Admin Dashboard" id="2dl-1s-Oja"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="8ae-zc-aXd" id="WfL-ll-Iuu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVl-7c-e4e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

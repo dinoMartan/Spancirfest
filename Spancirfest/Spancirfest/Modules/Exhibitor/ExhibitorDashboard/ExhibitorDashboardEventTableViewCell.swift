@@ -34,6 +34,7 @@ class ExhibitorDashboardEventTableViewCell: UITableViewCell {
         startDateLabel.text = formatter.string(from: event.startDate)
         endDateLabel.text = formatter.string(from: event.endDate)
         
+        eventImage.layer.cornerRadius = eventImage.frame.height / 2
         guard let image = event.image else { return }
         eventImage.sd_setImage(with: URL(string: image), completed: nil)
     }
