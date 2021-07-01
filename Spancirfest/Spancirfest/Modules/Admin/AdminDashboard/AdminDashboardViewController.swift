@@ -11,6 +11,7 @@ enum AdminDashboardTableData {
     
     case locations (title: String, buttonText: String?, locations: [Location])
     case categories (title: String, buttonText: String?, categories: [EventCategory])
+    case events (title: String, events: [Event])
     
 }
 
@@ -25,6 +26,11 @@ class AdminDashboardViewController: UIViewController {
     private var tableData: [AdminDashboardTableData] = []
     
     //MARK: - Lifecycle
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fetchData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +47,6 @@ private extension AdminDashboardViewController {
     
     private func setupView() {
         configureTableView()
-        fetchData()
     }
     
     private func configureTableView() {
@@ -53,9 +58,12 @@ private extension AdminDashboardViewController {
     //MARK: - Data
     
     private func fetchData() {
+        tableData.removeAll()
         fetchLocations {
             self.fetchEventCategories {
-                self.tableView.reloadData()
+                self.fetchEvents {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
@@ -82,6 +90,17 @@ private extension AdminDashboardViewController {
         }
     }
     
+    private func fetchEvents(completion: @escaping (() -> Void)) {
+        DatabaseHandler.shared.getData(type: Event.self, collection: .events) { events in
+            let eventData = AdminDashboardTableData.events(title: "Events", events: events)
+            self.tableData.append(eventData)
+            completion()
+        } failure: { error in
+            // to do - handle error
+            completion()
+        }
+    }
+    
 }
 
 //MARK: - TableView Datasource and Delegate -
@@ -100,7 +119,15 @@ extension AdminDashboardViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 210
+        let data = tableData[indexPath.row]
+        switch data {
+        case .categories(_, _, _):
+            return 230
+        case .locations(_, _, _):
+            return 230
+        case .events(_, _):
+            return 230
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -114,7 +141,8 @@ extension AdminDashboardViewController: UITableViewDataSource, UITableViewDelega
 extension AdminDashboardViewController: AdminDashboardTableViewCellDelegate {
     
     func didTapAddNewLocationButton() {
-        // to do - add new location
+        guard let locationEditorViewController = UIStoryboard.getViewController(viewControllerType: LocationEditorViewController.self, from: .LocationDetails) else { return }
+        present(locationEditorViewController, animated: true, completion: nil)
     }
     
     func didTapAddNewCategoryButton() {
@@ -122,11 +150,30 @@ extension AdminDashboardViewController: AdminDashboardTableViewCellDelegate {
     }
     
     func didTapShowLocationDetails(location: Location) {
-        // to do - show location details
+        guard let locationEditorViewController = UIStoryboard.getViewController(viewControllerType: LocationEditorViewController.self, from: .LocationDetails) else { return }
+        locationEditorViewController.location = location
+        present(locationEditorViewController, animated: true, completion: nil)
     }
     
     func didTapShowCategoryDetails(category: EventCategory) {
         // to do - show event category details
+    }
+    
+    func didTapShowEventDetails(event: Event) {
+        guard let eventDetailsViewController = UIStoryboard.getViewController(viewControllerType: EventDetailsViewController.self, from: .Event) else { return }
+        eventDetailsViewController.event = event
+        eventDetailsViewController.delegate = self
+        present(eventDetailsViewController, animated: true, completion: nil)
+    }
+    
+}
+
+//MARK: - EventDetails Delegate -
+
+extension AdminDashboardViewController: EventDetailsViewControllerDelegate {
+    
+    func didMakeChanges() {
+        fetchData()
     }
     
 }

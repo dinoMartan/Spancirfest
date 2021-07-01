@@ -18,5 +18,6 @@ enum StoryboardId: String {
     case Navigation
     case Event
     case Pickers
+    case LocationDetails
     
 }

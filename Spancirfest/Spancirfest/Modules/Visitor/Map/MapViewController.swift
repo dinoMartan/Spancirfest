@@ -24,6 +24,13 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         setupView()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fetchData {
+            self.setPins()
+        }
+    }
 
 }
 
@@ -35,9 +42,6 @@ private extension MapViewController {
     
     private func setupView() {
         configureMap()
-        fetchData {
-            self.setPins()
-        }
     }
     
     //MARK: - Map configuration
@@ -53,10 +57,9 @@ private extension MapViewController {
     }
     
     private func setPins() {
+        mapView.removeAnnotations(mapView.annotations)
         for location in locations {
             let annotation = LocationMKPointAnnotation(location: location)
-            annotation.title = location.name
-            annotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
             mapView.addAnnotation(annotation)
         }
     }

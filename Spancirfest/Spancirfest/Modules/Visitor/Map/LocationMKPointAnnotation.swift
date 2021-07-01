@@ -14,6 +14,9 @@ class LocationMKPointAnnotation: MKPointAnnotation {
     
     init(location: Location) {
         self.location = location
+        super.init()
+        self.title = location.name
+        self.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
     }
     
     func getLocation() -> Location {

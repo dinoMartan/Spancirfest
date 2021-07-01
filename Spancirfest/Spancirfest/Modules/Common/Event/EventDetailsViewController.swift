@@ -154,6 +154,11 @@ private extension EventDetailsViewController {
 extension EventDetailsViewController {
     
     @IBAction func didTapShowLocationDetailsButton(_ sender: Any) {
+        guard let location = event?.location,
+              let locationViewController = UIStoryboard.getViewController(viewControllerType: LocationDetailsViewController.self, from: .LocationDetails)
+        else { return }
+        locationViewController.location = location
+        present(locationViewController, animated: true, completion: nil)
     }
     
     @IBAction func didTapShowCategoryDetailsButton(_ sender: Any) {

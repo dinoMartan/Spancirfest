@@ -13,6 +13,7 @@ protocol AdminDashboardTableViewCellDelegate: AnyObject {
     func didTapAddNewCategoryButton()
     func didTapShowLocationDetails(location: Location)
     func didTapShowCategoryDetails(category: EventCategory)
+    func didTapShowEventDetails(event: Event)
     
 }
 
@@ -52,6 +53,11 @@ class AdminDashboardTableViewCell: UITableViewCell {
             else { addNewButton.isHidden = true }
             collectionView.register(UINib(nibName: AdminDashboardCategoryCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: AdminDashboardCategoryCollectionViewCell.identifier)
             collectionView.reloadData()
+        case .events(let title, _):
+            titleLabel.text = title
+            addNewButton.isHidden = true
+            collectionView.register(UINib(nibName: EventDisplayCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: EventDisplayCollectionViewCell.identifier)
+            collectionView.reloadData()
         }
     }
     
@@ -68,6 +74,8 @@ extension AdminDashboardTableViewCell {
             delegate?.didTapAddNewCategoryButton()
         case .locations(_, _, _):
             delegate?.didTapAddNewLocationButton()
+        case .events(_, _):
+            return
         }
     }
     
@@ -84,6 +92,8 @@ extension AdminDashboardTableViewCell: UICollectionViewDataSource, UICollectionV
             return locations.count
         case .categories(_, _, let categories):
             return categories.count
+        case .events(_ , let events):
+            return events.count
         }
     }
     
@@ -98,6 +108,10 @@ extension AdminDashboardTableViewCell: UICollectionViewDataSource, UICollectionV
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdminDashboardCategoryCollectionViewCell.identifier, for: indexPath) as? AdminDashboardCategoryCollectionViewCell else { return UICollectionViewCell() }
             cell.configureCell(eventCategory: categories[indexPath.row])
             return cell
+        case .events(_, let events):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EventDisplayCollectionViewCell.identifier, for: indexPath) as? EventDisplayCollectionViewCell else { return UICollectionViewCell() }
+            cell.configureCell(event: events[indexPath.row])
+            return cell
         }
     }
     
@@ -109,7 +123,15 @@ extension AdminDashboardTableViewCell: UICollectionViewDataSource, UICollectionV
             delegate?.didTapShowLocationDetails(location: locations[indexPath.row])
         case .categories(_, _, let categories):
             delegate?.didTapShowCategoryDetails(category: categories[indexPath.row])
+        case .events(_, let events):
+            delegate?.didTapShowEventDetails(event: events[indexPath.row])
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = CGFloat(130)
+        let height = CGFloat(150)
+        return CGSize(width: width, height: height)
     }
     
 }

@@ -82,6 +82,41 @@ final class DatabaseHandler {
         }
     }
     
+    func updateLocation(location: Location, completion: @escaping ((Bool) -> Void)) {
+        db.collection(CollectionsConstants.locations.rawValue).whereField("locationId", isEqualTo: location.locationId).getDocuments { (queryShapshot, error) in
+            if error != nil { completion(false) }
+            let document = queryShapshot?.documents[0]
+            let documentId = document?.documentID
+            if documentId == nil { completion(false) }
+            
+            self.db.collection(CollectionsConstants.locations.rawValue).document(documentId!).updateData(location.toDictionnary!) { error in
+                completion(false)
+            }
+            
+            self.getDataWhere(type: Event.self, collection: .events, whereField: .eventLocationId, isEqualTo: location.locationId) { events in
+                
+                let group = DispatchGroup()
+                
+                for event in events {
+                    // to do - fix an issue where event is updating twice
+                    group.enter()
+                    group.enter()
+                    var eventSelected = event
+                    eventSelected.location = location
+                    self.updateEvent(event: eventSelected) { _ in
+                        group.leave()
+                    }
+                }
+                group.notify(queue: .main) {
+                    completion(true)
+                }
+                
+            } failure: { _ in
+                completion(false)
+            }
+        }
+    }
+    
     func updateEvent(event: Event, completion: @escaping ((Bool) -> Void)) {
         db.collection(CollectionsConstants.events.rawValue).whereField("eventId", isEqualTo: event.eventId).getDocuments { (queryShapshot, error) in
             if error != nil { completion(false) }
@@ -102,8 +137,6 @@ final class DatabaseHandler {
         }
         completion(true)
     }
-    
-    
     
     //MARK: - Public generic methods
     
