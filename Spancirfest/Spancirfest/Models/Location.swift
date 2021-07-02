@@ -14,5 +14,6 @@ struct Location: Codable {
     let description: String
     let longitude: Double
     let latitude: Double
+    var image: String?
     
 }

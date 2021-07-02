@@ -182,7 +182,7 @@ extension EventEditorViewController {
     
         if currentEvent == nil {
             let eventId = String.randomString(length: 30)
-            DatabaseHandler.shared.uploadImage(image: image) { imageUrl in
+            DatabaseHandler.shared.uploadImage(image: image, path: .eventImage) { imageUrl in
                 let newEvent = Event(ownerId: currentUserId, eventCategory: category, name: name, startDate: startingDate, endDate: endingDate, price: price, location: location, numberOfPeople: numberOfPeople, image: imageUrl, eventId: eventId)
                 
                 DatabaseHandler.shared.addData(data: [newEvent], collection: .events) {

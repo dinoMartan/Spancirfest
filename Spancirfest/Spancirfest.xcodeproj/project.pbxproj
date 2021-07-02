@@ -59,6 +59,7 @@
 		31803446268DCA660058DC1E /* LocationDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31803445268DCA660058DC1E /* LocationDetails.storyboard */; };
 		31803449268DCA820058DC1E /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31803448268DCA820058DC1E /* LocationDetailsViewController.swift */; };
 		3180344D268DD3560058DC1E /* LocationEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180344C268DD3560058DC1E /* LocationEditorViewController.swift */; };
+		31803450268F2AF80058DC1E /* DatabaseImagePathConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180344F268F2AF80058DC1E /* DatabaseImagePathConstants.swift */; };
 		3199D8E2267CD16300613D7C /* DatabaseFieldNameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */; };
 		3199D8E9267F40E200613D7C /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8E8267F40E200613D7C /* DatePickerViewController.swift */; };
 		3199D8F2267F411600613D7C /* Pickers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3199D8F1267F411600613D7C /* Pickers.storyboard */; };
@@ -130,6 +131,7 @@
 		31803445268DCA660058DC1E /* LocationDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationDetails.storyboard; sourceTree = "<group>"; };
 		31803448268DCA820058DC1E /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		3180344C268DD3560058DC1E /* LocationEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEditorViewController.swift; sourceTree = "<group>"; };
+		3180344F268F2AF80058DC1E /* DatabaseImagePathConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseImagePathConstants.swift; sourceTree = "<group>"; };
 		3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFieldNameConstants.swift; sourceTree = "<group>"; };
 		3199D8E8267F40E200613D7C /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		3199D8F1267F411600613D7C /* Pickers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pickers.storyboard; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */,
 				31B4B0FC2684BB2C0045139D /* ButtonsContants.swift */,
 				31B4B10526863E5C0045139D /* TitlesConstants.swift */,
+				3180344F268F2AF80058DC1E /* DatabaseImagePathConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -665,6 +668,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31B4B0F92684A0760045139D /* EventFollowing.swift in Sources */,
+				31803450268F2AF80058DC1E /* DatabaseImagePathConstants.swift in Sources */,
 				313AD92C2678B1C500F0A562 /* AuthenticationViewController.swift in Sources */,
 				3199D8FC267F49AD00613D7C /* DateExtension.swift in Sources */,
 				313ADAE3267B581400F0A562 /* UserDetails.swift in Sources */,

@@ -25,4 +25,8 @@ extension UIImage {
         return uiImage
     }
     
+    func isEqualToImage(_ image: UIImage) -> Bool {
+            return self.pngData() == image.pngData()
+    }
+    
 }

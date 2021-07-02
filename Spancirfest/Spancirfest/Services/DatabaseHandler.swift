@@ -207,13 +207,13 @@ final class DatabaseHandler {
         }
     }
     
-    func uploadImage(image: UIImage, success: @escaping ((String) -> Void), failure: @escaping ((Error?) -> Void)) {
+    func uploadImage(image: UIImage, path: DatabaseImagePathContants, success: @escaping ((String) -> Void), failure: @escaping ((Error?) -> Void)) {
         guard let file = image.pngData() else {
             failure(nil)
             return
         }
         let name = String.randomString(length: 30)
-        let postsRef = storageRef.child("images/\(name).jpg")
+        let postsRef = storageRef.child("\(path.rawValue)\(name).jpg")
         
         postsRef.putData(file, metadata: nil) { (metadata, error) in
             if metadata == nil { failure(error) }
