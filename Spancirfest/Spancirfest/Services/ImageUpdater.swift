@@ -32,7 +32,7 @@ final class ImageUpdater {
         
         // if old image doesn't exist, only the one in view is set
         if oldImageUrl == nil && currentImageView?.image != nil {
-            DatabaseHandler.shared.uploadImage(image: currentImageView!.image!, path: imagePath) { url in
+            DatabaseHandler.shared.uploadImage(image: currentImageView!.image!.compress(to: .lowest), path: imagePath) { url in
                 response(.newImageUploaded(url: url))
             } failure: { error in
                 response(.error(error: error))
@@ -53,10 +53,10 @@ final class ImageUpdater {
                 if image == nil || error != nil { response(.error(error: error)) }
                 
                 // if the images are the same, return no changes
-                if image!.isEqualToImage(currentImageView!.image!) { response(.imageNotChanged(url: oldImageUrl!)) }
+                if image!.isEqualToImage(currentImageView!.image!.compress(to: .lowest)) { response(.imageNotChanged(url: oldImageUrl!)) }
                 // if images are not the same, upload new one
                 else {
-                    DatabaseHandler.shared.uploadImage(image: currentImageView!.image!, path: imagePath) { url in
+                    DatabaseHandler.shared.uploadImage(image: currentImageView!.image!.compress(to: .lowest), path: imagePath) { url in
                         response(.imageUpdated(url: url))
                     } failure: { error in
                         response(.error(error: error))
