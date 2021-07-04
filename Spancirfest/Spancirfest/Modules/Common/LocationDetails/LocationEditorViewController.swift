@@ -24,6 +24,7 @@ class LocationEditorViewController: UIViewController {
     @IBOutlet private weak var locationDescriptionTextField: UITextField!
     @IBOutlet private weak var mapView: MKMapView!
     @IBOutlet private var tapGuesture: UITapGestureRecognizer!
+    @IBOutlet private weak var activityView: UIView!
     
     //MARK: - Public properties
     
@@ -78,6 +79,17 @@ private extension LocationEditorViewController {
         mapView.setRegion(region, animated: true)
     }
     
+    //MARK: - Activity indicator
+    
+    private func showActivityIndicator() {
+        activityView.layer.opacity = 0.9
+        activityView.isHidden = false
+    }
+    
+    private func hideActivityIndicator() {
+        activityView.isHidden = true
+    }
+    
 }
 
 //MARK: - IBActions -
@@ -113,24 +125,34 @@ extension LocationEditorViewController {
         if location == nil { locationId = String.randomString(length: 20) }
         else { locationId = location!.locationId }
         
+        showActivityIndicator()
+        
         prepareLocation(locationId: locationId) { newLocation in
-            guard let newLocation = newLocation else { return }
+            guard let newLocation = newLocation else {
+                // to do - handle error
+                self.hideActivityIndicator()
+                return
+            }
             
             if self.location != nil {
                 DatabaseHandler.shared.updateLocation(location: newLocation) { didUpdate in
                     if !didUpdate {
                         // to do - handle error
+                        self.hideActivityIndicator()
                     }
                     else { self.delegate?.didMakeChanges() }
+                    self.hideActivityIndicator()
                     self.dismiss(animated: true, completion: nil)
                 }
             }
             else {
                 DatabaseHandler.shared.addData(data: [newLocation], collection: .locations) {
                     self.delegate?.didMakeChanges()
+                    self.hideActivityIndicator()
                     self.dismiss(animated: true, completion: nil)
                 } failure: { error in
                     // to do - handle error
+                    self.hideActivityIndicator()
                     self.dismiss(animated: true, completion: nil)
                 }
             }

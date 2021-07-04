@@ -136,6 +136,19 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8m-Oe-KEq">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="lME-ls-WjC">
+                                        <rect key="frame" x="188.5" y="407.5" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="lME-ls-WjC" firstAttribute="centerX" secondItem="z8m-Oe-KEq" secondAttribute="centerX" id="WfU-d4-gix"/>
+                                    <constraint firstItem="lME-ls-WjC" firstAttribute="centerY" secondItem="z8m-Oe-KEq" secondAttribute="centerY" id="ymh-cH-Nb5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2hm-ts-Oyc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -150,20 +163,25 @@
                             <constraint firstItem="2hm-ts-Oyc" firstAttribute="trailing" secondItem="wZZ-jO-pYL" secondAttribute="trailing" constant="20" id="R1r-bM-PYy"/>
                             <constraint firstItem="7cz-fw-sQS" firstAttribute="bottom" secondItem="SxS-hc-C2X" secondAttribute="bottom" id="RC9-oq-Ifc"/>
                             <constraint firstItem="rB8-4v-Eby" firstAttribute="top" secondItem="on7-4f-WtM" secondAttribute="bottom" constant="20" id="Rgg-tE-NQM"/>
+                            <constraint firstAttribute="bottom" secondItem="z8m-Oe-KEq" secondAttribute="bottom" id="Sj9-TT-MKo"/>
                             <constraint firstItem="7jg-98-44T" firstAttribute="leading" secondItem="2hm-ts-Oyc" secondAttribute="leading" constant="20" id="WmK-LM-485"/>
                             <constraint firstItem="2hm-ts-Oyc" firstAttribute="trailing" secondItem="7jg-98-44T" secondAttribute="trailing" constant="20" id="YEl-HI-6Oh"/>
+                            <constraint firstItem="z8m-Oe-KEq" firstAttribute="top" secondItem="2hm-ts-Oyc" secondAttribute="top" id="ZLB-2T-50g"/>
                             <constraint firstItem="on7-4f-WtM" firstAttribute="trailing" secondItem="2hm-ts-Oyc" secondAttribute="trailing" id="f88-68-Tbb"/>
                             <constraint firstItem="wZZ-jO-pYL" firstAttribute="top" secondItem="2hm-ts-Oyc" secondAttribute="top" constant="90" id="fdr-rF-ROP"/>
                             <constraint firstItem="wZZ-jO-pYL" firstAttribute="leading" secondItem="2hm-ts-Oyc" secondAttribute="leading" constant="20" id="oYF-k5-uxv"/>
                             <constraint firstItem="rB8-4v-Eby" firstAttribute="leading" secondItem="2hm-ts-Oyc" secondAttribute="leading" constant="20" id="obc-tK-aa0"/>
                             <constraint firstItem="on7-4f-WtM" firstAttribute="leading" secondItem="2hm-ts-Oyc" secondAttribute="leading" id="qqf-mJ-qsH"/>
                             <constraint firstItem="7cz-fw-sQS" firstAttribute="trailing" secondItem="2hm-ts-Oyc" secondAttribute="trailing" id="sRr-9U-ytN"/>
+                            <constraint firstItem="2hm-ts-Oyc" firstAttribute="trailing" secondItem="z8m-Oe-KEq" secondAttribute="trailing" id="taR-rK-2Zg"/>
+                            <constraint firstItem="z8m-Oe-KEq" firstAttribute="leading" secondItem="2hm-ts-Oyc" secondAttribute="leading" id="zsY-8v-bqS"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="iQF-4g-peU" appends="YES" id="eh7-Su-4DU"/>
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="activityView" destination="z8m-Oe-KEq" id="Klg-YH-Uoc"/>
                         <outlet property="locationDescriptionTextField" destination="7jg-98-44T" id="Hs8-p3-BSa"/>
                         <outlet property="locationImageView" destination="7cz-fw-sQS" id="9hq-2k-srN"/>
                         <outlet property="locationTitleTextField" destination="wZZ-jO-pYL" id="gwK-Z8-Ldu"/>
