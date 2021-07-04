@@ -28,8 +28,8 @@ class AdminDashboardLocationCollectionViewCell: UICollectionViewCell {
         locationTitleLabel.text = location.name
         locationDescriptionLabel.text = location.description
         guard let image = location.image else { return }
-        //locationImageView.sd_setImage(with: URL(string: image), completed: nil)
-        //locationImageView.layer.opacity = 0.5
+        locationImageView.sd_setImage(with: URL(string: image), completed: nil)
+        locationImageView.layer.opacity = 0.9
     }
 
 }

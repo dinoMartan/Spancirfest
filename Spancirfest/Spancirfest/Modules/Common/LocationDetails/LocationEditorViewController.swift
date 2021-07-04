@@ -109,106 +109,57 @@ extension LocationEditorViewController {
     }
     
     @IBAction func didTapSaveButton(_ sender: Any) {
-        if location == nil { createLocation() }
-        else {
-            updateLocation {
-                self.dismiss(animated: true, completion: nil)
-            } failure: { error in
-                // to do - handle error
+        var locationId: String
+        if location == nil { locationId = String.randomString(length: 20) }
+        else { locationId = location!.locationId }
+        
+        prepareLocation(locationId: locationId) { newLocation in
+            guard let newLocation = newLocation else { return }
+            
+            if self.location != nil {
+                DatabaseHandler.shared.updateLocation(location: newLocation) { didUpdate in
+                    if !didUpdate {
+                        // to do - handle error
+                    }
+                    else { self.delegate?.didMakeChanges() }
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
-
+            else {
+                DatabaseHandler.shared.addData(data: [newLocation], collection: .locations) {
+                    self.delegate?.didMakeChanges()
+                    self.dismiss(animated: true, completion: nil)
+                } failure: { error in
+                    // to do - handle error
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
         }
     }
     
-    private func prepareLocation(locationId: String) -> Location? {
+    private func prepareLocation(locationId: String, completion: @escaping ((Location?) -> Void)) {
         guard let coordinates = coordinates,
               let title = locationTitleTextField.text,
               let description = locationDescriptionTextField.text
-        else { return nil }
-        
-        let location = Location(locationId: locationId, name: title, description: description, longitude: coordinates.longitude, latitude: coordinates.latitude, image: nil)
-        return location
-    }
-    
-    private func updateLocation(success: @escaping (() -> Void), failure: @escaping ((Error?) -> Void)) {
-        guard let locationId = location?.locationId,
-              var location = prepareLocation(locationId: locationId)
-        else { return }
-
-        let selectedImage = locationImageView.image
-        
-        // if image isn't set
-        if selectedImage == nil {
-            update(location: location) {
-                debugPrint("Updated without image")
-                success()
-            }
-        }
         else {
-            // if old image doesn't exist
-            if self.location!.image == nil {
-                DatabaseHandler.shared.uploadImage(image: selectedImage!, path: .eventImage) { url in
-                    location.image = url
-                    self.update(location: location) {
-                        debugPrint("updated with new image")
-                        success()
-                    }
-                } failure: { error in
-                    failure(error)
-                }
-            }
-            // if old image exists, compare it to the new one
-            else {
-                UIImageView().sd_setImage(with: URL(string: self.location!.image!)) { (image, error, _, url) in
-                    if error != nil || image == nil { failure(nil) }
-                    // if new image is the same as old one
-                    if image!.isEqualToImage(selectedImage!) {
-                        location.image = self.location!.image!
-                        self.update(location: location) {
-                            debugPrint("updated with the same image")
-                            success()
-                        }
-                    }
-                    // if new image is different to old image
-                    else {
-                        DatabaseHandler.shared.uploadImage(image: selectedImage!, path: .eventImage) { url in
-                            location.image = url
-                            self.update(location: location) {
-                                debugPrint("updated with new image over old one")
-                                success()
-                            }
-                        } failure: { error in
-                            failure(error)
-                        }
-                    }
-                }
-            }
+            completion(nil)
+            return
         }
-    }
-    
-    private func update(location: Location, completion: @escaping (() -> Void)) {
-        DatabaseHandler.shared.updateLocation(location: location) { _ in
-            self.delegate?.didMakeChanges()
-            completion()
-        }
-    }
-    
-    private func createLocation() {
-        let locationId = String.randomString(length: 20)
-        guard var location = prepareLocation(locationId: locationId),
-              let image = locationImageView.image?.getJpeg(quality: .low)
-        else { return }
         
-        DatabaseHandler.shared.uploadImage(image: image, path: .locationImage) { imageUrl in
-            location.image = imageUrl
-            DatabaseHandler.shared.addData(data: [location], collection: .locations) {
-                self.delegate?.didMakeChanges()
-                self.dismiss(animated: true, completion: nil)
-            } failure: { error in
+        ImageUpdater.shared.updateImage(currentImageView: locationImageView, oldImageUrl: location?.image, imagePath: .eventImage, imageQuality: .low) { response in
+            var location = Location(locationId: locationId, name: title, description: description, longitude: coordinates.longitude, latitude: coordinates.latitude, image: nil)
+            switch response {
+            case .newImageUploaded(let url):
+                location.image = url
+            case .imageUpdated(let url):
+                location.image = url
+            case .imageNotChanged(let url):
+                location.image = url
+            case .error(_):
                 // to do - handle error
+                completion(nil)
             }
-        } failure: { error in
-            // to do - handle error
+            completion(location)
         }
     }
     
