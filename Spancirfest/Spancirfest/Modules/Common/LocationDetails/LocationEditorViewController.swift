@@ -171,6 +171,8 @@ extension LocationEditorViewController {
         ImageUpdater.shared.updateImage(currentImageView: locationImageView, oldImageUrl: location?.image, imagePath: .locationImage, imageQuality: .low) { response in
             var location = Location(locationId: locationId, name: title, description: description, longitude: coordinates.longitude, latitude: coordinates.latitude, image: nil)
             switch response {
+            case .noImage:
+                location.image = nil
             case .newImageUploaded(let url):
                 location.image = url
             case .imageUpdated(let url):

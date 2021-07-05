@@ -10,7 +10,7 @@ import Foundation
 struct Event: Codable {
     
     let ownerId: String
-    let eventCategory: EventCategory
+    var eventCategory: EventCategory
     let name: String
     let startDate: Date
     let endDate: Date

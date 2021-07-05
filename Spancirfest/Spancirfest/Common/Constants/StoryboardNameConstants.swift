@@ -19,5 +19,6 @@ enum StoryboardId: String {
     case Event
     case Pickers
     case LocationDetails
+    case EventCategory
     
 }

@@ -117,6 +117,41 @@ final class DatabaseHandler {
         }
     }
     
+    func updateEventCategory(category: EventCategory, completion: @escaping ((Bool) -> Void)) {
+        db.collection(CollectionsConstants.eventCategory.rawValue).whereField("categoryId", isEqualTo: category.categoryId).getDocuments { (queryShapshot, error) in
+            if error != nil { completion(false) }
+            let document = queryShapshot?.documents[0]
+            let documentId = document?.documentID
+            if documentId == nil { completion(false) }
+            
+            self.db.collection(CollectionsConstants.eventCategory.rawValue).document(documentId!).updateData(category.toDictionnary!) { error in
+                completion(false)
+            }
+            
+            self.getDataWhere(type: Event.self, collection: .events, whereField: .eventCategoryId, isEqualTo: category.categoryId) { events in
+                
+                let group = DispatchGroup()
+                
+                for event in events {
+                    // to do - fix an issue where event is updating twice
+                    group.enter()
+                    group.enter()
+                    var eventSelected = event
+                    eventSelected.eventCategory = category
+                    self.updateEvent(event: eventSelected) { _ in
+                        group.leave()
+                    }
+                }
+                group.notify(queue: .main) {
+                    completion(true)
+                }
+                
+            } failure: { _ in
+                completion(false)
+            }
+        }
+    }
+    
     func updateEvent(event: Event, completion: @escaping ((Bool) -> Void)) {
         db.collection(CollectionsConstants.events.rawValue).whereField("eventId", isEqualTo: event.eventId).getDocuments { (queryShapshot, error) in
             if error != nil { completion(false) }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Event Category View Controller-->
+        <scene sceneID="rQG-QY-TOD">
+            <objects>
+                <viewController storyboardIdentifier="EventCategoryViewController" id="OKU-xW-hyw" customClass="EventCategoryViewController" customModule="Spancirfest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="09A-En-Oha">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tps-Of-t4g">
+                                <rect key="frame" x="0.0" y="596" width="414" height="300"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9SD-PU-KKw">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="0eV-kS-e85">
+                                        <rect key="frame" x="30" y="220" width="354" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTl-om-CnN">
+                                                <rect key="frame" x="0.0" y="0.0" width="162" height="30"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="didTapSaveButton:" destination="OKU-xW-hyw" eventType="touchUpInside" id="vRb-Tz-g5X"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RhK-EJ-RIi">
+                                                <rect key="frame" x="192" y="0.0" width="162" height="30"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <state key="normal" title="Set Image"/>
+                                                <connections>
+                                                    <action selector="didTapSetImageButton:" destination="OKU-xW-hyw" eventType="touchUpInside" id="3fM-4M-cEq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AsQ-fo-lsN">
+                                        <rect key="frame" x="100" y="90" width="214" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="9SD-PU-KKw" firstAttribute="top" secondItem="tps-Of-t4g" secondAttribute="top" id="6uQ-LR-AZy"/>
+                                    <constraint firstAttribute="bottom" secondItem="0eV-kS-e85" secondAttribute="bottom" constant="50" id="Owt-Od-uem"/>
+                                    <constraint firstAttribute="height" constant="300" id="RD9-aK-3R4"/>
+                                    <constraint firstAttribute="trailing" secondItem="0eV-kS-e85" secondAttribute="trailing" constant="30" id="a2L-O5-oit"/>
+                                    <constraint firstAttribute="trailing" secondItem="AsQ-fo-lsN" secondAttribute="trailing" constant="100" id="afQ-J1-vs2"/>
+                                    <constraint firstItem="AsQ-fo-lsN" firstAttribute="top" secondItem="tps-Of-t4g" secondAttribute="top" constant="90" id="cgJ-Ur-dcn"/>
+                                    <constraint firstItem="0eV-kS-e85" firstAttribute="top" secondItem="AsQ-fo-lsN" secondAttribute="bottom" constant="90" id="dfK-Xd-EKO"/>
+                                    <constraint firstItem="9SD-PU-KKw" firstAttribute="leading" secondItem="tps-Of-t4g" secondAttribute="leading" id="eyV-sB-vSK"/>
+                                    <constraint firstItem="0eV-kS-e85" firstAttribute="leading" secondItem="tps-Of-t4g" secondAttribute="leading" constant="30" id="ghX-Nf-PY7"/>
+                                    <constraint firstItem="AsQ-fo-lsN" firstAttribute="leading" secondItem="tps-Of-t4g" secondAttribute="leading" constant="100" id="kpu-hs-5dK"/>
+                                    <constraint firstAttribute="trailing" secondItem="9SD-PU-KKw" secondAttribute="trailing" id="t5x-0s-B93"/>
+                                    <constraint firstAttribute="bottom" secondItem="9SD-PU-KKw" secondAttribute="bottom" id="wWs-aS-5Ja"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="g6H-7l-NaX" appends="YES" id="9IL-3w-IoB"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NSu-nT-bOB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="tps-Of-t4g" secondAttribute="bottom" id="gk4-dH-V5G"/>
+                            <constraint firstItem="tps-Of-t4g" firstAttribute="leading" secondItem="NSu-nT-bOB" secondAttribute="leading" id="rKa-gL-aHC"/>
+                            <constraint firstItem="NSu-nT-bOB" firstAttribute="trailing" secondItem="tps-Of-t4g" secondAttribute="trailing" id="vJV-ha-oad"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="tps-Of-t4g" id="kvO-US-iGk"/>
+                        <outlet property="categoryNameTextField" destination="AsQ-fo-lsN" id="kYZ-Vx-YJy"/>
+                        <outlet property="imageView" destination="9SD-PU-KKw" id="Wfm-ON-qT4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lU5-tV-EoE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="g6H-7l-NaX">
+                    <connections>
+                        <action selector="didTapOutside:" destination="OKU-xW-hyw" id="rGb-Zs-g3G"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="273.91304347826087" y="156.69642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

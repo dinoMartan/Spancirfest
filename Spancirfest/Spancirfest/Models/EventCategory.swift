@@ -11,5 +11,6 @@ struct EventCategory: Codable {
     
     let categoryId: String
     let description: String
+    var image: String?
     
 }

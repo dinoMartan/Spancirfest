@@ -146,7 +146,8 @@ extension AdminDashboardViewController: AdminDashboardTableViewCellDelegate {
     }
     
     func didTapAddNewCategoryButton() {
-        // to do - add new category
+        guard let eventCategoryViewController = UIStoryboard.getViewController(viewControllerType: EventCategoryViewController.self, from: .EventCategory) else { return }
+        present(eventCategoryViewController, animated: true, completion: nil)
     }
     
     func didTapShowLocationDetails(location: Location) {
@@ -156,7 +157,9 @@ extension AdminDashboardViewController: AdminDashboardTableViewCellDelegate {
     }
     
     func didTapShowCategoryDetails(category: EventCategory) {
-        // to do - show event category details
+        guard let eventCategoryViewController = UIStoryboard.getViewController(viewControllerType: EventCategoryViewController.self, from: .EventCategory) else { return }
+        eventCategoryViewController.eventCategory = category
+        present(eventCategoryViewController, animated: true, completion: nil)
     }
     
     func didTapShowEventDetails(event: Event) {

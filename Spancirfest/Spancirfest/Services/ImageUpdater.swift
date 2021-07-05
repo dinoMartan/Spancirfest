@@ -13,6 +13,7 @@ enum ImageUpdaterResponse {
     case newImageUploaded(url: String)
     case imageUpdated(url: String)
     case imageNotChanged(url: String)
+    case noImage
     case error(error: Error?)
     
 }
@@ -28,7 +29,7 @@ final class ImageUpdater {
     //MARK: - Public methods
     
     func updateImage(currentImageView: UIImageView?, oldImageUrl: String?, imagePath: DatabaseImagePathContants, imageQuality: UIImage.ImageQuality, response: @escaping ((ImageUpdaterResponse) -> Void)) {
-        if currentImageView?.image == nil && oldImageUrl == nil { response(.error(error: nil)) }
+        if currentImageView?.image == nil && oldImageUrl == nil { response(.noImage) }
         
         // if old image doesn't exist, only the one in view is set
         if oldImageUrl == nil && currentImageView?.image != nil {
