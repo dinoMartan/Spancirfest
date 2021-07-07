@@ -517,6 +517,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="sY2-fr-UbU" id="DIY-Hb-pz3"/>
+                        <outlet property="buyTicketsButton" destination="JzE-QE-KQa" id="mV6-Fg-GUi"/>
                         <outlet property="categoryLabel" destination="PhC-CZ-dX3" id="8wH-dC-grX"/>
                         <outlet property="endDateLabel" destination="HeB-7c-wlR" id="SPH-fe-g8N"/>
                         <outlet property="eventImage" destination="SiE-j8-P7l" id="0DT-Ur-dXb"/>

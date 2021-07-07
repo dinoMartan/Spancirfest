@@ -190,6 +190,21 @@ final class DatabaseHandler {
         }
     }
     
+    func getDataWhereArrayContains<T: Codable>(type: T.Type, collection: CollectionsConstants, whereField: DatabaseFieldNameConstants, contains: Any, success: @escaping (([T]) -> Void), failure: @escaping ((Error) -> Void)) {
+        
+        db.collection(collection.rawValue).whereField(whereField.rawValue, arrayContains: contains).getDocuments() { (querySnapshot, error) in
+            if let error = error { failure(error) }
+            else {
+                var results: [T] = []
+                for document in querySnapshot!.documents {
+                    guard let data = document.getObject(type: T.self) else { continue }
+                    results.append(data)
+                }
+                success(results)
+            }
+        }
+    }
+    
     func getDocumentById<T: Codable>(type: T.Type, collection: CollectionsConstants, documentId: String, success: @escaping ((T) -> Void), failure: @escaping ((Error?) -> Void)) {
         db.collection(collection.rawValue).document(documentId).getDocument { (data, error) in
             if error == nil {

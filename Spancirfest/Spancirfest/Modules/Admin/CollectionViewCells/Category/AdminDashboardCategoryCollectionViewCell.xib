@@ -20,16 +20,31 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcK-gN-B3H">
                         <rect key="frame" x="0.0" y="0.0" width="130" height="150"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0di-1u-0I5">
+                                <rect key="frame" x="0.0" y="0.0" width="130" height="150"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lp4-Z0-AkG">
+                                <rect key="frame" x="0.0" y="0.0" width="130" height="150"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvi-Yy-mBU">
-                                <rect key="frame" x="44" y="64.5" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="34.5" y="60.5" width="61.5" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="0di-1u-0I5" secondAttribute="bottom" id="92X-Vi-MF4"/>
+                            <constraint firstAttribute="bottom" secondItem="lp4-Z0-AkG" secondAttribute="bottom" id="99o-Ki-bJ4"/>
+                            <constraint firstAttribute="trailing" secondItem="lp4-Z0-AkG" secondAttribute="trailing" id="DOu-Sd-yph"/>
+                            <constraint firstItem="0di-1u-0I5" firstAttribute="top" secondItem="jcK-gN-B3H" secondAttribute="top" id="MC6-bA-4dy"/>
+                            <constraint firstAttribute="trailing" secondItem="0di-1u-0I5" secondAttribute="trailing" id="RDP-mP-toC"/>
                             <constraint firstItem="Lvi-Yy-mBU" firstAttribute="centerY" secondItem="jcK-gN-B3H" secondAttribute="centerY" id="ZVh-Qi-xMQ"/>
+                            <constraint firstItem="lp4-Z0-AkG" firstAttribute="top" secondItem="jcK-gN-B3H" secondAttribute="top" id="Zdp-fd-o4y"/>
+                            <constraint firstItem="lp4-Z0-AkG" firstAttribute="leading" secondItem="jcK-gN-B3H" secondAttribute="leading" id="cCj-62-9rh"/>
+                            <constraint firstItem="0di-1u-0I5" firstAttribute="leading" secondItem="jcK-gN-B3H" secondAttribute="leading" id="riw-Iu-5pD"/>
                             <constraint firstItem="Lvi-Yy-mBU" firstAttribute="centerX" secondItem="jcK-gN-B3H" secondAttribute="centerX" id="yTa-0V-qHP"/>
                         </constraints>
                     </view>
@@ -45,6 +60,8 @@
             <size key="customSize" width="98" height="86"/>
             <connections>
                 <outlet property="categoryTitleLabel" destination="Lvi-Yy-mBU" id="psc-B2-8gy"/>
+                <outlet property="darkenView" destination="lp4-Z0-AkG" id="pHb-vP-3Uw"/>
+                <outlet property="imageView" destination="0di-1u-0I5" id="giQ-13-nAM"/>
             </connections>
             <point key="canvasLocation" x="-37.681159420289859" y="79.6875"/>
         </collectionViewCell>

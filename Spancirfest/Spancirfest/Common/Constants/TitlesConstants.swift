@@ -10,6 +10,6 @@ import Foundation
 enum TitlesConstants: String {
     
     case favouriteEvents = "Favourite events"
-    case paidTicketsEvents = "My paid tickets events"
+    case paidTicketsEvents = "My paid events"
     
 }

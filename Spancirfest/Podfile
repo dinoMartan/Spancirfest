@@ -12,5 +12,7 @@ target 'Spancirfest' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'FirebaseFirestoreSwift'
+  pod 'Braintree'
+  pod 'BraintreeDropIn'
 
 end

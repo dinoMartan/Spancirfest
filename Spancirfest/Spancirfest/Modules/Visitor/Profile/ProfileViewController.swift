@@ -64,11 +64,17 @@ private extension ProfileViewController {
         } failure: { error in
             // to do - handle error
         }
-
     }
     
     private func fetchPaidEvents() {
-        // to do - implement paid events in db
+        guard let userId = CurrentUser.shared.getCurrentUserId() else { return }
+        DatabaseHandler.shared.getDataWhereArrayContains(type: Event.self, collection: .events, whereField: .eventPaidUsersArray, contains: userId) { events in
+            let profileViewControllerData = ProfileViewControllerTableData(title: TitlesConstants.paidTicketsEvents.rawValue, events: events)
+            self.tableData.append(profileViewControllerData)
+            self.tableView.reloadData()
+        } failure: { error in
+            // to do - handle error
+        }
     }
     
 }

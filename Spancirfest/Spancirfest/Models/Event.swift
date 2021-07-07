@@ -19,6 +19,7 @@ struct Event: Codable {
     let numberOfPeople: Int?
     let image: String?
     let eventId: String
+    var paidUsers: [String]?
     
     func equals(event: Event) -> Bool {
         if self.ownerId != event.ownerId { return false }
@@ -31,6 +32,7 @@ struct Event: Codable {
         if self.numberOfPeople != event.numberOfPeople { return false }
         if self.image != event.image { return false }
         if self.eventId != event.eventId { return false }
+        if self.paidUsers != event.paidUsers { return false }
         else { return true }
     }
     

@@ -15,5 +15,6 @@ enum DatabaseFieldNameConstants: String {
     case userId = "userId"
     case eventLocationId = "location.locationId"
     case eventCategoryId = "eventCategory.categoryId"
+    case eventPaidUsersArray = "paidUsers"
     
 }

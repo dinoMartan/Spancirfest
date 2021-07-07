@@ -7,6 +7,8 @@
 
 import UIKit
 import SDWebImage
+import BraintreeDropIn
+import Braintree
 
 protocol EventDetailsViewControllerDelegate: AnyObject {
     
@@ -29,6 +31,7 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet private weak var imageBackgroundView: UIView!
     @IBOutlet private weak var backgroundView: UIView!
     @IBOutlet private weak var followButton: UIButton!
+    @IBOutlet private weak var buyTicketsButton: UIButton!
     
     //MARK: - Public properties
     
@@ -95,6 +98,7 @@ private extension EventDetailsViewController {
         
         configureImageLayout()
         configureBackgroundLayout()
+        configureBuyButton()
 
         if let image = event.image { eventImage.sd_setImage(with: URL(string: image), completed: nil) }
         titleLabel.text = event.name
@@ -113,6 +117,26 @@ private extension EventDetailsViewController {
     
     private func configureBackgroundLayout() {
         backgroundView.layer.cornerRadius = 15
+    }
+    
+    private func configureBuyButton() {
+        guard let userId = CurrentUser.shared.getCurrentUserId(),
+              let event = event,
+              let paidUsers = event.paidUsers
+        else { return }
+        var didBuyTicket = false
+        for paidUserId in paidUsers {
+            if paidUserId == userId {
+                didBuyTicket = true
+                break
+            }
+        }
+        
+        if didBuyTicket {
+            buyTicketsButton.isUserInteractionEnabled = false
+            buyTicketsButton.setTitle("Tickets purchased", for: .normal)
+            buyTicketsButton.tintColor = .systemGray
+        }
     }
     
     private func configureFollowButton() {
@@ -206,6 +230,62 @@ extension EventDetailsViewController {
     }
     
     @IBAction func didTapBuyTicketsButton(_ sender: Any) {
+        let tokenizationKey = "sandbox_v288kq6p_r63zxpwpvxyyvnsm"
+        BTLogger().level = .none
+        let request =  BTDropInRequest()
+        request.paypalDisabled = true
+        request.cardholderNameSetting = .required
+        
+        
+        let dropIn = BTDropInController(authorization: tokenizationKey, request: request) { (controller, result, error) in
+            if (error != nil) {
+                // to do - handle error
+            }
+            else if let result = result {
+                if let nonce = result.paymentMethod?.nonce {
+                self.postNonceToServer(paymentMethodNonce: nonce)
+                }
+            }
+            controller.dismiss(animated: true, completion: nil)
+        }
+        present(dropIn!, animated: true, completion: nil)
+    }
+    
+    // to do - add API for handling transaction
+    func postNonceToServer(paymentMethodNonce: String) {
+        guard let event = event else { return }
+        addEventToPaid()
+        
+        // when valid endpoint is created
+        /*
+        let paymentURL = URL(string: "https://your-server.example.com/payment-methods")!
+        var request = URLRequest(url: paymentURL)
+        request.httpBody = "payment_method_nonce=\(paymentMethodNonce)".data(using: String.Encoding.utf8)
+        request.httpBody = "amount=\(String(describing: event.price))".data(using: String.Encoding.utf8)
+        request.httpMethod = "POST"
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
+            if error == nil { self.addEventToPaid() }
+        }.resume()
+        */
+    }
+    
+    func addEventToPaid() {
+        guard var event = event,
+              let userId = CurrentUser.shared.getCurrentUserId()
+        else { return }
+        if event.paidUsers == nil {
+            event.paidUsers = [userId]
+        }
+        else { event.paidUsers?.append(userId) }
+        DatabaseHandler.shared.updateEvent(event: event) { didComplete in
+            if !didComplete {
+                // to do - handle error
+            }
+            else {
+                debugPrint("event updated!")
+            }
+        }
     }
     
 }
