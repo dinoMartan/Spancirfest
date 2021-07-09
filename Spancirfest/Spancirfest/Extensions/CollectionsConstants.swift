@@ -15,5 +15,6 @@ enum CollectionsConstants: String {
     case locations = "locations"
     case eventFollowing = "eventFollowing"
     case festivalDetails = "festivalDetails"
+    case eventApproveal = "eventApproveal"
     
 }

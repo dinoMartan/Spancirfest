@@ -184,9 +184,10 @@ extension EventEditorViewController {
             let eventId = String.randomString(length: 30)
             DatabaseHandler.shared.uploadImage(image: image.compress(to: .low), path: .eventImage) { imageUrl in
                 let newEvent = Event(ownerId: currentUserId, eventCategory: category, name: name, startDate: startingDate, endDate: endingDate, price: price, location: location, numberOfPeople: numberOfPeople, image: imageUrl, eventId: eventId)
-                
-                DatabaseHandler.shared.addData(data: [newEvent], collection: .events) {
+                let newEventApproveal = EventApproveal(event: newEvent, approved: false, approvedBy: nil, creationDate: Date(), approvedDate: nil, comment: nil)
+                DatabaseHandler.shared.addData(data: [newEventApproveal], collection: .eventApproveal) {
                     self.stopLoadingAnimation()
+                    // to do - add alert that admin will review the event
                     self.navigationController?.popToRootViewController(animated: true)
                 } failure: { error in
                     self.stopLoadingAnimation()

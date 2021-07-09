@@ -11,7 +11,7 @@ enum AdminDashboardTableData {
     
     case locations (title: String, buttonText: String?, locations: [Location])
     case categories (title: String, buttonText: String?, categories: [EventCategory])
-    case events (title: String, events: [Event])
+    case eventApproveal (title: String, approvealEvents: [EventApproveal])
     
 }
 
@@ -61,7 +61,7 @@ private extension AdminDashboardViewController {
         tableData.removeAll()
         fetchLocations {
             self.fetchEventCategories {
-                self.fetchEvents {
+                self.fetchEventApproveals {
                     self.tableView.reloadData()
                 }
             }
@@ -90,15 +90,16 @@ private extension AdminDashboardViewController {
         }
     }
     
-    private func fetchEvents(completion: @escaping (() -> Void)) {
-        DatabaseHandler.shared.getData(type: Event.self, collection: .events) { events in
-            let eventData = AdminDashboardTableData.events(title: "Events", events: events)
-            self.tableData.append(eventData)
+    private func fetchEventApproveals(completion: @escaping (() -> Void)) {
+        DatabaseHandler.shared.getDataWhere(type: EventApproveal.self, collection: .eventApproveal, whereField: .approved, isEqualTo: false) { eventApproveals in
+            let eventApprovealData = AdminDashboardTableData.eventApproveal(title: "Event Approveals", approvealEvents: eventApproveals)
+            self.tableData.append(eventApprovealData)
             completion()
         } failure: { error in
             // to do - handle error
             completion()
         }
+
     }
     
 }
@@ -125,7 +126,7 @@ extension AdminDashboardViewController: UITableViewDataSource, UITableViewDelega
             return 230
         case .locations(_, _, _):
             return 230
-        case .events(_, _):
+        case .eventApproveal(_, _):
             return 230
         }
     }
@@ -162,11 +163,10 @@ extension AdminDashboardViewController: AdminDashboardTableViewCellDelegate {
         present(eventCategoryViewController, animated: true, completion: nil)
     }
     
-    func didTapShowEventDetails(event: Event) {
-        guard let eventDetailsViewController = UIStoryboard.getViewController(viewControllerType: EventDetailsViewController.self, from: .Event) else { return }
-        eventDetailsViewController.event = event
-        eventDetailsViewController.delegate = self
-        present(eventDetailsViewController, animated: true, completion: nil)
+    func didTapShowEventApprovealDetails(eventApproveal: EventApproveal) {
+        guard let eventApprovealViewController = UIStoryboard.getViewController(viewControllerType: ApprovealViewController.self, from: .Approveal) else { return }
+        eventApprovealViewController.eventApproveal = eventApproveal
+        present(eventApprovealViewController, animated: true, completion: nil)
     }
     
 }

@@ -166,6 +166,20 @@ final class DatabaseHandler {
         }
     }
     
+    func updateEventApproveal(eventApproveal: EventApproveal, completion: @escaping ((Bool) -> Void)) {
+        db.collection(CollectionsConstants.eventApproveal.rawValue).whereField("event.eventId", isEqualTo: eventApproveal.event.eventId).getDocuments { (queryShapshot, error) in
+            if error != nil { completion(false) }
+            let document = queryShapshot?.documents[0]
+            let documentId = document?.documentID
+            if documentId == nil { completion(false) }
+            
+            self.db.collection(CollectionsConstants.eventApproveal.rawValue).document(documentId!).updateData(eventApproveal.toDictionnary!) { error in
+                completion(false)
+            }
+            completion(true)
+        }
+    }
+    
     func updateUserDetails(userDetails: UserDetails, userId: String, completion: @escaping ((Bool) -> Void)) {
         db.collection(CollectionsConstants.userDetails.rawValue).document(userId).updateData(userDetails.toDictionnary!) { error in
             completion(false)

@@ -63,6 +63,9 @@
 		318034532691ECD20058DC1E /* ImageUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318034522691ECD20058DC1E /* ImageUpdater.swift */; };
 		31803457269393F50058DC1E /* EventCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31803456269393F40058DC1E /* EventCategory.storyboard */; };
 		3180345A269394120058DC1E /* EventCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31803459269394120058DC1E /* EventCategoryViewController.swift */; };
+		318034B72697198B0058DC1E /* EventApproveal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318034B62697198B0058DC1E /* EventApproveal.swift */; };
+		318034BB26984C060058DC1E /* Approveal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318034BA26984C060058DC1E /* Approveal.storyboard */; };
+		318034BE26984C390058DC1E /* ApprovealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318034BD26984C390058DC1E /* ApprovealViewController.swift */; };
 		3199D8E2267CD16300613D7C /* DatabaseFieldNameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */; };
 		3199D8E9267F40E200613D7C /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199D8E8267F40E200613D7C /* DatePickerViewController.swift */; };
 		3199D8F2267F411600613D7C /* Pickers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3199D8F1267F411600613D7C /* Pickers.storyboard */; };
@@ -138,6 +141,9 @@
 		318034522691ECD20058DC1E /* ImageUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUpdater.swift; sourceTree = "<group>"; };
 		31803456269393F40058DC1E /* EventCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventCategory.storyboard; sourceTree = "<group>"; };
 		31803459269394120058DC1E /* EventCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCategoryViewController.swift; sourceTree = "<group>"; };
+		318034B62697198B0058DC1E /* EventApproveal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventApproveal.swift; sourceTree = "<group>"; };
+		318034BA26984C060058DC1E /* Approveal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Approveal.storyboard; sourceTree = "<group>"; };
+		318034BD26984C390058DC1E /* ApprovealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovealViewController.swift; sourceTree = "<group>"; };
 		3199D8E1267CD16300613D7C /* DatabaseFieldNameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFieldNameConstants.swift; sourceTree = "<group>"; };
 		3199D8E8267F40E200613D7C /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		3199D8F1267F411600613D7C /* Pickers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pickers.storyboard; sourceTree = "<group>"; };
@@ -242,6 +248,7 @@
 				313ADBE5267B8A5700F0A562 /* Location.swift */,
 				31B4B0F82684A0760045139D /* EventFollowing.swift */,
 				31803427268B281E0058DC1E /* FestivalDetails.swift */,
+				318034B62697198B0058DC1E /* EventApproveal.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -318,6 +325,7 @@
 		313AD9712678E5D300F0A562 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				318034B926984BB10058DC1E /* Approveal */,
 				31803436268CCF340058DC1E /* CollectionViewCells */,
 				3180342F268CCC770058DC1E /* TableViewCell */,
 				313AD9762678E67C00F0A562 /* AdminDashboard */,
@@ -357,10 +365,9 @@
 		313AD9752678E60C00F0A562 /* ExhibitorDashboard */ = {
 			isa = PBXGroup;
 			children = (
+				318034C026986B240058DC1E /* Published Events */,
 				313AD98A2678E77100F0A562 /* ExhibitorDashboardViewController.swift */,
 				313AD98D2678E77C00F0A562 /* ExhibitorDashboard.storyboard */,
-				313ADBDA267B7FBE00F0A562 /* ExhibitorDashboardEventTableViewCell.swift */,
-				313ADBDB267B7FBE00F0A562 /* ExhibitorDashboardEventTableViewCell.xib */,
 			);
 			path = ExhibitorDashboard;
 			sourceTree = "<group>";
@@ -499,6 +506,24 @@
 			path = EventCategory;
 			sourceTree = "<group>";
 		};
+		318034B926984BB10058DC1E /* Approveal */ = {
+			isa = PBXGroup;
+			children = (
+				318034BA26984C060058DC1E /* Approveal.storyboard */,
+				318034BD26984C390058DC1E /* ApprovealViewController.swift */,
+			);
+			path = Approveal;
+			sourceTree = "<group>";
+		};
+		318034C026986B240058DC1E /* Published Events */ = {
+			isa = PBXGroup;
+			children = (
+				313ADBDA267B7FBE00F0A562 /* ExhibitorDashboardEventTableViewCell.swift */,
+				313ADBDB267B7FBE00F0A562 /* ExhibitorDashboardEventTableViewCell.xib */,
+			);
+			path = "Published Events";
+			sourceTree = "<group>";
+		};
 		3199D8E4267F40A700613D7C /* Pickers */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,6 +640,7 @@
 				313AD8FB2677888000F0A562 /* GoogleService-Info.plist in Resources */,
 				313AD9852678E74900F0A562 /* Profile.storyboard in Resources */,
 				3199D8F2267F411600613D7C /* Pickers.storyboard in Resources */,
+				318034BB26984C060058DC1E /* Approveal.storyboard in Resources */,
 				313AD9822678E73D00F0A562 /* Map.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,6 +728,7 @@
 				313ADAED267B69D400F0A562 /* CollectionsConstants.swift in Sources */,
 				31803428268B281E0058DC1E /* FestivalDetails.swift in Sources */,
 				313AD9322678B80300F0A562 /* StoryboardExtension.swift in Sources */,
+				318034BE26984C390058DC1E /* ApprovealViewController.swift in Sources */,
 				3180342C268B3CF70058DC1E /* FestivalData.swift in Sources */,
 				313AD9352678C99E00F0A562 /* SignInViewController.swift in Sources */,
 				313ADBE3267B89B200F0A562 /* Event.swift in Sources */,
@@ -726,6 +753,7 @@
 				313ADAE9267B65A200F0A562 /* StringExtension.swift in Sources */,
 				31B4B10D268890430045139D /* MapLocationEventsViewController.swift in Sources */,
 				313ADAF1267B6F7400F0A562 /* DataConverter.swift in Sources */,
+				318034B72697198B0058DC1E /* EventApproveal.swift in Sources */,
 				31587B7E2681E65600BB6E82 /* EventDisplayCollectionViewCell.swift in Sources */,
 				31587B742681E55C00BB6E82 /* EventDisplayTableViewCell.swift in Sources */,
 				3199D8E2267CD16300613D7C /* DatabaseFieldNameConstants.swift in Sources */,

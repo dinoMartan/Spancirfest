@@ -98,13 +98,18 @@ private extension EventDetailsViewController {
         
         configureImageLayout()
         configureBackgroundLayout()
-        configureBuyButton()
+        checkIfEventIsPaid()
 
         if let image = event.image { eventImage.sd_setImage(with: URL(string: image), completed: nil) }
         titleLabel.text = event.name
         startDateLabel.text = event.startDate.toString(style: .style1)
         endDateLabel.text = event.endDate.toString(style: .style1)
-        if let numberOfPeople = event.numberOfPeople { numberOfPeopleLabel.text = String(numberOfPeople) }
+        if let numberOfPeople = event.numberOfPeople {
+            if let paidUsers = event.paidUsers?.count {
+                numberOfPeopleLabel.text = "\(String(paidUsers))/\(numberOfPeople)"
+            }
+            else { numberOfPeopleLabel.text = "0/\(numberOfPeople)"}
+        }
         if let price = event.price { priceLabel.text = String(price) }
         locationLabel.text = event.location.name
         categoryLabel.text = event.eventCategory.description
@@ -119,7 +124,7 @@ private extension EventDetailsViewController {
         backgroundView.layer.cornerRadius = 15
     }
     
-    private func configureBuyButton() {
+    private func checkIfEventIsPaid() {
         guard let userId = CurrentUser.shared.getCurrentUserId(),
               let event = event,
               let paidUsers = event.paidUsers
@@ -133,10 +138,14 @@ private extension EventDetailsViewController {
         }
         
         if didBuyTicket {
-            buyTicketsButton.isUserInteractionEnabled = false
-            buyTicketsButton.setTitle("Tickets purchased", for: .normal)
-            buyTicketsButton.tintColor = .systemGray
+            configureBuyButton()
         }
+    }
+    
+    private func configureBuyButton() {
+        buyTicketsButton.isUserInteractionEnabled = false
+        buyTicketsButton.setTitle("Tickets purchased", for: .normal)
+        buyTicketsButton.tintColor = .systemGray
     }
     
     private func configureFollowButton() {
@@ -230,6 +239,11 @@ extension EventDetailsViewController {
     }
     
     @IBAction func didTapBuyTicketsButton(_ sender: Any) {
+        guard checkIfCanBuyTicket() else {
+            // to do - handle error
+            return
+        }
+        
         let tokenizationKey = "sandbox_v288kq6p_r63zxpwpvxyyvnsm"
         BTLogger().level = .none
         let request =  BTDropInRequest()
@@ -251,8 +265,17 @@ extension EventDetailsViewController {
         present(dropIn!, animated: true, completion: nil)
     }
     
+    private func checkIfCanBuyTicket() -> Bool {
+        guard let event = event,
+              let numberOfPeople = event.numberOfPeople
+        else { return false }
+        guard let paidUsers = event.paidUsers else { return true }
+        if paidUsers.count >= numberOfPeople { return false }
+        else { return true }
+    }
+    
     // to do - add API for handling transaction
-    func postNonceToServer(paymentMethodNonce: String) {
+    private func postNonceToServer(paymentMethodNonce: String) {
         guard let event = event else { return }
         addEventToPaid()
         
@@ -283,7 +306,8 @@ extension EventDetailsViewController {
                 // to do - handle error
             }
             else {
-                debugPrint("event updated!")
+                self.configureBuyButton()
+                self.delegate?.didMakeChanges()
             }
         }
     }

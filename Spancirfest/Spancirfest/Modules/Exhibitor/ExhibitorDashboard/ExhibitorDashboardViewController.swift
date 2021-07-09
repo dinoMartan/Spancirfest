@@ -47,8 +47,6 @@ class ExhibitorDashboardViewController: UIViewController {
         } failure: { error in
             //
         }
-
-
     }
     
 }
