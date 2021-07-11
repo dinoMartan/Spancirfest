@@ -21,5 +21,7 @@ enum StoryboardId: String {
     case LocationDetails
     case EventCategory
     case Approveal
+    case QRCode
+    case ExhibitorEventQRScan
     
 }

@@ -127,5 +127,13 @@ extension ProfileViewController {
         present(authenticationViewController, animated: true, completion: nil)
     }
     
+    @IBAction func didTapMyIdButton(_ sender: Any) {
+        guard let userId = CurrentUser.shared.getCurrentUserId(),
+              let qrCodePresenterViewController = UIStoryboard.getViewController(viewControllerType: QRCodePresenterViewController.self, from: .QRCode)
+        else { return }
+        qrCodePresenterViewController.string = userId
+        navigationController?.pushViewController(qrCodePresenterViewController, animated: true)
+    }
+    
 }
 

@@ -432,6 +432,7 @@ PODS:
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.5.0)
   - leveldb-library (1.22.1)
+  - MercariQRScanner (1.8.0)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -450,6 +451,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseFirestoreSwift
   - FirebaseUI
+  - MercariQRScanner
   - SDWebImage
 
 SPEC REPOS:
@@ -481,6 +483,7 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - leveldb-library
+    - MercariQRScanner
     - nanopb
     - PromisesObjC
     - SDWebImage
@@ -513,10 +516,11 @@ SPEC CHECKSUMS:
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
+  MercariQRScanner: 5069ab8376a99f1e099682ac9288a131540e079c
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: 13f83d865a66b3f3d611a79d67229099e91e996f
+PODFILE CHECKSUM: facafb0eeff85f088269ac27c245dab9c71c255a
 
 COCOAPODS: 1.10.1

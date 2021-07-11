@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol ApprovealViewControllerDelegate: AnyObject {
+    
+    func didMakeChanges()
+    
+}
+
 class ApprovealViewController: UIViewController {
     
     //MARK: - IBOutlets
@@ -17,6 +23,7 @@ class ApprovealViewController: UIViewController {
     //MARK: - Public properties
     
     var eventApproveal: EventApproveal?
+    weak var delegate: ApprovealViewControllerDelegate?
     
     //MARK: Lifecycle
 
@@ -60,6 +67,7 @@ extension ApprovealViewController {
         guard let eventApproveal = prepareEventApproveal(approved: true) else { return }
         updateEventApproveal(eventApproveal: eventApproveal) {
             self.addEvent(event: eventApproveal.event) {
+                self.delegate?.didMakeChanges()
                 self.dismiss(animated: true, completion: nil)
             } failure: { error in
                 // to do - handle error
@@ -72,6 +80,7 @@ extension ApprovealViewController {
     @IBAction func didTapDenyButton(_ sender: Any) {
         guard let eventApproveal = prepareEventApproveal(approved: false) else { return }
         updateEventApproveal(eventApproveal: eventApproveal) {
+            self.delegate?.didMakeChanges()
             self.dismiss(animated: true, completion: nil)
         } failure: {
             // to do - handle error

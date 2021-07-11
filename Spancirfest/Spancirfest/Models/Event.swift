@@ -38,4 +38,12 @@ struct Event: Codable {
         else { return true }
     }
     
+    func isPaidUser(idUser: String) -> Bool {
+        guard let paidUsers = self.paidUsers else { return false }
+        for user in paidUsers {
+            if user == idUser { return true }
+        }
+        return false
+    }
+    
 }

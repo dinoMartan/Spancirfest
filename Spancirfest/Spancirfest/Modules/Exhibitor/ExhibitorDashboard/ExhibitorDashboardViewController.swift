@@ -129,6 +129,7 @@ extension ExhibitorDashboardViewController: UITableViewDataSource, UITableViewDe
         case .myEvents(let events):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ExhibitorDashboardEventTableViewCell.identifier) as? ExhibitorDashboardEventTableViewCell else { return UITableViewCell() }
             cell.configureCell(event: events[indexPath.row])
+            cell.delegate = self
             return cell
         case .myApproveals(let approveals):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyApprovealsTableViewCell.identifier) as? MyApprovealsTableViewCell else { return UITableViewCell() }
@@ -166,6 +167,18 @@ extension ExhibitorDashboardViewController {
     @IBAction func didTapAddNewEventButton(_ sender: Any) {
         guard let eventViewController = UIStoryboard.getViewController(viewControllerType: EventEditorViewController.self, from: .Event) else { return }
         navigationController?.pushViewController(eventViewController, animated: true)
+    }
+    
+}
+
+//MARK: - ExhibitorDashboardEventTableViewCellDelegate -
+
+extension ExhibitorDashboardViewController: ExhibitorDashboardEventTableViewCellDelegate {
+    
+    func didTapScanButton(event: Event) {
+        guard let exhibitorEventQRScanViewController = UIStoryboard.getViewController(viewControllerType: ExhibitorEventQRScanViewController.self, from: .ExhibitorEventQRScan) else { return }
+        exhibitorEventQRScanViewController.event = event
+        navigationController?.pushViewController(exhibitorEventQRScanViewController, animated: true)
     }
     
 }

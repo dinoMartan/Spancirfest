@@ -31,7 +31,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Admin" image="infinity" catalog="system" id="Osa-mt-SOX"/>
-                    <navigationItem key="navigationItem" title="Admin Dashboard" id="2dl-1s-Oja"/>
+                    <navigationItem key="navigationItem" title="Admin Dashboard" id="2dl-1s-Oja">
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="9b4-X8-Pgb">
+                            <connections>
+                                <action selector="didTapOrganizeButton:" destination="Jnh-AW-as5" id="qWS-dm-AO7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="8ae-zc-aXd" id="WfL-ll-Iuu"/>

@@ -36,7 +36,7 @@ class AdminDashboardViewController: UIViewController {
         super.viewDidLoad()
         setupView()
     }
-
+    
 }
 
 //MARK: - Private extensions -
@@ -100,6 +100,17 @@ private extension AdminDashboardViewController {
             completion()
         }
 
+    }
+    
+}
+
+//MARK: - IBActions -
+
+extension AdminDashboardViewController {
+    
+    @IBAction func didTapOrganizeButton(_ sender: Any) {
+        guard let approvealListViewController = UIStoryboard.getViewController(viewControllerType: AprovealListViewController.self, from: .Approveal) else { return }
+        navigationController?.pushViewController(approvealListViewController, animated: true)
     }
     
 }

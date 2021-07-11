@@ -48,6 +48,12 @@
 		31587B752681E55C00BB6E82 /* EventDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31587B732681E55C00BB6E82 /* EventDisplayTableViewCell.xib */; };
 		31587B7E2681E65600BB6E82 /* EventDisplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31587B7C2681E65600BB6E82 /* EventDisplayCollectionViewCell.swift */; };
 		31587B7F2681E65600BB6E82 /* EventDisplayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31587B7D2681E65600BB6E82 /* EventDisplayCollectionViewCell.xib */; };
+		3174F04B269AFC5C008B204C /* AprovealListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3174F04A269AFC5C008B204C /* AprovealListViewController.swift */; };
+		3174F04F269B06C3008B204C /* QRCode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3174F04E269B06C3008B204C /* QRCode.storyboard */; };
+		3174F052269B0707008B204C /* QRCodePresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3174F051269B0707008B204C /* QRCodePresenterViewController.swift */; };
+		3174F081269B0A93008B204C /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3174F080269B0A93008B204C /* QRCodeScannerViewController.swift */; };
+		3174F08A269B1D23008B204C /* ExhibitorEventQRScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3174F089269B1D23008B204C /* ExhibitorEventQRScanViewController.swift */; };
+		3174F08D269B1D39008B204C /* ExhibitorEventQRScan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3174F08C269B1D39008B204C /* ExhibitorEventQRScan.storyboard */; };
 		31803428268B281E0058DC1E /* FestivalDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31803427268B281E0058DC1E /* FestivalDetails.swift */; };
 		3180342C268B3CF70058DC1E /* FestivalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180342B268B3CF70058DC1E /* FestivalData.swift */; };
 		31803432268CCC920058DC1E /* AdminDashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31803430268CCC920058DC1E /* AdminDashboardTableViewCell.swift */; };
@@ -129,6 +135,12 @@
 		31587B732681E55C00BB6E82 /* EventDisplayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDisplayTableViewCell.xib; sourceTree = "<group>"; };
 		31587B7C2681E65600BB6E82 /* EventDisplayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDisplayCollectionViewCell.swift; sourceTree = "<group>"; };
 		31587B7D2681E65600BB6E82 /* EventDisplayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDisplayCollectionViewCell.xib; sourceTree = "<group>"; };
+		3174F04A269AFC5C008B204C /* AprovealListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AprovealListViewController.swift; sourceTree = "<group>"; };
+		3174F04E269B06C3008B204C /* QRCode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCode.storyboard; sourceTree = "<group>"; };
+		3174F051269B0707008B204C /* QRCodePresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodePresenterViewController.swift; sourceTree = "<group>"; };
+		3174F080269B0A93008B204C /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
+		3174F089269B1D23008B204C /* ExhibitorEventQRScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitorEventQRScanViewController.swift; sourceTree = "<group>"; };
+		3174F08C269B1D39008B204C /* ExhibitorEventQRScan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExhibitorEventQRScan.storyboard; sourceTree = "<group>"; };
 		31803427268B281E0058DC1E /* FestivalDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalDetails.swift; sourceTree = "<group>"; };
 		3180342B268B3CF70058DC1E /* FestivalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalData.swift; sourceTree = "<group>"; };
 		31803430268CCC920058DC1E /* AdminDashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardTableViewCell.swift; sourceTree = "<group>"; };
@@ -323,6 +335,7 @@
 		313AD9702678E5C900F0A562 /* Exhibitor */ = {
 			isa = PBXGroup;
 			children = (
+				3174F083269B1CC9008B204C /* ExhibitorEventQRScan */,
 				313AD9752678E60C00F0A562 /* ExhibitorDashboard */,
 			);
 			path = Exhibitor;
@@ -400,6 +413,7 @@
 		313AD99D267A8C3C00F0A562 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3174F04D269B06B5008B204C /* QRCode */,
 				31803455269393E40058DC1E /* EventCategory */,
 				31803444268DCA560058DC1E /* LocationDetails */,
 				31B4B10026863B8B0045139D /* EventDisplay */,
@@ -448,6 +462,25 @@
 				31587B7D2681E65600BB6E82 /* EventDisplayCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		3174F04D269B06B5008B204C /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				3174F04E269B06C3008B204C /* QRCode.storyboard */,
+				3174F080269B0A93008B204C /* QRCodeScannerViewController.swift */,
+				3174F051269B0707008B204C /* QRCodePresenterViewController.swift */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
+		3174F083269B1CC9008B204C /* ExhibitorEventQRScan */ = {
+			isa = PBXGroup;
+			children = (
+				3174F089269B1D23008B204C /* ExhibitorEventQRScanViewController.swift */,
+				3174F08C269B1D39008B204C /* ExhibitorEventQRScan.storyboard */,
+			);
+			path = ExhibitorEventQRScan;
 			sourceTree = "<group>";
 		};
 		3180342A268B3CE50058DC1E /* FestivalData */ = {
@@ -519,6 +552,7 @@
 				318034BA26984C060058DC1E /* Approveal.storyboard */,
 				318034BD26984C390058DC1E /* ApprovealViewController.swift */,
 				318034C92699EB330058DC1E /* ApprovealDetailsViewController.swift */,
+				3174F04A269AFC5C008B204C /* AprovealListViewController.swift */,
 			);
 			path = Approveal;
 			sourceTree = "<group>";
@@ -644,10 +678,12 @@
 				31803446268DCA660058DC1E /* LocationDetails.storyboard in Resources */,
 				3180343B268CCF650058DC1E /* AdminDashboardLocationCollectionViewCell.xib in Resources */,
 				313AD9A4267A8C7C00F0A562 /* Event.storyboard in Resources */,
+				3174F08D269B1D39008B204C /* ExhibitorEventQRScan.storyboard in Resources */,
 				31803433268CCC920058DC1E /* AdminDashboardTableViewCell.xib in Resources */,
 				313AD9782678E6C900F0A562 /* Home.storyboard in Resources */,
 				313AD98E2678E77C00F0A562 /* ExhibitorDashboard.storyboard in Resources */,
 				313AD8D4267774F700F0A562 /* LaunchScreen.storyboard in Resources */,
+				3174F04F269B06C3008B204C /* QRCode.storyboard in Resources */,
 				313AD8D1267774F700F0A562 /* Assets.xcassets in Resources */,
 				31803457269393F50058DC1E /* EventCategory.storyboard in Resources */,
 				318034C62699E11D0058DC1E /* MyApprovealsTableViewCell.xib in Resources */,
@@ -746,6 +782,7 @@
 				313ADAED267B69D400F0A562 /* CollectionsConstants.swift in Sources */,
 				31803428268B281E0058DC1E /* FestivalDetails.swift in Sources */,
 				313AD9322678B80300F0A562 /* StoryboardExtension.swift in Sources */,
+				3174F081269B0A93008B204C /* QRCodeScannerViewController.swift in Sources */,
 				318034BE26984C390058DC1E /* ApprovealViewController.swift in Sources */,
 				3180342C268B3CF70058DC1E /* FestivalData.swift in Sources */,
 				313AD9352678C99E00F0A562 /* SignInViewController.swift in Sources */,
@@ -755,6 +792,7 @@
 				313ADBDC267B7FBE00F0A562 /* ExhibitorDashboardEventTableViewCell.swift in Sources */,
 				31803432268CCC920058DC1E /* AdminDashboardTableViewCell.swift in Sources */,
 				313AD98B2678E77100F0A562 /* ExhibitorDashboardViewController.swift in Sources */,
+				3174F04B269AFC5C008B204C /* AprovealListViewController.swift in Sources */,
 				3199D8F5267F412700613D7C /* LocationPickerViewController.swift in Sources */,
 				31803449268DCA820058DC1E /* LocationDetailsViewController.swift in Sources */,
 				313AD9392678DC8B00F0A562 /* CurrentUser.swift in Sources */,
@@ -771,6 +809,8 @@
 				313ADAE9267B65A200F0A562 /* StringExtension.swift in Sources */,
 				31B4B10D268890430045139D /* MapLocationEventsViewController.swift in Sources */,
 				313ADAF1267B6F7400F0A562 /* DataConverter.swift in Sources */,
+				3174F052269B0707008B204C /* QRCodePresenterViewController.swift in Sources */,
+				3174F08A269B1D23008B204C /* ExhibitorEventQRScanViewController.swift in Sources */,
 				318034B72697198B0058DC1E /* EventApproveal.swift in Sources */,
 				31587B7E2681E65600BB6E82 /* EventDisplayCollectionViewCell.swift in Sources */,
 				318034C52699E11D0058DC1E /* MyApprovealsTableViewCell.swift in Sources */,

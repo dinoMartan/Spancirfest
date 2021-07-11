@@ -8,6 +8,12 @@
 import UIKit
 import SDWebImage
 
+protocol ExhibitorDashboardEventTableViewCellDelegate: AnyObject {
+    
+    func didTapScanButton(event: Event)
+    
+}
+
 class ExhibitorDashboardEventTableViewCell: UITableViewCell {
     
     //MARK: - IBOutlets
@@ -21,10 +27,16 @@ class ExhibitorDashboardEventTableViewCell: UITableViewCell {
     //MARK: - Public properties
     
     static let identifier = "ExhibitorDashboardEventTableViewCell"
+    weak var delegate: ExhibitorDashboardEventTableViewCellDelegate?
+    
+    //MARK: - Private properties
+    
+    private var event: Event?
     
     //MARK: - Public methods
     
     func configureCell(event: Event) {
+        self.event = event
         nameLabel.text = event.name
         locationLabel.text = event.location.name
         
@@ -37,6 +49,17 @@ class ExhibitorDashboardEventTableViewCell: UITableViewCell {
         eventImage.layer.cornerRadius = eventImage.frame.height / 2
         guard let image = event.image else { return }
         eventImage.sd_setImage(with: URL(string: image), completed: nil)
+    }
+    
+}
+
+//MARK: - IBActions -
+
+extension ExhibitorDashboardEventTableViewCell {
+    
+    @IBAction func didTapScanButton(_ sender: Any) {
+        guard let event = event else { return }
+        delegate?.didTapScanButton(event: event)
     }
     
 }

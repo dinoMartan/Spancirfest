@@ -172,7 +172,7 @@ extension EventEditorViewController {
               let endingDate = selectedEndDate,
               let location = selectedLocation,
               let category = selectedCategory,
-              let image = eventImage.image?.getJpeg(quality: .low)
+              let image = eventImage.image?.compress(to: .medium)
         else {
             // to do - handle error
             return

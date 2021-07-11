@@ -33,6 +33,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="c4F-fv-JxO"/>
                     <navigationItem key="navigationItem" title="Profile" id="yD9-Of-gt9">
+                        <barButtonItem key="leftBarButtonItem" title="My ID" id="Z60-WM-qhR">
+                            <connections>
+                                <action selector="didTapMyIdButton:" destination="gmC-fQ-Ebs" id="vDy-32-143"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="arrowshape.turn.up.forward.fill" catalog="system" style="plain" id="RVv-Kt-Y4I">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hMv-3W-lIS">
                                 <rect key="frame" x="316" y="5" width="78" height="34"/>

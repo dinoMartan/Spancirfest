@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Code Presenter View Controller-->
+        <scene sceneID="TSD-hY-4i2">
+            <objects>
+                <viewController storyboardIdentifier="QRCodePresenterViewController" id="XDX-NO-jLs" customClass="QRCodePresenterViewController" customModule="Spancirfest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9TS-iA-OB3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ihl-Q9-72l">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5r0-2P-U19"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ihl-Q9-72l" firstAttribute="leading" secondItem="5r0-2P-U19" secondAttribute="leading" id="NP9-fF-dIY"/>
+                            <constraint firstItem="Ihl-Q9-72l" firstAttribute="top" secondItem="5r0-2P-U19" secondAttribute="top" id="Yet-Az-2eQ"/>
+                            <constraint firstItem="5r0-2P-U19" firstAttribute="bottom" secondItem="Ihl-Q9-72l" secondAttribute="bottom" id="aMH-Qk-dW9"/>
+                            <constraint firstItem="5r0-2P-U19" firstAttribute="trailing" secondItem="Ihl-Q9-72l" secondAttribute="trailing" id="qRm-B5-aiV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Ihl-Q9-72l" id="nWd-33-viA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GZh-1C-pVf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-249" y="-81"/>
+        </scene>
+        <!--Code Scanner View Controller-->
+        <scene sceneID="MKH-oO-GnM">
+            <objects>
+                <viewController storyboardIdentifier="QRCodeScannerViewController" id="eof-xK-heH" customClass="QRCodeScannerViewController" customModule="Spancirfest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="byI-yv-NNg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5M-Ec-f2l" customClass="QRScannerView" customModule="MercariQRScanner">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isBlurEffectEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ATP-KC-leJ"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="T5M-Ec-f2l" firstAttribute="top" secondItem="ATP-KC-leJ" secondAttribute="top" id="2KE-ld-pU2"/>
+                            <constraint firstItem="ATP-KC-leJ" firstAttribute="trailing" secondItem="T5M-Ec-f2l" secondAttribute="trailing" id="2kC-Jl-gth"/>
+                            <constraint firstItem="ATP-KC-leJ" firstAttribute="bottom" secondItem="T5M-Ec-f2l" secondAttribute="bottom" id="8BW-Tt-csU"/>
+                            <constraint firstItem="T5M-Ec-f2l" firstAttribute="leading" secondItem="ATP-KC-leJ" secondAttribute="leading" id="waD-uW-riq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scannerView" destination="T5M-Ec-f2l" id="ekY-2o-3rc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zLX-oW-X7W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="654" y="-81"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
