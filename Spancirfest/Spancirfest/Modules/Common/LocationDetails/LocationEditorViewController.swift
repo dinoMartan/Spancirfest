@@ -11,7 +11,7 @@ import SDWebImage
 
 protocol LocationEditorViewControllerDelegate: AnyObject {
     
-    func didMakeChanges()
+    func didChanges()
     
 }
 
@@ -35,12 +35,18 @@ class LocationEditorViewController: UIViewController {
     
     private var coordinates: CLLocationCoordinate2D?
     private let imagePickerController = UIImagePickerController()
+    private var didChanges = false
     
     //MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if didChanges { delegate?.didChanges() }
     }
     
 }
@@ -140,14 +146,14 @@ extension LocationEditorViewController {
                         // to do - handle error
                         self.hideActivityIndicator()
                     }
-                    else { self.delegate?.didMakeChanges() }
+                    else { self.delegate?.didChanges() }
                     self.hideActivityIndicator()
                     self.dismiss(animated: true, completion: nil)
                 }
             }
             else {
                 DatabaseHandler.shared.addData(data: [newLocation], collection: .locations) {
-                    self.delegate?.didMakeChanges()
+                    self.delegate?.didChanges()
                     self.hideActivityIndicator()
                     self.dismiss(animated: true, completion: nil)
                 } failure: { error in

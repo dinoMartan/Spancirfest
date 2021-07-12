@@ -91,6 +91,8 @@ private extension AdminDashboardViewController {
     }
     
     private func fetchEventApproveals(completion: @escaping (() -> Void)) {
+        completion()
+        /*
         DatabaseHandler.shared.getDataWhere(type: EventApproveal.self, collection: .eventApproveal, whereField: .approved, isEqualTo: false) { eventApproveals in
             let eventApprovealData = AdminDashboardTableData.eventApproveal(title: "Event Approveals", approvealEvents: eventApproveals)
             self.tableData.append(eventApprovealData)
@@ -99,7 +101,7 @@ private extension AdminDashboardViewController {
             // to do - handle error
             completion()
         }
-
+        */
     }
     
 }
@@ -165,12 +167,14 @@ extension AdminDashboardViewController: AdminDashboardTableViewCellDelegate {
     func didTapShowLocationDetails(location: Location) {
         guard let locationEditorViewController = UIStoryboard.getViewController(viewControllerType: LocationEditorViewController.self, from: .LocationDetails) else { return }
         locationEditorViewController.location = location
+        locationEditorViewController.delegate = self
         present(locationEditorViewController, animated: true, completion: nil)
     }
     
     func didTapShowCategoryDetails(category: EventCategory) {
         guard let eventCategoryViewController = UIStoryboard.getViewController(viewControllerType: EventCategoryViewController.self, from: .EventCategory) else { return }
         eventCategoryViewController.eventCategory = category
+        eventCategoryViewController.delegate = self
         present(eventCategoryViewController, animated: true, completion: nil)
     }
     
@@ -182,11 +186,21 @@ extension AdminDashboardViewController: AdminDashboardTableViewCellDelegate {
     
 }
 
-//MARK: - EventDetails Delegate -
+//MARK: - LocationEditorViewControllerDelegate -
 
-extension AdminDashboardViewController: EventDetailsViewControllerDelegate {
+extension AdminDashboardViewController: LocationEditorViewControllerDelegate {
     
-    func didMakeChanges() {
+    func didChanges() {
+        fetchData()
+    }
+    
+}
+
+//MARK: - EventCategoryViewControllerDelegate -
+
+extension AdminDashboardViewController: EventCategoryViewControllerDelegate {
+    
+    func didChange() {
         fetchData()
     }
     

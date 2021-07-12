@@ -68,8 +68,10 @@ class HomeViewController: UIViewController {
     private func setupView() {
         setListenerOnSegmentedControl()
         configureTableView()
-        sortEventsByDate {
-            self.tableView.reloadData()
+        fetchData {
+            self.sortEventsByDate {
+                self.tableView.reloadData()
+            }
         }
     }
     

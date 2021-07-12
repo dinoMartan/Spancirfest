@@ -8,6 +8,12 @@
 import UIKit
 import SDWebImage
 
+protocol EventCategoryViewControllerDelegate: AnyObject {
+    
+    func didChange()
+    
+}
+
 class EventCategoryViewController: UIViewController {
     
     //MARK: - IBOutlets
@@ -19,6 +25,7 @@ class EventCategoryViewController: UIViewController {
     //MARK: - Public properties
     
     var eventCategory: EventCategory?
+    weak var delegate: EventCategoryViewControllerDelegate?
     
     //MARK: - Private properties
     
@@ -68,6 +75,7 @@ extension EventCategoryViewController {
             let eventCategoryId = String.randomString(length: 10)
             prepareEventCategory(categoryId: eventCategoryId) { eventCategory in
                 DatabaseHandler.shared.addData(data: [eventCategory], collection: .eventCategory) {
+                    self.delegate?.didChange()
                     self.dismiss(animated: true, completion: nil)
                 } failure: { error in
                     // to do - handle error
@@ -85,6 +93,9 @@ extension EventCategoryViewController {
                 DatabaseHandler.shared.updateEventCategory(category: eventCategory) { didComplete in
                     if !didComplete {
                         // to do - handle error
+                    }
+                    else {
+                        self.delegate?.didChange()
                     }
                 }
                 self.dismiss(animated: true, completion: nil)
