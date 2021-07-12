@@ -7,43 +7,6 @@
 
 import UIKit
 
-enum EventSortType {
-    
-    case date(date: EventsByDate)
-    case category(data: EventsByCategory)
-    case location(data: EventsByLocation)
-    case profile(data: ProfileViewControllerTableData)
-    
-}
-
-struct EventsByDate {
-    
-    let date: Date
-    var events: [Event]
-    
-}
-
-struct ProfileViewControllerTableData {
-    
-    let title: String
-    let events: [Event]
-    
-}
-
-struct EventsByCategory {
-    
-    let category: EventCategory
-    var events: [Event]
-    
-}
-
-struct EventsByLocation {
-    
-    let location: Location
-    var events: [Event]
-    
-}
-
 class HomeViewController: UIViewController {
     
     //MARK: - IBOutlets
@@ -65,6 +28,21 @@ class HomeViewController: UIViewController {
         setupView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fetchData {
+            //
+        }
+    }
+
+}
+
+//MARK: -  Private extensions -
+
+private extension HomeViewController {
+    
+    //MARK: - View setup and configuration
+    
     private func setupView() {
         setListenerOnSegmentedControl()
         configureTableView()
@@ -75,12 +53,49 @@ class HomeViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    //MARK: - SegmentedControl setup and configuration
+    
+    private func setListenerOnSegmentedControl() {
+        segmentedControl.addTarget(self, action: #selector(self.didChangeValue(_:)), for: .valueChanged)
+    }
+    
+    @objc func didChangeValue(_ sender: UISegmentedControl) {
         fetchData {
-            //
+            let index = self.segmentedControl.selectedSegmentIndex
+            
+            if index == 0 { // daily
+                self.sortEventsByDate {
+                    self.tableView.reloadData()
+                }
+            }
+            
+            else if index == 1 { // category
+                self.sortEventByCategory {
+                    self.tableView.reloadData()
+                }
+            }
+            
+            else if index == 2 { // locations
+                self.sortEventByLocation {
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
+    
+    //MARK: - TableView configuration
+    
+    private func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: EventDisplayTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: EventDisplayTableViewCell.identifier)
+    }
+    
+}
+
+private extension HomeViewController {
+    
+    //MARK: - Data
     
     private func fetchData(completion: @escaping (() -> Void)) {
         DatabaseHandler.shared.getData(type: Event.self, collection: .events) { events in
@@ -151,40 +166,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func setListenerOnSegmentedControl() {
-        segmentedControl.addTarget(self, action: #selector(self.didChangeValue(_:)), for: .valueChanged)
-    }
-    
-    @objc func didChangeValue(_ sender: UISegmentedControl) {
-        fetchData {
-            let index = self.segmentedControl.selectedSegmentIndex
-            
-            if index == 0 { // daily
-                self.sortEventsByDate {
-                    self.tableView.reloadData()
-                }
-            }
-            
-            else if index == 1 { // category
-                self.sortEventByCategory {
-                    self.tableView.reloadData()
-                }
-            }
-            
-            else if index == 2 { // locations
-                self.sortEventByLocation {
-                    self.tableView.reloadData()
-                }
-            }
-        }
-    }
-    
-    private func configureTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: EventDisplayTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: EventDisplayTableViewCell.identifier)
-    }
-
 }
 
 //MARK: - TableView DataSource and Delegate

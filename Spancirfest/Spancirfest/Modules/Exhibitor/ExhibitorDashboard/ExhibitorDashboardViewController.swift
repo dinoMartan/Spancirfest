@@ -7,13 +7,6 @@
 
 import UIKit
 
-enum ExhibitorDashboardData {
-    
-    case myEvents(events: [Event])
-    case myApproveals(approveals: [EventApproveal])
-    
-}
-
 class ExhibitorDashboardViewController: UIViewController {
     
     //MARK: - IBOutlets

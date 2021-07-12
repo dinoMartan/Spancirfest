@@ -12,7 +12,6 @@ class SignInViewController: FUIAuthPickerViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
     }
 
 }

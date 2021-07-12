@@ -8,20 +8,6 @@
 import UIKit
 import SDWebImage
 
-enum EventDateType {
-    
-    case startDate
-    case endDate
-    
-}
-
-struct EventDate {
-    
-    let type: EventDateType
-    let date: Date
-    
-}
-
 class EventEditorViewController: UIViewController {
     
     //MARK: - IBOutlets
