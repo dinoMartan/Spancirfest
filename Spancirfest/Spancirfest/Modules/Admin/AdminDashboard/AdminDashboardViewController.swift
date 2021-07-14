@@ -74,7 +74,7 @@ private extension AdminDashboardViewController {
             self.tableData.append(locationsData)
             completion()
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .dataFetchingFailed, actionTitle: .ok, handler: nil)
             completion()
         }
     }
@@ -85,7 +85,7 @@ private extension AdminDashboardViewController {
             self.tableData.append(categoriesData)
             completion()
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .dataFetchingFailed, actionTitle: .ok, handler: nil)
             completion()
         }
     }

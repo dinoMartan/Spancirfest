@@ -76,20 +76,20 @@ extension AuthenticationViewController: FUIAuthDelegate {
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if error != nil {
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .somethingWentWrong, actionTitle: .ok, handler: nil)
         }
         else {
             guard let navigationViewController = UIStoryboard.getViewController(viewControllerType: TabBarViewController.self, from: .Navigation),
                   let authDataResult = authDataResult
             else {
-                // to do - handle error
+                Alerter.showOneButtonAlert(on: self, title: .error, message: .somethingWentWrong, actionTitle: .ok, handler: nil)
                 return
             }
             if let additionalUserInfo = authDataResult.additionalUserInfo {
                 if additionalUserInfo.isNewUser {
                     addNewUserDetails(userId: authDataResult.user.uid) { completion in
                         guard completion != false else {
-                            // to do - handle error
+                            Alerter.showOneButtonAlert(on: self, title: .error, message: .somethingWentWrong, actionTitle: .ok, handler: nil)
                             return
                         }
                         navigationViewController.modalPresentationStyle = .fullScreen

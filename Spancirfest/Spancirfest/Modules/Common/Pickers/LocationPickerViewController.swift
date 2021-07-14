@@ -65,7 +65,7 @@ private extension LocationPickerViewController {
             self.locations = locations
             self.locationPickerView.reloadAllComponents()
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .dataFetchingFailed, actionTitle: .ok, handler: nil)
         }
     }
     

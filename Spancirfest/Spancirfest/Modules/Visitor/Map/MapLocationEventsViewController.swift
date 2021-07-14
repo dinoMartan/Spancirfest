@@ -68,7 +68,7 @@ private extension MapLocationEventsViewController {
             self.events = events
             self.collectionView.reloadData()
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .dataFetchingFailed, actionTitle: .ok, handler: nil)
         }
     }
     

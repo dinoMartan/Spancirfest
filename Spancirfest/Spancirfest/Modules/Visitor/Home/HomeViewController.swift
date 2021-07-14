@@ -103,7 +103,7 @@ private extension HomeViewController {
             completion()
         } failure: { error in
              completion()
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .dataFetchingFailed, actionTitle: .ok, handler: nil)
         }
     }
     
@@ -117,12 +117,13 @@ private extension HomeViewController {
                 for event in self.allEvents {
                     if event.eventCategory.categoryId == category.categoryId { eventsByCategory.events.append(event) }
                 }
-                self.eventsByCategory.append(eventsByCategory)
+                if eventsByCategory.events.isEmpty { continue }
+                else { self.eventsByCategory.append(eventsByCategory) }
             }
             completion()
         } failure: { error in
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .dataFetchingFailed, actionTitle: .ok, handler: nil)
             completion()
-            // to do - handle error
         }
     }
     
@@ -144,7 +145,7 @@ private extension HomeViewController {
             completion()
             
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .dataFetchingFailed, actionTitle: .ok, handler: nil)
             completion()
         }
     }
@@ -157,12 +158,13 @@ private extension HomeViewController {
                 for event in self.allEvents {
                     if event.location.locationId == location.locationId { eventsByLocation.events.append(event) }
                 }
-                self.eventsByLocation.append(eventsByLocation)
+                if eventsByLocation.events.isEmpty { continue }
+                else { self.eventsByLocation.append(eventsByLocation) }
             }
             completion()
         } failure: { error in
             completion()
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .dataFetchingFailed, actionTitle: .ok, handler: nil)
         }
     }
     

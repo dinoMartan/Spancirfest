@@ -118,7 +118,7 @@ extension EventEditorViewController {
             datePickerViewController.setMaximumDate(date: festivalDetails.endDate)
             self.present(datePickerViewController, animated: true, completion: nil)
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
         }
     }
     
@@ -131,7 +131,7 @@ extension EventEditorViewController {
             datePickerViewController.setMaximumDate(date: festivalDetails.endDate)
             self.present(datePickerViewController, animated: true, completion: nil)
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
         }
     }
     
@@ -160,7 +160,7 @@ extension EventEditorViewController {
               let category = selectedCategory,
               let image = eventImage.image?.compress(to: .medium)
         else {
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .checkFields, actionTitle: .ok, handler: nil)
             return
         }
         
@@ -177,12 +177,12 @@ extension EventEditorViewController {
                     self.navigationController?.popToRootViewController(animated: true)
                 } failure: { error in
                     self.stopLoadingAnimation()
-                    // to do - handle error
+                    Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
                 }
 
             } failure: { error in
                 self.stopLoadingAnimation()
-                // to do - handle error
+                Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
             }
         }
         
@@ -196,7 +196,7 @@ extension EventEditorViewController {
                 }
                 else {
                     self.stopLoadingAnimation()
-                    // to do - handle error
+                    Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
                 }
             }
         }

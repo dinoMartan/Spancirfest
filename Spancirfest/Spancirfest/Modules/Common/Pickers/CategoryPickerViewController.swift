@@ -65,7 +65,7 @@ private extension CategoryPickerViewController {
             self.eventCategories = eventCategories
             self.categoryPickerView.reloadAllComponents()
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
         }
     }
     

@@ -42,7 +42,7 @@ private extension ApprovealViewController {
     
     private func setupView() {
         guard eventApproveal != nil else {
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .somethingWentWrong, actionTitle: .ok, handler: nil)
             dismiss(animated: true, completion: nil)
             return
         }
@@ -70,10 +70,10 @@ extension ApprovealViewController {
                 self.delegate?.didMakeChanges()
                 self.dismiss(animated: true, completion: nil)
             } failure: { error in
-                // to do - handle error
+                Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
             }
         } failure: {
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
         }
     }
     
@@ -83,7 +83,7 @@ extension ApprovealViewController {
             self.delegate?.didMakeChanges()
             self.dismiss(animated: true, completion: nil)
         } failure: {
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
         }
     }
     

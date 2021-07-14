@@ -62,7 +62,7 @@ private extension ProfileViewController {
             self.tableData.append(profileViewControllerData)
             self.tableView.reloadData()
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .dataFetchingFailed, actionTitle: .ok, handler: nil)
         }
     }
     
@@ -73,7 +73,7 @@ private extension ProfileViewController {
             self.tableData.append(profileViewControllerData)
             self.tableView.reloadData()
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .dataFetchingFailed, actionTitle: .ok, handler: nil)
         }
     }
     

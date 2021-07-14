@@ -73,14 +73,14 @@ private extension EventDetailsViewController {
         checkIfUsersIsFollowingEvent {
             self.configureFollowButton()
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .somethingWentWrong, actionTitle: .ok, handler: nil)
         }
 
     }
     
     private func checkIfEventIsSet() {
         guard event != nil else {
-            // to do - handle error, dissmiss view
+            dismiss(animated: true, completion: nil)
             return
         }
     }
@@ -151,11 +151,9 @@ private extension EventDetailsViewController {
     private func configureFollowButton() {
         guard let userIsFollowing = self.userIsFollowingEvent else { return }
         if userIsFollowing {
-           // self.followButton.setTitle(FollowButtonConstants.unfollow.rawValue, for: .normal)
             followButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         else {
-           // self.followButton.setTitle(FollowButtonConstants.follow.rawValue, for: .normal)
             followButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }
@@ -194,9 +192,6 @@ extension EventDetailsViewController {
         present(locationViewController, animated: true, completion: nil)
     }
     
-    @IBAction func didTapShowCategoryDetailsButton(_ sender: Any) {
-    }
-    
     @IBAction func didTapAddToFollowButton(_ sender: Any) {
         checkIfUsersIsFollowingEvent {
             guard let eventFollowing = self.eventFollowing,
@@ -206,7 +201,7 @@ extension EventDetailsViewController {
             if userIsFollowingEvent { self.unfollowEvent(eventFollowing: eventFollowing) }
             else { self.followEvent(eventFollowing: eventFollowing) }
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
         }
     }
     
@@ -216,11 +211,10 @@ extension EventDetailsViewController {
                 self.configureFollowButton()
                 self.didFollowUnfollowEvent = true
             } failure: { error in
-                // to do - handle error
+                Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
             }
-
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
         }
     }
     
@@ -230,17 +224,16 @@ extension EventDetailsViewController {
                 self.configureFollowButton()
                 self.didFollowUnfollowEvent = true
             } failure: { error in
-                // to do - handle error
+                Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
             }
-
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
         }
     }
     
     @IBAction func didTapBuyTicketsButton(_ sender: Any) {
         guard checkIfCanBuyTicket() else {
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
             return
         }
         
@@ -253,7 +246,7 @@ extension EventDetailsViewController {
         
         let dropIn = BTDropInController(authorization: tokenizationKey, request: request) { (controller, result, error) in
             if (error != nil) {
-                // to do - handle error
+                Alerter.showOneButtonAlert(on: self, title: .error, message: .somethingWentWrong, actionTitle: .ok, handler: nil)
             }
             else if let result = result {
                 if let nonce = result.paymentMethod?.nonce {
@@ -303,7 +296,7 @@ extension EventDetailsViewController {
         else { event.paidUsers?.append(userId) }
         DatabaseHandler.shared.updateEvent(event: event) { didComplete in
             if !didComplete {
-                // to do - handle error
+                Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
             }
             else {
                 self.configureBuyButton()

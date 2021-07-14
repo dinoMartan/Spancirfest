@@ -78,12 +78,11 @@ extension EventCategoryViewController {
                     self.delegate?.didChange()
                     self.dismiss(animated: true, completion: nil)
                 } failure: { error in
-                    // to do - handle error
+                    Alerter.showOneButtonAlert(on: self, title: .error, error: error, actionTitle: .ok, handler: nil)
                     self.dismiss(animated: true, completion: nil)
                 }
-
             } failure: { error in
-                // to do - handle error
+                Alerter.showOneButtonAlert(on: self, title: .error, error: error, actionTitle: .ok, handler: nil)
                 self.dismiss(animated: true, completion: nil)
             }
         }
@@ -92,7 +91,7 @@ extension EventCategoryViewController {
             prepareEventCategory(categoryId: eventCategory!.categoryId) { eventCategory in
                 DatabaseHandler.shared.updateEventCategory(category: eventCategory) { didComplete in
                     if !didComplete {
-                        // to do - handle error
+                        Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
                     }
                     else {
                         self.delegate?.didChange()
@@ -100,7 +99,7 @@ extension EventCategoryViewController {
                 }
                 self.dismiss(animated: true, completion: nil)
             } failure: { error in
-                // to do - handle error
+                Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
                 self.dismiss(animated: true, completion: nil)
             }
         }
@@ -109,6 +108,7 @@ extension EventCategoryViewController {
     private func prepareEventCategory(categoryId: String, success: @escaping ((EventCategory) -> Void), failure: @escaping ((Error?) -> Void)) {
         ImageUpdater.shared.updateImage(currentImageView: imageView, oldImageUrl: eventCategory?.image, imagePath: .categoryImage, imageQuality: .medium) { response in
             guard let name = self.categoryNameTextField.text else {
+                Alerter.showOneButtonAlert(on: self, title: .error, message: .checkFields, actionTitle: .ok, handler: nil)
                 failure(nil)
                 return
             }

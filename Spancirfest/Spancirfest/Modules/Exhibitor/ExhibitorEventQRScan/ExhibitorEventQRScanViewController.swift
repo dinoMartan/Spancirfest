@@ -71,7 +71,7 @@ extension ExhibitorEventQRScanViewController: QRCodeScannerViewControllerDelegat
     }
     
     func didFailure(error: QRScannerError) {
-        // to do - handle error
+        Alerter.showOneButtonAlert(on: self, title: .error, message: .somethingWentWrong, actionTitle: .ok, handler: nil)
     }
     
 }

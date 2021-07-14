@@ -57,7 +57,7 @@ private extension AprovealListViewController {
             self.eventApproveals = eventApproveals
             self.tableView.reloadData()
         } failure: { error in
-            // to do - handle error
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .dataFetchingFailed, actionTitle: .ok, handler: nil)
         }
     }
     

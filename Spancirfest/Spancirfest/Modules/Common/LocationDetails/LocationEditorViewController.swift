@@ -135,7 +135,7 @@ extension LocationEditorViewController {
         
         prepareLocation(locationId: locationId) { newLocation in
             guard let newLocation = newLocation else {
-                // to do - handle error
+                Alerter.showOneButtonAlert(on: self, title: .error, message: .dataFetchingFailed, actionTitle: .ok, handler: nil)
                 self.hideActivityIndicator()
                 return
             }
@@ -143,7 +143,7 @@ extension LocationEditorViewController {
             if self.location != nil {
                 DatabaseHandler.shared.updateLocation(location: newLocation) { didUpdate in
                     if !didUpdate {
-                        // to do - handle error
+                        Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
                         self.hideActivityIndicator()
                     }
                     else { self.delegate?.didChanges() }
@@ -157,7 +157,7 @@ extension LocationEditorViewController {
                     self.hideActivityIndicator()
                     self.dismiss(animated: true, completion: nil)
                 } failure: { error in
-                    // to do - handle error
+                    Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
                     self.hideActivityIndicator()
                     self.dismiss(animated: true, completion: nil)
                 }
@@ -170,6 +170,7 @@ extension LocationEditorViewController {
               let title = locationTitleTextField.text,
               let description = locationDescriptionTextField.text
         else {
+            Alerter.showOneButtonAlert(on: self, title: .error, message: .checkFields, actionTitle: .ok, handler: nil)
             completion(nil)
             return
         }
@@ -186,7 +187,7 @@ extension LocationEditorViewController {
             case .imageNotChanged(let url):
                 location.image = url
             case .error(_):
-                // to do - handle error
+                Alerter.showOneButtonAlert(on: self, title: .error, message: .updateFailed, actionTitle: .ok, handler: nil)
                 completion(nil)
             }
             completion(location)
