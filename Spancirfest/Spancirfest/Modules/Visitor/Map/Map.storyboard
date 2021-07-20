@@ -49,7 +49,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKd-x9-mb7">
-                                <rect key="frame" x="0.0" y="562" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="596" width="414" height="300"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oE9-SZ-XVe">
                                         <rect key="frame" x="10" y="15" width="394" height="29"/>
@@ -107,7 +107,7 @@
                         <constraints>
                             <constraint firstItem="5iO-hg-LQZ" firstAttribute="trailing" secondItem="mKd-x9-mb7" secondAttribute="trailing" id="3jx-H5-CGH"/>
                             <constraint firstItem="mKd-x9-mb7" firstAttribute="leading" secondItem="5iO-hg-LQZ" secondAttribute="leading" id="Hnk-0P-F15"/>
-                            <constraint firstItem="5iO-hg-LQZ" firstAttribute="bottom" secondItem="mKd-x9-mb7" secondAttribute="bottom" id="k3C-ln-NMw"/>
+                            <constraint firstAttribute="bottom" secondItem="mKd-x9-mb7" secondAttribute="bottom" id="k3C-ln-NMw"/>
                         </constraints>
                     </view>
                     <connections>

@@ -10,12 +10,6 @@ import SDWebImage
 import BraintreeDropIn
 import Braintree
 
-protocol EventDetailsViewControllerDelegate: AnyObject {
-    
-    func didMakeChanges()
-    
-}
-
 class EventDetailsViewController: UIViewController {
     
     //MARK: - IBOutlets

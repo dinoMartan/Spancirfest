@@ -8,13 +8,6 @@
 import UIKit
 import MercariQRScanner
 
-protocol QRCodeScannerViewControllerDelegate: AnyObject {
-    
-    func didFailure(error: QRScannerError)
-    func didSuccess(code: String)
-    
-}
-
 class QRCodeScannerViewController: UIViewController {
     
     //MARK: - IBOutlets

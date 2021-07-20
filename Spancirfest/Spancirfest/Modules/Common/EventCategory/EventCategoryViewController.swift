@@ -8,12 +8,6 @@
 import UIKit
 import SDWebImage
 
-protocol EventCategoryViewControllerDelegate: AnyObject {
-    
-    func didChange()
-    
-}
-
 class EventCategoryViewController: UIViewController {
     
     //MARK: - IBOutlets

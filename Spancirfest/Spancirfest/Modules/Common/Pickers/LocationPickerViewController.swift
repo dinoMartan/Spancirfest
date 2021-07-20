@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol LocationPickerViewControllerDelegate: AnyObject {
-    
-    func didSetLocation(location: Location)
-    
-}
-
 class LocationPickerViewController: UIViewController {
 
     //MARK: - IBOutlets

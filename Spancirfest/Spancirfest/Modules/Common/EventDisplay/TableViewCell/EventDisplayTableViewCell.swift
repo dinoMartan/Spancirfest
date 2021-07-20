@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol EventDisplayTableViewCellDelegate: AnyObject {
-    
-    func presentEvent(event: Event)
-    
-}
-
 class EventDisplayTableViewCell: UITableViewCell {
     
     //MARK: - IBOutlets

@@ -7,16 +7,6 @@
 
 import UIKit
 
-protocol AdminDashboardTableViewCellDelegate: AnyObject {
-    
-    func didTapAddNewLocationButton()
-    func didTapAddNewCategoryButton()
-    func didTapShowLocationDetails(location: Location)
-    func didTapShowCategoryDetails(category: EventCategory)
-    func didTapShowEventApprovealDetails(eventApproveal: EventApproveal)
-    
-}
-
 class AdminDashboardTableViewCell: UITableViewCell {
     
     //MARK: - IBOutlets

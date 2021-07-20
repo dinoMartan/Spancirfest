@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol CategoryPickerViewControllerDelegate: AnyObject {
-    
-    func didSetCategory(eventCategory: EventCategory)
-    
-}
-
 class CategoryPickerViewController: UIViewController {
 
     //MARK: - IBOutlets

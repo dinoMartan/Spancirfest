@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol ApprovealViewControllerDelegate: AnyObject {
-    
-    func didMakeChanges()
-    
-}
-
 class ApprovealViewController: UIViewController {
     
     //MARK: - IBOutlets

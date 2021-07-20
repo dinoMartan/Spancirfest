@@ -9,12 +9,6 @@ import UIKit
 import MapKit
 import SDWebImage
 
-protocol LocationEditorViewControllerDelegate: AnyObject {
-    
-    func didChanges()
-    
-}
-
 class LocationEditorViewController: UIViewController {
     
     //MARK: - IBOutlets

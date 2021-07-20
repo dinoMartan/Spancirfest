@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol DatePickerViewControllerDelegate: AnyObject {
-    
-    func didSetDate(eventDate: EventDate)
-    
-}
-
 class DatePickerViewController: UIViewController {
     
     //MARK: - IBOutlets

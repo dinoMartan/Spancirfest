@@ -8,12 +8,6 @@
 import UIKit
 import SDWebImage
 
-protocol ExhibitorDashboardEventTableViewCellDelegate: AnyObject {
-    
-    func didTapScanButton(event: Event)
-    
-}
-
 class ExhibitorDashboardEventTableViewCell: UITableViewCell {
     
     //MARK: - IBOutlets
