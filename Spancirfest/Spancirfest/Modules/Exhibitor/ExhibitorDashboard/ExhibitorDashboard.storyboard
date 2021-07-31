@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pNN-wi-lvd">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Exhibitor Dashboard-->
+        <scene sceneID="yey-KR-yrc">
+            <objects>
+                <viewController storyboardIdentifier="ExhibitorDashboardViewController" id="dpn-PI-hEg" customClass="ExhibitorDashboardViewController" customModule="Spancirfest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7WY-8h-6zB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPB-8l-8IX">
+                                <rect key="frame" x="0.0" y="763" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="lHu-5p-4cD"/>
+                                </constraints>
+                                <state key="normal" title="Add New Event">
+                                    <color key="titleColor" systemColor="secondaryLabelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapAddNewEventButton:" destination="dpn-PI-hEg" eventType="touchUpInside" id="CkL-gZ-Xf5"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VGF-mV-9Tu">
+                                <rect key="frame" x="0.0" y="119" width="414" height="644"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oA1-b9-Vue">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Published Events"/>
+                                    <segment title="Approveals"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pGf-rp-rNI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VGF-mV-9Tu" firstAttribute="top" secondItem="oA1-b9-Vue" secondAttribute="bottom" id="27A-P2-qwx"/>
+                            <constraint firstItem="pGf-rp-rNI" firstAttribute="trailing" secondItem="VGF-mV-9Tu" secondAttribute="trailing" id="CF8-uc-sy6"/>
+                            <constraint firstItem="pGf-rp-rNI" firstAttribute="trailing" secondItem="dPB-8l-8IX" secondAttribute="trailing" id="CLA-lP-fKN"/>
+                            <constraint firstItem="oA1-b9-Vue" firstAttribute="leading" secondItem="pGf-rp-rNI" secondAttribute="leading" id="GV2-B1-jk1"/>
+                            <constraint firstItem="dPB-8l-8IX" firstAttribute="top" secondItem="VGF-mV-9Tu" secondAttribute="bottom" id="W3Z-Y2-Vwt"/>
+                            <constraint firstItem="pGf-rp-rNI" firstAttribute="bottom" secondItem="dPB-8l-8IX" secondAttribute="bottom" id="YWj-C4-xRV"/>
+                            <constraint firstItem="dPB-8l-8IX" firstAttribute="leading" secondItem="pGf-rp-rNI" secondAttribute="leading" id="ebP-1U-k0z"/>
+                            <constraint firstItem="oA1-b9-Vue" firstAttribute="top" secondItem="pGf-rp-rNI" secondAttribute="top" id="f5C-8d-VG6"/>
+                            <constraint firstItem="VGF-mV-9Tu" firstAttribute="leading" secondItem="pGf-rp-rNI" secondAttribute="leading" id="fX0-Tt-oVU"/>
+                            <constraint firstItem="pGf-rp-rNI" firstAttribute="trailing" secondItem="oA1-b9-Vue" secondAttribute="trailing" id="z1S-7A-7Zo"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Exhibitor" image="dollarsign.circle.fill" catalog="system" id="TPA-dC-Amd"/>
+                    <navigationItem key="navigationItem" title="Exhibitor Dashboard" id="FTx-yb-jHg"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="oA1-b9-Vue" id="W8H-lN-dUT"/>
+                        <outlet property="tableView" destination="VGF-mV-9Tu" id="unK-Ip-YK6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Vf-XO-mdx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="697.10144927536237" y="16.741071428571427"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LY2-xU-ZuH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pNN-wi-lvd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rny-ka-pZ7">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dpn-PI-hEg" kind="relationship" relationship="rootViewController" id="Gxk-ts-9zm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j0V-CM-DCq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-213.04347826086959" y="16.741071428571427"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="dollarsign.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

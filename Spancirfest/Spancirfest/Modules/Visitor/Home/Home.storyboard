@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="drw-xn-E98">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home-->
+        <scene sceneID="5aJ-ZC-Na8">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" title="Home" id="zG3-sL-rUk" customClass="HomeViewController" customModule="Spancirfest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="caM-0m-HM8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z6H-zc-zrz">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Daily"/>
+                                    <segment title="Categories"/>
+                                    <segment title="Locations"/>
+                                </segments>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Yjj-B2-Rsd">
+                                <rect key="frame" x="0.0" y="119" width="414" height="694"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eDD-kJ-2VW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Z6H-zc-zrz" firstAttribute="leading" secondItem="eDD-kJ-2VW" secondAttribute="leading" id="GGb-PZ-go1"/>
+                            <constraint firstItem="Yjj-B2-Rsd" firstAttribute="leading" secondItem="eDD-kJ-2VW" secondAttribute="leading" id="S2n-WI-liX"/>
+                            <constraint firstItem="Z6H-zc-zrz" firstAttribute="top" secondItem="eDD-kJ-2VW" secondAttribute="top" id="YVa-5v-ep1"/>
+                            <constraint firstItem="eDD-kJ-2VW" firstAttribute="trailing" secondItem="Yjj-B2-Rsd" secondAttribute="trailing" id="ZPY-Ni-K6p"/>
+                            <constraint firstItem="eDD-kJ-2VW" firstAttribute="bottom" secondItem="Yjj-B2-Rsd" secondAttribute="bottom" id="dtd-3i-dub"/>
+                            <constraint firstItem="eDD-kJ-2VW" firstAttribute="trailing" secondItem="Z6H-zc-zrz" secondAttribute="trailing" id="g19-Ab-UlX"/>
+                            <constraint firstItem="Yjj-B2-Rsd" firstAttribute="top" secondItem="Z6H-zc-zrz" secondAttribute="bottom" id="xN1-2l-3o4"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="uuR-Tc-oy7"/>
+                    <navigationItem key="navigationItem" title="Home" id="sAH-1b-n6x"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="Z6H-zc-zrz" id="87y-7z-pCD"/>
+                        <outlet property="tableView" destination="Yjj-B2-Rsd" id="Cz4-J5-b3e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="594-GB-BEq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="659.4202898550725" y="-25.446428571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MfA-1v-6pC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="drw-xn-E98" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ffq-EL-VW3">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zG3-sL-rUk" kind="relationship" relationship="rootViewController" id="uc5-1w-YEA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iHK-FX-A4x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-250.72463768115944" y="-25.446428571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
