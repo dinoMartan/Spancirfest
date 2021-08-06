@@ -7,6 +7,18 @@ Visitors can see events. Events are sorted by day, category or location. Tapping
 Exhibitors are the heart of Špancirfest. They can be event organisers or just individuals performing their routines. Exhibitor can create event (set name, date, price, image, etc.). Every new event needs admin's approveal so exhibitor can see their approveals with admin's feedback. Every published event can be paid type. In that case, exhibitor can scan users unique QR codes with in app QR code scanner to determine if visitor bought ticket for event. <br/>
 Admin can manage locations and categories (create them, change name, photo, etc.). Admin can also see all newly created events. If event is still waiting for approveal, admin can approve or denie event and add comment about decision. If event has already been approved or denied, admin cannot change the state.
  <br/>
+ 
+ Testing credentials:  <br/>
+ Admin  <br/>
+ email: dino.martan@gmail.com  <br/>
+ password: 123456  <br/>
+ Exhibitor  <br/>
+ email: exhibitor@test.com  <br/>
+ password: 123456  <br/>
+ Visitor  <br/>
+ email: visitor@test.com  <br/>
+ password: 123456  <br/>
+ 
  Home
  <p align="left">
   <img src="docs/images/home.png" width="185" height="400" title="Home">
